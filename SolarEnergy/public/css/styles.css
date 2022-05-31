@@ -1,0 +1,26 @@
+#navDivider {
+    border-left: 3px solid #ffce00; 
+    height: 30px; 
+    margin-top: 5px;
+    pointer-events: none;
+    cursor: default;
+}
+
+hr.divider{
+      border-top: 15px solid #2C3E4C;
+      margin:0;
+      opacity: 100;
+}
+
+
+@media (max-width: 992px) {
+    #navDivider{
+        display: none;
+    }
+  }
+
+@media (min-width: 992px) {
+    .container-fluid{
+        padding: 0 32px;
+    }
+}

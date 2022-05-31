@@ -21,59 +21,8 @@
 
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a href="/" class="navbar-brand">
-                        <img src="/img/logoDark.png" alt="SolarEnergyLogo">
-                    </a>
-
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-end" id="navbar">    
-                        <ul class="navbar-nav text-end">
-                            <li class="nav-item">
-                                <a href="/" class="nav-link text-dark">
-                                    Início
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/empresa" class="nav-link text-dark">
-                                    Empresa
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/assistencia" class="nav-link text-dark">
-                                    Assistência
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/contactos" class="nav-link text-dark">
-                                    Contactos
-                                </a>
-                            </li>
-
-                            <li>
-                               <div id="navDivider"></div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/login" class="nav-link text-dark">
-                                    <i class="bi bi-person-circle"></i>
-                                    Login
-                                </a>
-                            </li>
-                        </ul>
-                    </div> 
-                </div>
-            </nav>    
-            <hr class="divider">
-        </header>
+        
         @yield('content')
-        <footer>
-            
-        </footer>
+        
     </body>
 </html>
