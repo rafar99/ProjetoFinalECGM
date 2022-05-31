@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('morada_pedido', function (Blueprint $table) {
             $table->id();
-            $table->string('rua');
+            $table->string('rua',100);
             $table->integer('porta');
-            $table->string('codigo_postal');
-            $table->string('concelho');
+            $table->string('codigo_postal',100);
+            $table->string('concelho',100);
             $table->decimal('latitude');
             $table->decimal('longitude');
             $table->timestamps();

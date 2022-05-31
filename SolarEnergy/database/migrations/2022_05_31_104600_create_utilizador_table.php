@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('utilizador', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('email');
-            $table->string('password');
-            $table->unsignedBigInteger('id_tipoUtilizador')->unsigned()->nullable();
-            $table->foreign('id_tipoUtilizador')->references('id')->on('tipo_utilizador')->onDelete('cascade');
+            $table->string('nome',100);
+            $table->string('email',100);
+            $table->string('password',100);
+
+            $table->unsignedBigInteger('tipoUtilizador_id')->unsigned()->nullable();
+            $table->foreign('tipoUtilizador_id')->references('id')->on('tipo_utilizador')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

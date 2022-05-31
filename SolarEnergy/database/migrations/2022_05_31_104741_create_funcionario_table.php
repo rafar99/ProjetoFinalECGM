@@ -15,21 +15,20 @@ return new class extends Migration
     {
         Schema::create('funcionario', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('contacto');
-            $table->unsignedBigInteger('cod_utilizador')->unsigned()->nullable();
-            $table->foreign('cod_utilizador')->references('id')->on('utilizador')->onDelete('cascade');
-
-            $table->intiger('tipoFuncionario');
-
+            $table->string('nome',100);
+            $table->string('contacto',100);
             $table->date('dataRegisto');
-            $table->intiger('disponibilidade');
+
+            $table->unsignedBigInteger('cod_utilizador_id')->unsigned()->nullable();
+            $table->foreign('cod_utilizador_id')->references('id')->on('utilizador')->onDelete('cascade');
+
+            $table->unsignedBigInteger('tipoFuncionario_id')->unsigned()->nullable();
+            $table->foreign('tipoFuncionario_id')->references('id')->on('tipo_funcionario')->onDelete('cascade');
+
+            $table->unsignedBigInteger('disponibilidade_id')->unsigned()->nullable();
+            $table->foreign('disponibilidade_id')->references('id')->on('disponibilidade')->onDelete('cascade');
 
             $table->timestamps();
-
-            $table->unsignedBigInteger('motorista_id')->unsigned()->nullable();
-
- $table->foreign('motorista_id')->references('id')->on('table_motorista')->onDelete('cascade');
         });
     }
 

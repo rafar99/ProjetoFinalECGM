@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('detalhes_contactos', function (Blueprint $table) {
             $table->id();
-            $table->string('num_telefone');
-            $table->string('morada');
-            $table->string('email');
-            $table->string('mapa');
+            $table->string('num_telefone', 100);
+            $table->string('morada', 255);
+            $table->string('email',100);
+            $table->text('mapa');
             $table->timestamps();
         });
     }
