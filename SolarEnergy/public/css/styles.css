@@ -1,3 +1,5 @@
+/*******************NAV***************************/
+
 #navDivider {
     border-left: 3px solid #ffce00; 
     height: 30px; 
@@ -24,3 +26,90 @@ hr.divider{
         padding: 0 32px;
     }
 }
+
+/**********************HOME************************/
+/*.texto-carrousel {
+    width: 20vw;
+    text-align: left;
+   display: flex;
+
+}*/
+
+.texto{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    text-align: justify;
+}
+.icones{
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
+.card-img-top{
+    width: 100px;
+    height: 100px;
+}
+
+.card{
+
+    margin-top:30px; 
+    margin-bottom: 10px;
+}
+
+.container-seccao{
+    margin: 0px;
+    padding: 0px;
+    max-width: 100vw;
+    
+}
+
+.projetos{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+.btn{
+    background-color: #31C16C;
+    border: none;
+}
+
+hr.divisor-rodape{
+    border-top: 30px solid #31C16C;
+    margin-bottom: 0;
+    margin-left:0;
+    margin-right: 0;
+    margin-top: 10vh;
+    opacity: 100;
+}
+
+footer{
+    background-color:#2C3E4C ;
+}
+
+.rodape{
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.imagem{
+    width: 30px;
+    height: auto;
+    margin-right: 15px;
+}
+.seta{
+    width: 8vw;
+    height: 8vh;
+    float: right;
+
+}
+.embaixo{
+    position: absolute;
+    left: 5%;
+    bottom: 20px;
+    width: 50%;
+    margin-left: 20%;
+    margin-right: auto;
+ }
+
+
