@@ -40,7 +40,7 @@
     </div>
     <!--Fazer um ciclo para listar -->
     <div class="row justify-content-center icones mt-5">
-        <div class="col-sm-4">
+        <div class="col-4">
             <div class="card-img">
                 <img class="card-img-top rounded mx-auto d-block" src="img/instalacao.png" alt="Instalação">
                 <div class="card-body">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-4">
             <div class="card-img"><img class="card-img-top rounded mx-auto d-block" src="img/manutencao.png"
                     alt="Manutenção">
                 <div class="card-body">
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-4">
             <div class="card-img"><img class="card-img-top rounded mx-auto d-block" src="img/avaria.png" alt="Avaria">
                 <div class="card-body">
                     <h6 class="card-title text-center">Avaria</h6>
