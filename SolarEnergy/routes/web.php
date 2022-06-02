@@ -34,5 +34,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/admin', function () {
-    return view('backoffice/admin');
+    $arr_info = ['Início','Empresa','Assistência','Contactos'];
+
+    return view('backoffice/dashboard',['arr_info' => $arr_info]);
 });
