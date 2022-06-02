@@ -1,3 +1,5 @@
+/*******************NAV***************************/
+
 #navDivider {
     border-left: 3px solid #ffce00; 
     height: 30px; 
@@ -17,13 +19,13 @@ hr.divider{
     #navDivider{
         display: none;
     }
+
   }
 
 @media (min-width: 992px) {
     .container-fluid{
         padding: 0 32px;
     }
-
 }
 
 .texto{

@@ -14,8 +14,7 @@
           </div>
       </div>
     </div>
-  </div>
-
+</div>
 
 <div class="container-fluid mt-5">
     <div class="row">
@@ -142,3 +141,6 @@
 </div>
 <hr class="divisor-rodape">
 @endsection
+
+
+
