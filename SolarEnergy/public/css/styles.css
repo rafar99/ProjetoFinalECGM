@@ -24,3 +24,108 @@ hr.divider{
         padding: 0 32px;
     }
 }
+
+.texto{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    text-align: justify;
+}
+.icones{
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
+.card-img-top{
+    width: 100px;
+    height: 100px;
+}
+
+.card{
+
+    margin-top:30px; 
+    margin-bottom: 10px;
+}
+
+.container-seccao{
+    margin: 0px;
+    padding: 0px;
+    max-width: 100vw;
+    
+}
+
+.projetos{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+.btn{
+    background-color: #31C16C;
+    border: none;
+}
+
+hr.divisor-rodape{
+    border-top: 30px solid #31C16C;
+    margin-bottom: 0;
+    margin-left:0;
+    margin-right: 0;
+    margin-top: 10vh;
+    opacity: 100;
+}
+
+footer{
+    background-color:#2C3E4C ;
+}
+
+.rodape{
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+@media (max-width: 767px) {
+    .rodape{
+        padding-top: 10vh;
+        padding-bottom: 1vh;
+        text-align: center;
+        
+
+    }
+    .card-projetos{
+        width: 60vw;
+        height: auto;
+        margin-left: 10vw;
+        margin-right: auto;
+        margin-top:30px; 
+        margin-bottom: 10px;
+    }
+    .card-img-top {
+        width: 79px;
+        height: 79px;
+    }
+
+  }
+
+.imagem{
+    width: 30px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.card-button{
+    bottom: 10px;
+    margin-left: 70%;
+    margin-right: auto;
+}
+.seta{
+    width: 8vw;
+    height: 8vh;
+    float: right;
+
+}
+.embaixo{
+    position: absolute;
+    bottom: 20px;
+    width: 50%;
+    margin-left: 20%;
+    margin-right: auto;
+ }
