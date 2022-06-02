@@ -40,7 +40,7 @@
     </div>
     <!--Fazer um ciclo para listar -->
     <div class="row justify-content-center icones mt-5">
-        <div class="col-4">
+        <div class="col-4 mt-3">
             <div class="card-img">
                 <img class="card-img-top rounded mx-auto d-block" src="img/instalacao.png" alt="Instalação">
                 <div class="card-body">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 mt-3">
             <div class="card-img"><img class="card-img-top rounded mx-auto d-block" src="img/manutencao.png"
                     alt="Manutenção">
                 <div class="card-body">
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 mt-3">
             <div class="card-img"><img class="card-img-top rounded mx-auto d-block" src="img/avaria.png" alt="Avaria">
                 <div class="card-body">
                     <h6 class="card-title text-center">Avaria</h6>
@@ -102,7 +102,7 @@
 <div class="projetos">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
-            <div class="card h-100">
+            <div class="card card-projetos h-100">
                 <img src="img/imagem7.jpg" class="card-img-top" alt="..." style="width: 100%; height:auto;">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card h-100">
+            <div class="card card-projetos h-100">
                 <img src="img/imagem8.jpg" class="card-img-top" alt="..." style="width: 100%; height:auto;">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
@@ -123,7 +123,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card h-100">
+            <div class="card card-projetos h-100">
                 <img src="img/imagem9.jpg" class="imagem card-img-top" alt="..." style="width: 100%; height:auto;">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>

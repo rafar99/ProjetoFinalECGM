@@ -465,8 +465,8 @@
         <div class="container-fluid">
             <div class="rodape">
                 <div class="row">
-                    <div class="col-md-4">
-                        <a href="/" class="navbar-brand">
+                    <div class="col-md-4" style="padding-right: 20px">
+                        <a href="/" class="">
                             <img src="/img/logoLight.png" alt="SolarEnergyLogo">
                         </a>
                         <div class="redesSociais text-light mt-5">
@@ -499,7 +499,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center mt-5 text-success">
-                    <p>@2022 Energia, Todos os direitos Reservados - IPVC-ESTG</p>
+                    <p>@2022 Assistência Técnica, Todos os direitos Reservados - IPVC-ESTG</p>
                 </div>
                 <!--<img src="img/setaback.svg" class="seta" alt="seta">-->
             </div>

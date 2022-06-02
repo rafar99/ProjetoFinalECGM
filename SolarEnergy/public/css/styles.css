@@ -19,6 +19,7 @@ hr.divider{
     #navDivider{
         display: none;
     }
+
   }
 
 @media (min-width: 992px) {
@@ -88,9 +89,27 @@ footer{
 .rodape{
     padding-top: 10vh;
     padding-bottom: 1vh;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
 }
+
+@media (max-width: 767px) {
+    .rodape{
+        padding-top: 10vh;
+        padding-bottom: 1vh;
+        text-align: center;
+        
+
+    }
+    .card-projetos{
+        width: 50vw;
+        height: auto;
+        margin-left: 15vw;
+        margin-right: auto;
+        margin-top:30px; 
+        margin-bottom: 10px;
+    }
+  }
 
 .imagem{
     width: 30px;
