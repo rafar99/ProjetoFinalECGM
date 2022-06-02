@@ -33,8 +33,14 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/admin', function () {
+Route::get('/admin/dashboard', function () {
     $arr_info = ['Início','Empresa','Assistência','Contactos'];
 
     return view('backoffice/dashboard',['arr_info' => $arr_info]);
+});
+
+Route::get('/admin/users', function () {
+    $arr_info = ['Início','Empresa','Assistência','Contactos'];
+
+    return view('backoffice/users',['arr_info' => $arr_info]);
 });
