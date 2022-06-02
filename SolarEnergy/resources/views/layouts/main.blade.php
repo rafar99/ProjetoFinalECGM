@@ -506,14 +506,4 @@
         </div>
     </footer>
 </body>
-
-</div>
-</nav>
-<hr class="divider">
-</header>
-@yield('content')
-<footer>
-
-</footer>
-</body>
 </html>
