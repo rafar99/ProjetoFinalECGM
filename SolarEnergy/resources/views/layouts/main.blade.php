@@ -462,48 +462,7 @@
     </header>
     @yield('content')
     <footer>
-        <div class="container-fluid">
-            <div class="rodape">
-                <div class="row">
-                    <div class="col-md-4" style="padding-right: 20px">
-                        <a href="/" class="">
-                            <img src="/img/logoLight.png" alt="SolarEnergyLogo">
-                        </a>
-                        <div class="redesSociais text-light mt-5">
-                            <p><img src="img/phone.svg" class="imagem card-img-top" alt="contacto">+351 963 001 205</p>
-                            <p><img src="img/facebook.svg" class="imagem card-img-top" alt="facebook">SolarEnergy</p>
-                            <p><img src="img/linkden.svg" class="imagem card-img-top" alt="linkden">SolarEnergy</p>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4 text-light mt-3">
-                        <h5><b>Empresa</b></h5>
-                        <div class="menu-rodape mt-5">
-                            <p>Início</p>
-                            <p>Empresa</p>
-                            <p>Assistência</p>
-                            <p>Contactos</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-light mt-3">
-                        <h5><b>Legal</b></h5>
-                        <div class="menu-rodape mt-5">
-                            <p>Termos de Utilização</p>
-                            <p>Política de Privacidade</p>
-                            <p>Plítica de Cookies</p>
-                            <p>Resolução Alternática de Litígios</p>
-                            <p>Livro de Reclamações Online</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center mt-5 text-success">
-                    <p>@2022 Assistência Técnica, Todos os direitos Reservados - IPVC-ESTG</p>
-                </div>
-                <!--<img src="img/setaback.svg" class="seta" alt="seta">-->
-            </div>
-        </div>
+       
     </footer>
 </body>
 
