@@ -44,3 +44,23 @@ Route::get('/admin/users', function () {
 
     return view('backoffice/users',['arr_info' => $arr_info]);
 });
+
+Route::get('/admin/info/inicio', function () {
+    $arr_info = ['Início','Empresa','Assistência','Contactos'];
+    return view('backoffice/info/inicio', ['arr_info' => $arr_info]);
+});
+
+Route::get('/admin/info/empresa', function () {
+    $arr_info = ['Início','Empresa','Assistência','Contactos'];
+    return view('backoffice/info/empresa', ['arr_info' => $arr_info]);
+});
+
+Route::get('/admin/info/assistencia', function () {
+    $arr_info = ['Início','Empresa','Assistência','Contactos'];
+    return view('backoffice/info/assistencia', ['arr_info' => $arr_info]);
+});
+
+Route::get('/admin/info/contactos', function () {
+    $arr_info = ['Início','Empresa','Assistência','Contactos'];
+    return view('backoffice/info/contactos', ['arr_info' => $arr_info]);
+});

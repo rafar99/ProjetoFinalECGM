@@ -13,20 +13,13 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="/backoffice_assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="/backoffice_assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="/backoffice_assets/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
+  
   <link rel="stylesheet" href="/backoffice_assets/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/backoffice_assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="/backoffice_assets/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="/backoffice_assets/plugins/summernote/summernote-bs4.min.css">
+  
 
   <link rel="stylesheet" href="/css/admin.css">
 </head>
@@ -46,17 +39,14 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="/" class="nav-link">Voltar à Página inicial</a>
       </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
@@ -75,10 +65,11 @@
             </div>
           </form>
         </div>
-      </li>
+      </li> --}}
 
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
+      
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -134,9 +125,11 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
-      </li>
+      </li> --}}
+
+
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -161,7 +154,7 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -205,29 +198,28 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul id="aside-nav" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="/admin/dashboard" class="nav-link active">
+          <li class="nav-item">
+            <a id="nav-dashboard" href="/admin/dashboard" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/users" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a id="nav-users" href="/admin/users" class="nav-link">
+              <i class="nav-icon bi bi-people-fill text-light"></i>
               <p>
                 Utilizadores
-                <span class="right badge badge-danger">New</span>
+                {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a id="nav-info" href="#" class="nav-link">
               <i class="nav-icon bi bi-layout-text-sidebar-reverse"></i>
               <p>
                 Informação
@@ -237,8 +229,20 @@
             <ul class="nav nav-treeview">
               @for($i = 0; $i < count($arr_info); $i++)
                 <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                  @if($arr_info[$i]=="Início")
+                    <?php $menu = 'inicio'?>
+                  @elseif($arr_info[$i]=="Empresa")
+                    <?php $menu = 'empresa'?>
+                  @elseif($arr_info[$i]=="Assistência")
+                    <?php $menu = 'assistencia'?>
+                  @elseif($arr_info[$i]=="Contactos")
+                    <?php $menu = 'contactos'?>
+                  @else
+                    <?php $menu = ''?>
+                  @endif  
+
+                  <a id="nav-{{$menu}}" href="/admin/info/{{$menu}}" class="nav-link">
+                    <i class="bi bi-circle nav-icon"></i>
                     <p>{{$arr_info[$i]}}</p>
                   </a>
                 </li>
@@ -248,14 +252,14 @@
           
           
           
-          <li class="nav-header">Header Example</li>
+          {{-- <li class="nav-header">Header Example</li>
           
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -270,7 +274,7 @@
 
   </div>
   <!-- /.content-wrapper -->
-  <footer id="footer" class="main-footer" >
+  <footer class="main-footer" >
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
@@ -281,6 +285,9 @@
 </div>
 <!-- ./wrapper -->
 
+
+<script src="/backoffice_assets/js/admin.js"></script>
+
 <!-- jQuery -->
 <script src="/backoffice_assets/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -289,24 +296,12 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-<!-- Bootstrap 4 -->
-<script src="/backoffice_assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="/backoffice_assets/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="/backoffice_assets/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="/backoffice_assets/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="/backoffice_assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
+
 <script src="/backoffice_assets/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="/backoffice_assets/plugins/moment/moment.min.js"></script>
 <script src="/backoffice_assets/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="/backoffice_assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="/backoffice_assets/plugins/summernote/summernote-bs4.min.js"></script>
+
 <!-- overlayScrollbars -->
 <script src="/backoffice_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
