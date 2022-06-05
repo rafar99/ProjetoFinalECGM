@@ -27,3 +27,7 @@ hr.divider{
         padding: 0 32px;
     }
 }
+
+.bt-form{
+    float: right;
+}

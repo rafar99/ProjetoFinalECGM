@@ -32,29 +32,34 @@
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Nº Porta">
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Nº Porta">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Código-Postal">
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Código-Postal">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Concelho">
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Concelho">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Email">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Contacto">
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Contacto">
                             </div>
                         </div>
                     </div>
@@ -83,20 +88,26 @@
                         <div class="col">
                             <div class="form-group mt-3">
                                 <label for="exampleFormControlSelect1">Disponibilidade do Cliente</label>
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Dia">
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="&#xF1F6">
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-groupmt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Hora">
+                            <div class="form-group mt-3">
+                                <label for="exampleFormControlSelect1"></label>
+                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="&#xF293">
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descrição"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Descrição"></textarea>
                     </div>
+                    <button type="button"
+                        class="btn btn-success mt-4 bt-form">Submeter</button>
                 </form>
             </div>
         </div>
     </div>
-@endsection
+    @endsection
