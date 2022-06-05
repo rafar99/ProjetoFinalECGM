@@ -1,3 +1,5 @@
+/*******************NAV***************************/
+
 #navDivider {
     border-left: 3px solid #ffce00; 
     height: 30px; 
@@ -17,6 +19,7 @@ hr.divider{
     #navDivider{
         display: none;
     }
+
   }
 
 @media (min-width: 992px) {
@@ -24,6 +27,7 @@ hr.divider{
         padding: 0 32px;
     }
 }
+
 
 .seccaoinicio{
     margin-left: 10vw;
@@ -35,3 +39,4 @@ hr.divider{
     text-align: justify;
     padding-right: 10px;
 }
+
