@@ -112,7 +112,7 @@
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in
                         to additional content. This content is a little bit longer.</p>
-                    <button type="button" class="btn btn-success embaixo">Ver mais</button>
+                    <button type="button" class="btn btn-success botao-card">Ver mais</button>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a short card.</p>
-                    <button type="button" class="btn btn-success embaixo">Ver mais</button>
+                    <button type="button" class="btn btn-success botao-card">Ver mais</button>
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in
                         to additional content.</p>
-                    <button type="button" class="btn btn-success embaixo">Ver mais</button>
+                    <button type="button" class="btn btn-success botao-card">Ver mais</button>
                 </div>
             </div>
         </div>

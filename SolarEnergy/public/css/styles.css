@@ -15,19 +15,9 @@ hr.divider{
 }
 
 
-@media (max-width: 992px) {
-    #navDivider{
-        display: none;
-    }
-
-  }
-
-@media (min-width: 992px) {
-    .container-fluid{
-        padding: 0 32px;
-    }
+.container-fluid{
+    width: 90%;
 }
-
 .texto{
     margin-left: 10vw;
     margin-right: 10vw;
@@ -84,30 +74,6 @@ footer{
     padding-left: 5vw;
     padding-right: 5vw;
 }
-
-@media (max-width: 767px) {
-    .rodape{
-        padding-top: 10vh;
-        padding-bottom: 1vh;
-        text-align: center;
-        
-
-    }
-    .card-projetos{
-        width: 60vw;
-        height: auto;
-        margin-left: 10vw;
-        margin-right: auto;
-        margin-top:30px; 
-        margin-bottom: 10px;
-    }
-    .card-img-top {
-        width: 79px;
-        height: 79px;
-    }
-
-  }
-
 .imagem{
     width: 30px;
     height: auto;
@@ -125,10 +91,66 @@ footer{
     float: right;
 
 }
-.embaixo{
+.botao-card{
     position: absolute;
     bottom: 20px;
     width: 50%;
     margin-left: 20%;
     margin-right: auto;
  }
+
+#mapa{
+    margin-left:0;
+    margin-right: 0;
+    border-bottom: none;
+}
+
+.contactos-texto{
+    margin-top: 5vh;
+}
+.image-icone{
+    width: 25px;
+    color: #31C16C;
+    margin: 10px;
+}
+
+.botao-form{
+    float: right;
+    background-color: #31C16C;
+}
+
+
+@media (max-width: 992px) {
+    #navDivider{
+        display: none;
+    }
+
+  }
+
+@media (min-width: 992px) {
+    .container-fluid{
+        padding: 0 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .rodape{
+        padding-top: 10vh;
+        padding-bottom: 1vh;
+        text-align: center;
+
+    }
+    .card-projetos{
+        width: 60vw;
+        height: auto;
+        margin-left: 10vw;
+        margin-right: auto;
+        margin-top:30px; 
+        margin-bottom: 10px;
+    }
+    .card-img-top {
+        width: 79px;
+        height: 79px;
+    }
+
+  }
