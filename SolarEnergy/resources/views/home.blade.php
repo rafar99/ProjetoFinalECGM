@@ -11,7 +11,7 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/imagem3.jpg" class="d-block w-100" alt="...">
+        <img src="img/imagem3.jpg" class="d-block w-100">
         <div class="carousel-caption texto-carrousel">
             <h3>Assistência Técnica</h3>
             <p>Instalação, Manutenção e Avarias</p>
@@ -47,7 +47,7 @@
     <div class="row justify-content-center icones mt-5">
         <div class="col-4 mt-3">
             <div class="card-img">
-                <img class="card-img-top rounded mx-auto d-block" src="img/instalacao.png" alt="Instalação">
+                <img class="card-img-top rounded mx-auto d-block " src="img/instalacao.png" alt="Instalação">
                 <div class="card-body">
                     <h6 class="card-title text-center">Instalação</h6>
                 </div>
@@ -76,15 +76,15 @@
             <div class=" col-md-6">
                 <img src="img/parceiros.png" class="img-fluid " alt="imagem">
             </div>
-            <div class=" col-md-6 text-light" style="background-color:#2C3E4C">
-                <div class="card-body">
+            <div class=" col-md-6 text-light" style="background-color:#2C3E4C; position:relative">
+                <div class="card-body mt-4">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                         been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
                         galley of type and scrambled it to make a type specimen book.</p>
                         
                         <!--Ver botão acertar distancias em formato desktop-->
-                    <button type="button" class="btn btn-success card-button">Ver mais</button>
+                    <button type="button" class="btn btn-success botaoVerMaisInicio">Ver mais</button>
                 </div>
             </div>
         </div>

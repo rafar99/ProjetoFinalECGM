@@ -471,9 +471,9 @@
                             <img src="/img/logoLight.png" alt="SolarEnergyLogo">
                         </a>
                         <div class="redesSociais text-light mt-5">
-                            <p><img src="img/phone.svg" class="imagem card-img-top" alt="contacto">+351 963 001 205</p>
-                            <p><img src="img/facebook.svg" class="imagem card-img-top" alt="facebook">SolarEnergy</p>
-                            <p><img src="img/linkedin.svg" class="imagem card-img-top" alt="linkden">SolarEnergy</p>
+                            <p><img src="img/contacto.svg" class="imagem" alt="contacto">+351 963 001 205</p>
+                            <p><img src="img/facebook.svg" class="imagem" alt="facebook">SolarEnergy</p>
+                            <p><img src="img/linkedin.svg" class="imagem" alt="linkden">SolarEnergy</p>
                         </div>
 
                     </div>
@@ -491,7 +491,7 @@
                         <div class="menu-rodape mt-5">
                             <p>Termos de Utilização</p>
                             <p>Política de Privacidade</p>
-                            <p>Plítica de Cookies</p>
+                            <p>Política de Cookies</p>
                             <p>Resolução Alternática de Litígios</p>
                             <p>Livro de Reclamações Online</p>
                         </div>

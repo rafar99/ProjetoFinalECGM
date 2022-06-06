@@ -39,6 +39,6 @@
             </div>
         </div>
     </div>
-
-
-    @endsection
+</div>
+<hr class="divisor-rodape">
+@endsection
