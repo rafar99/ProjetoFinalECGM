@@ -18,6 +18,11 @@ hr.divider{
 .container-fluid{
     width: 90%;
 }
+
+.titulo{
+    color: #2C3E4C;
+}
+
 .texto{
     margin-left: 10vw;
     margin-right: 10vw;
