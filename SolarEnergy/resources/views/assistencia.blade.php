@@ -19,26 +19,28 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col">
+            <div class="col-md-12">
                 <form>
                     <div class="form-group">
-                        <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+                        <input type="name" class="form-control" id="nome" placeholder="Nome">
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Rua">
+                                <input type="name" class="form-control" id="rua" placeholder="Rua">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                <input type="name" class="form-control" id="nPorta"
                                     placeholder="Nº Porta">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                <input type="name" class="form-control" id="codPostal"
                                     placeholder="Código-Postal">
                             </div>
                         </div>
@@ -46,27 +48,27 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                <input type="name" class="form-control" id="concelho"
                                     placeholder="Concelho">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                <input type="name" class="form-control" id="email"
                                     placeholder="Email">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group mt-3">
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
+                                <input type="name" class="form-control" id="contacto"
                                     placeholder="Contacto">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="exampleFormControlSelect1">Tipo Painel</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <label for="tipo_painel">Tipo Painel</label>
+                        <select class="form-control" id="tipoPainel">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -75,8 +77,8 @@
                         </select>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="exampleFormControlSelect1">Tipo de Assistência</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
+                        <label for="tipo_assistencia">Tipo de Assistência</label>
+                        <select class="form-control" id="tipoAssistencia">
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -85,27 +87,26 @@
                         </select>
                     </div>
                     <div class="row">
+                        <div class="col mt-3">
+                            <p>Disponibilidade do Cliente</p>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col">
-                            <div class="form-group mt-3">
-                                <label for="exampleFormControlSelect1">Disponibilidade do Cliente</label>
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="&#xF1F6">
+                            <div class="form-group mt-2">
+                                <input type="date" class="form-control" id="data">
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group mt-3">
-                                <label for="exampleFormControlSelect1"></label>
-                                <input type="name" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="&#xF293">
+                            <div class="form-group mt-2">
+                                <input type="time" class="form-control" id="hora">
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Descrição"></textarea>
+                        <textarea class="form-control" id="mensagem" rows="5" placeholder="Descrição"></textarea>
                     </div>
-                    <button type="button"
-                        class="btn btn-success mt-4 bt-form">Submeter</button>
+                    <button type="button" class="btn btn-success mt-4 botao-form">Enviar</button>
                 </form>
             </div>
         </div>
