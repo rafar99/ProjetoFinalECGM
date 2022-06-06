@@ -168,3 +168,15 @@ footer{
     }
 
   }
+
+.seccaoinicio{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.paragrafo{
+    margin-top: 30px;
+    text-align: justify;
+    padding-right: 10px;
+}
+
