@@ -52,30 +52,7 @@ hr.divider{
     margin-right: 10vw;
 }
 
-hr.divisor-rodape{
-    border-top: 30px solid #31C16C;
-    margin-bottom: 0;
-    margin-left:0;
-    margin-right: 0;
-    margin-top: 10vh;
-    opacity: 100;
-}
 
-footer{
-    background-color:#2C3E4C ;
-}
-
-.rodape{
-    padding-top: 10vh;
-    padding-bottom: 1vh;
-    padding-left: 5vw;
-    padding-right: 5vw;
-}
-.imagem{
-    width: 30px;
-    height: auto;
-    margin-right: 15px;
-}
 
 .botaoVerMaisInicio{
     position: absolute;
@@ -115,6 +92,31 @@ footer{
     float: right;
     border:none;
     background-color: #31C16C;
+}
+
+hr.divisor-rodape{
+    border-top: 30px solid #31C16C;
+    margin-bottom: 0;
+    margin-left:0;
+    margin-right: 0;
+    margin-top: 10vh;
+    opacity: 100;
+}
+
+footer{
+    background-color:#2C3E4C ;
+}
+
+.rodape{
+    padding-top: 10vh;
+    padding-bottom: 1vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+.imagem{
+    width: 30px;
+    height: auto;
+    margin-right: 15px;
 }
 
 
