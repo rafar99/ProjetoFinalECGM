@@ -45,14 +45,4 @@ if(window.location.href.indexOf("users")>-1){
         DOMcontactos.querySelector('i').classList.add("text-light");
     }
 }
-
-
-
-    for (var i = 0; i < menus.length; i++) {
-        menus[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
 }
