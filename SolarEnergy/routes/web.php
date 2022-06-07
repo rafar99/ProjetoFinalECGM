@@ -37,6 +37,7 @@ Route::get('/login', function () {
 
 Route::get('/registo', function () {
     return view('registo');
+});
   
 Route::get('/admin/dashboard', function () {
     $arr_info = ['Início','Empresa','Assistência','Contactos'];
@@ -44,11 +45,6 @@ Route::get('/admin/dashboard', function () {
     return view('backoffice/dashboard',['arr_info' => $arr_info]);
 });
 
-// Route::get('/admin/users', function () {
-//     $arr_info = ['Início','Empresa','Assistência','Contactos'];
-
-//     return view('backoffice/users',['arr_info' => $arr_info]);
-// });
 Route::get('/admin/users', [UtilizadorController::class,'index']);
 
 Route::get('/admin/info/inicio', function () {
