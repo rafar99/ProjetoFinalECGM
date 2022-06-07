@@ -19,9 +19,15 @@
                 </div>
 
                 <div class="card-body">
-                  <h3 class="text-center mb-4">Iniciar Sessão</h3>
+                  <h3 class="text-center mb-4">Registe-se</h3>
                     <form>
             
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                        <input type="text" id="inputUsername" class="form-control form-control-lg"
+                            placeholder="Nome de utilizador" />
+                        </div>
+                       
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                         <input type="email" id="inputEmail" class="form-control form-control-lg"
@@ -33,24 +39,10 @@
                         <input type="password" id="inputPassword" class="form-control form-control-lg"
                             placeholder="Palavra-passe" />
                         </div>
-            
-                        <div class="d-flex justify-content-between align-items-center">
-                            <!-- Checkbox -->
-                            <div class="form-check mb-0">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                <label class="form-check-label" for="form2Example3">
-                                Relembrar
-                                </label>
-                            </div>
-                            <a href="#!" class="text-body">Esqueceu-se da palavra-passe?</a>
-                        </div>
-            
+          
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="button" class="btn btn-lg btn-greencolor text-light"
-                                style="padding-left: 2.5rem; padding-right: 2.5rem; width: 100%">Entrar</button>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta? 
-                                <a href="/registo" class="link-danger">Registar-se</a>
-                            </p>
+                            <button type="button" class="btn btn-lg btn-greencolor text-light py-2"
+                                style="padding: 0 2.5rem; width: 100%">Submeter</button>
                         </div>
             
                     </form>

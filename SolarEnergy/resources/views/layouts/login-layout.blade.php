@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('title')</title>
+        <title>SolarEnergy</title>
 
         {{-- CSS Bootstrap --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -13,6 +13,8 @@
         {{-- Bootstrap icons --}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
+        <link rel="stylesheet" href="/css/login-layout.css">
+       
         <link rel="stylesheet" href="/css/styles.css">
         <link rel="icon" href="/img/logoIcon.png" type="image/x-icon">
        <style>

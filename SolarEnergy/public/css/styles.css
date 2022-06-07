@@ -120,6 +120,7 @@ footer{
 }
 
 
+
 @media (max-width: 992px) {
     #navDivider{
         display: none;
@@ -131,9 +132,8 @@ footer{
     .container-fluid{
         padding: 0 32px;
     }
-   
-}
 
+}
 
 @media (max-width: 767px) {
     .icones{
