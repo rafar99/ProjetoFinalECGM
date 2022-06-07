@@ -23,7 +23,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
+                  <h3>1</h3>
                   <p>Total de Assistências</p>
                 </div>
                 <div class="icon">
@@ -37,7 +37,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53</h3>
+                  <h3>2</h3>
                   <p>Assistências finalizadas</p>
                 </div>
                 <div class="icon">
@@ -51,7 +51,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>2</h3>
                   <p>Assistências atuais</p>
                 </div>
                 <div class="icon">
@@ -95,7 +95,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Responsive Hover Table</h3>
+                      <h3 class="card-title">Total de Assistências</h3>
       
                       <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -115,40 +115,40 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Reason</th>
+                            <th>Painel</th>
+                            <th>Data do Pedido</th>
+                            <th>Descrição</th>
+                            <th>Estado</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
+                            <td>1</td>
+                            <td>Fotovoltaico</td>
+                            <td>02-02-2022</td>
                             <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>Termidado</td>
                           </tr>
                           <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-warning">Pending</span></td>
+                            <td>2</td>
+                            <td>Silício Amorfo</td>
+                            <td>22-05-2022</td>
                             <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>Por assistir</td>
                           </tr>
                           <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-primary">Approved</span></td>
+                            <td>3</td>
+                            <td>Fotovoltaico</td>
+                            <td>23-05-2022</td>
                             <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>Por assistir</td>
                           </tr>
                           <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-danger">Denied</span></td>
+                            <td>4</td>
+                            <td>Fotovoltaico</td>
+                            <td>01-06-2022</td>
                             <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>Terminado</td>
                           </tr>
                         </tbody>
                       </table>

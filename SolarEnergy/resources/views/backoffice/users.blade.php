@@ -24,7 +24,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>150</h3>
+                  <h3>4</h3>
   
                   <p>Número de Utilizadores</p>
                 </div>
@@ -39,7 +39,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>20</h3>
+                  <h3>3</h3>
                   <p>Número de Administratores e Funcionários</p>
                 </div>
                 <div class="icon">
@@ -53,7 +53,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>1</h3>
                   <p>Número de Clientes</p>
                 </div>
                 <div class="icon">
@@ -77,7 +77,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Responsive Hover Table</h3>
+                      <h3 class="card-title">Todos os Utilizadores</h3>
       
                       <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -97,22 +97,51 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Reason</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Tipo de Utilizador</th>
+                            {{-- <th>Reason</th> --}}
                           </tr>
                         </thead>
                         <tbody>
+                          {{-- <tr>
+                            <td>001</td>
+                            <td>Rafael</td>
+                            <td>rafael@gmail.com</td>
+                            <td>Administrador</td>
+                          </tr>
                           <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
+                            <td>002</td>
+                            <td>Ana</td>
+                            <td>ana@gmail.com</td>
+                            <td>Administrador</td>
+                          </tr>
+                          <tr>
+                            <td>003</td>
+                            <td>Paula</td>
+                            <td>paula@gmail.com</td>
+                            <td>Cliente</td>
+                          </tr>
+                          <tr>
+                            <td>004</td>
+                            <td>Pedro</td>
+                            <td>pedro@gmail.com</td>
+                            <td>Técnico</td>
+                          </tr> --}}
+
+
+                          @foreach($utilizadores as $utilizador)
+                          <tr>
+                            <td>{{$utilizador->id}}</td>
+                            <td>{{$utilizador->nome}}</td>
+                            <td>{{$utilizador->email}}</td>
+                            <td>{{$utilizador->tipo_utilizador}}</td>
                             <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                           </tr>
+                          @endforeach
                         </tbody>
                       </table>
+
                     </div>
                     <!-- /.card-body -->
                   </div>
