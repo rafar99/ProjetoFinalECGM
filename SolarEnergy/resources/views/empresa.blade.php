@@ -64,7 +64,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 my-2">
             <div class="col">
                 <div class="card card-projetos h-100">
-                    <img src="img/imagem8.jpg" class="card-img-top" style="width: 100%; height:auto;">
+                    <img src="img/imagem5.png" class="card-img-top" style="width: 100%; height:auto;">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in
@@ -74,7 +74,7 @@
             </div>
             <div class="col">
                 <div class="card card-projetos h-100">
-                    <img src="img/imagem8.jpg" class="card-img-top" style="width: 100%; height:auto;">
+                    <img src="img/imagem5.png" class="card-img-top" style="width: 100%; height:auto;">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a short card.</p>
@@ -83,7 +83,7 @@
             </div>
             <div class="col">
                 <div class="card card-projetos h-100">
-                    <img src="img/imagem8.jpg" class="imagem card-img-top" style="width: 100%; height:auto;">
+                    <img src="img/imagem5.png" class="imagem card-img-top" style="width: 100%; height:auto;">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in

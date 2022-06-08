@@ -5,32 +5,29 @@
 <section class="vh-100 d-flex bg-light">
     <div class="container h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
-
-
         <div class="card">
             <div class="row g-0">
               <div class="col-md-6 d-block m-auto">
-                <img src="/img/imagem3.jpg" class="img-fluid rounded-start" alt="Sample image">
+                <img src="/img/login.jpg" class="img-fluid rounded-start" alt="Sample image">
               </div>
               <div class="col-md-6">
-
                 <div class="card-body text-center">
                   <img src="/img/logoVerticalDark.png" class="img-fluid" alt="Logótipo SolarEnergy">
                 </div>
 
                 <div class="card-body">
-                  <h3 class="text-center mb-4">Iniciar Sessão</h3>
+                  <h4 class="text-center mb-4">Iniciar Sessão</h4>
                     <form>
             
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                        <input type="email" id="inputEmail" class="form-control form-control-lg"
+                        <input type="email" id="inputEmail" class="form-control form-control-md"
                             placeholder="Email" />
                         </div>
             
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                        <input type="password" id="inputPassword" class="form-control form-control-lg"
+                        <input type="password" id="inputPassword" class="form-control form-control-md"
                             placeholder="Palavra-passe" />
                         </div>
             
@@ -42,13 +39,12 @@
                                 Relembrar
                                 </label>
                             </div>
-                            <a href="#!" class="text-body">Esqueceu-se da palavra-passe?</a>
                         </div>
             
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="button" class="btn btn-lg btn-greencolor text-light"
+                            <button type="button" class="btn btn-md btn-greencolor text-light"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem; width: 100%">Entrar</button>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta? 
+                            <p class="small mt-2 pt-1 mb-0">Não tem uma conta? 
                                 <a href="/registo" class="link-danger">Registar-se</a>
                             </p>
                         </div>

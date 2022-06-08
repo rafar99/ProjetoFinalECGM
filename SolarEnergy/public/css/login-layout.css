@@ -6,6 +6,8 @@
     background: #eee;
 }
 .h-custom {
+    width: 35%;
+    
     height: calc(100% - 73px);
 }
 @media (max-width: 450px) {

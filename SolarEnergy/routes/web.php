@@ -31,13 +31,13 @@ Route::get('/contactos', function () {
     return view('contactos');
 });
 
-Route::get('/login', function () {
+/*Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('/registo', function () {
     return view('registo');
-  
+});*/
 Route::get('/admin/dashboard', function () {
     $arr_info = ['Início','Empresa','Assistência','Contactos'];
 
@@ -69,4 +69,14 @@ Route::get('/admin/info/assistencia', function () {
 Route::get('/admin/info/contactos', function () {
     $arr_info = ['Início','Empresa','Assistência','Contactos'];
     return view('backoffice/info/contactos', ['arr_info' => $arr_info]);
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });

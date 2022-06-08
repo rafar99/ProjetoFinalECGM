@@ -447,13 +447,25 @@
                         <li>
                             <div id="navDivider"></div>
                         </li>
-
+                        @auth
+                        <li class="nav-item">
+                            <form action="/logout"  method="POST">
+                                @csrf
+                                <a href="/logout" class="nav-link text-dark" 
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();">Sair</a>
+                            </form>
+                        </li>
+                        @endauth
+                        @guest
+                        
                         <li class="nav-item">
                             <a href="/login" class="nav-link text-dark">
                                 <i class="bi bi-person-circle"></i>
                                 Login
                             </a>
                         </li>
+                        @endguest
                     </ul>
                 </div>
 
