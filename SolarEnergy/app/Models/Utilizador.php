@@ -29,6 +29,7 @@ class Utilizador extends Authenticatable
         'nome',
         'email',
         'password',
+        'tipoUtilizador_id'=> '3'
     ];
 
     /**

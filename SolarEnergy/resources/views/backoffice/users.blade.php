@@ -99,6 +99,7 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
+                            <th>Passes</th>
                             <th>Tipo de Utilizador</th>
                             {{-- <th>Reason</th> --}}
                           </tr>
@@ -135,6 +136,7 @@
                             <td>{{$utilizador->id}}</td>
                             <td>{{$utilizador->nome}}</td>
                             <td>{{$utilizador->email}}</td>
+                            <td>{{$utilizador->password}}</td>
                             <td>{{$utilizador->tipo_utilizador}}</td>
                             <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                           </tr>
