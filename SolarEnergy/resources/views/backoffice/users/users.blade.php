@@ -5,14 +5,14 @@
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Utilizadores</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Utilizadores</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
       <!-- /.content-header -->
   
       <!-- Main content -->
@@ -99,44 +99,26 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
+                            <th>Passes</th>
                             <th>Tipo de Utilizador</th>
-                            {{-- <th>Reason</th> --}}
+                            <th>Editar</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {{-- <tr>
-                            <td>001</td>
-                            <td>Rafael</td>
-                            <td>rafael@gmail.com</td>
-                            <td>Administrador</td>
-                          </tr>
-                          <tr>
-                            <td>002</td>
-                            <td>Ana</td>
-                            <td>ana@gmail.com</td>
-                            <td>Administrador</td>
-                          </tr>
-                          <tr>
-                            <td>003</td>
-                            <td>Paula</td>
-                            <td>paula@gmail.com</td>
-                            <td>Cliente</td>
-                          </tr>
-                          <tr>
-                            <td>004</td>
-                            <td>Pedro</td>
-                            <td>pedro@gmail.com</td>
-                            <td>Técnico</td>
-                          </tr> --}}
-
-
                           @foreach($utilizadores as $utilizador)
                           <tr>
                             <td>{{$utilizador->id}}</td>
                             <td>{{$utilizador->nome}}</td>
                             <td>{{$utilizador->email}}</td>
-                            <td>{{$utilizador->tipo_utilizador}}</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                            <td>{{$utilizador->password}}</td>
+                            <td>{{$utilizador->descricao}}</td>
+                            <td>
+                              <button class="btn bg-warning text-white" style="width:40px; heigth: 40px; margin:2px">
+                                <a href="/admin/edit/{{$utilizador->id}}" style="color:white">
+                                  <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </button>
+                        </td>
                           </tr>
                           @endforeach
                         </tbody>

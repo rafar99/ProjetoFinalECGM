@@ -24,11 +24,13 @@ class Utilizador extends Authenticatable
      * @var string[]
      */
     protected $table = 'utilizador';
+    protected $guarded =[];
     
     protected $fillable = [
         'nome',
         'email',
         'password',
+        'tipoUtilizador_id'
     ];
 
     /**
@@ -60,4 +62,11 @@ class Utilizador extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    
+    public function tipoUtilizador(){
+        return $this->hasMany(TipoUtilizador::class);
+    }
+
+    
 }

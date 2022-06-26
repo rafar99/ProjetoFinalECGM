@@ -44,7 +44,17 @@
                                     <x-jet-input id="password_confirmation" class="form-control form-control-md" type="password"
                                         name="password_confirmation" required autocomplete="new-password" />
                                 </div>
+                                
+                                 {{-- <div class="mt-2">
+                                    <x-jet-label for="tipoUtilizador_id" value="{{ __('tipo') }}" />
+                                    <x-jet-input id="tipoUtilizador_id" class="form-control form-control-md" type="number" name="tipoUtilizador_id"
+                                        :value="old('tipoUtilizador_id')" required />
+                                </div> --}}
+                                @if($errors->any())
+                                {{ implode('', $errors->all(':message')) }}
+                            @endif
 
+                                
                                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                                 <div class="mt-2">
                                     <x-jet-label for="terms">
@@ -65,7 +75,6 @@
                                     </x-jet-label>
                                 </div>
                                 @endif
-
                                 <div class="flex items-center justify-end mt-2">
                                     <a class="underline text-sm text-gray-600 hover:text-gray-900"
                                         href="{{ route('login') }}">

@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="mt-4">
-                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                                    <x-jet-label for="password" value="{{ __('Palavra-passe') }}" />
                                     <x-jet-input id="password" class="form-control form-control-md" type="password" name="password"
                                         required autocomplete="current-password" />
                                 </div>
@@ -49,6 +49,9 @@
                                         {{ __('Login') }}
                                     </x-jet-button>
                                 </div>
+                                @if($errors->any())
+                                    <div>{{ implode('', $errors->all(':message')) }}</div>
+                                @endif
                                 <p class="small mt-2 pt-1 mb-0 text-center">Não tem uma conta? 
                                     <a href="/register" class="link-success">Registar-se</a>
                             </form>
