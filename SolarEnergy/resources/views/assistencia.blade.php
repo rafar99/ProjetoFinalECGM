@@ -3,7 +3,6 @@
 @section('title', 'SolarEnergy')
 
 @section('content')
-@auth
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -76,11 +75,9 @@
                 <div class="form-group mt-3">
                     <label for="tipo_assistencia">Tipo de Assistência</label>
                     <select class="form-control" id="tipoAssistencia">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        {{-- @foreach($paineis as $painel)
+                            <option value={{$painel->$id}}>{{$painel->$descricao}}</option>
+                        @endforeach --}}
                     </select>
                 </div>
                 <div class="row">
@@ -109,8 +106,5 @@
     </div>
 </div>
 <hr class="divisor-rodape">
-@endauth
-@guest
 
-@endguest
 @endsection

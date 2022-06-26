@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\DB;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -24,15 +25,18 @@ class CreateNewUser implements CreatesNewUsers
             'nome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:utilizador'],
             'password' => $this->passwordRules(),
-            'tipoUtilizador_id' => ['required', 'integer', 'max:3'],
+            // 'tipoUtilizador_id' => ['required', 'integer', 'max:3'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
+
+            $tipo = DB::table('tipo_utilizador')->where('descricao','Cliente')->get();
+            echo $tipo;
 
         return Utilizador::create([
             'nome' => $input['nome'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'tipoUtilizador_id' => '3'
+            'tipoUtilizador_id' => $tipo['id']
         ]);
 
     }

@@ -47,6 +47,7 @@ Route::get('/admin/dashboard', function () {
 });
 
 Route::get('/admin/users', [UtilizadorController::class,'index']);
+Route::get('/admin/edit/{$id}', [UtilizadorController::class,'edit']);
 
 Route::get('/admin/info/inicio', function () {
     $arr_info = ['Início','Empresa','Assistência','Contactos'];
