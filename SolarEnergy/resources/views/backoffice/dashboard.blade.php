@@ -19,11 +19,11 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>1</h3>
+                  <h3>{{$countAss}}</h3>
                   <p>Total de Assistências</p>
                 </div>
                 <div class="icon">
@@ -33,11 +33,12 @@
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4 col-6">
+
+            <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>2</h3>
+                  <h3>{{$countAssFinalizadas}}</h3>
                   <p>Assistências finalizadas</p>
                 </div>
                 <div class="icon">
@@ -47,12 +48,28 @@
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4 col-6">
+
+            <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>2</h3>
+                  <h3>{{$countAssAtuais}}</h3>
                   <p>Assistências atuais</p>
+                </div>
+                <div class="icon">
+                  <i class="bi bi-bookmark"></i>
+                </div>
+                <a href="#" class="small-box-footer">Mais info <i class="fas fa-arrow-circle-down"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3>{{$countAssPorExecutar}}</h3>
+                  <p>Assistências Por Executar</p>
                 </div>
                 <div class="icon">
                   <i class="bi bi-bookmark"></i>
@@ -118,38 +135,22 @@
                             <th>Painel</th>
                             <th>Data do Pedido</th>
                             <th>Descrição</th>
+                            <th>Tipo de Pedido</th>
                             <th>Estado</th>
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach($ass as $assistencia)
+                          
                           <tr>
-                            <td>1</td>
-                            <td>Fotovoltaico</td>
-                            <td>02-02-2022</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td>Termidado</td>
+                            <td>{{$assistencia->id}}</td>
+                            <td>{{$assistencia->painel}}</td>
+                            <td>{{$assistencia->dataCriacao}}</td>
+                            <td>{{$assistencia->descricao}}</td>
+                            <td>{{$assistencia->tipo}}</td>
+                            <td>{{$assistencia->estado}}</td>
                           </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Silício Amorfo</td>
-                            <td>22-05-2022</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td>Por assistir</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Fotovoltaico</td>
-                            <td>23-05-2022</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td>Por assistir</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>Fotovoltaico</td>
-                            <td>01-06-2022</td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            <td>Terminado</td>
-                          </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>

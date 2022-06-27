@@ -114,7 +114,7 @@
                             <td>{{$utilizador->descricao}}</td>
                             <td>
                               <button class="btn bg-warning text-white" style="width:40px; heigth: 40px; margin:2px">
-                                <a href="/admin/edit/{{$utilizador->id}}" style="color:white">
+                                <a href="/admin/users/edit/{{$utilizador->id}}" style="color:white">
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
                             </button>

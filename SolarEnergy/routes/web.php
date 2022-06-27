@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\UtilizadorController;
+use App\Http\Controllers\PedidoController;
 
 Route::get('/', function () {
     return view('home');
@@ -39,15 +40,12 @@ Route::get('/registo', function () {
     return view('registo');
 
 });*/
+//Pagina Pedido - Admin
+Route::get('/admin/dashboard',[PedidoController::class,'index']);
 
-Route::get('/admin/dashboard', function () {
-    $arr_info = ['Início','Empresa','Assistência','Contactos'];
-
-    return view('backoffice/dashboard',['arr_info' => $arr_info]);
-});
-
+//Pagina Utilizadores - Admin
 Route::get('/admin/users', [UtilizadorController::class,'index']);
-Route::get('/admin/edit/{$id}', [UtilizadorController::class,'edit']);
+Route::get('/admin/users/edit/{$id}', [UtilizadorController::class,'edit']);
 
 Route::get('/admin/info/inicio', function () {
     $arr_info = ['Início','Empresa','Assistência','Contactos'];
