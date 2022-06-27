@@ -24,7 +24,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>4</h3>
+                  <h3>{{$countUtilizadores}}</h3>
   
                   <p>Número de Utilizadores</p>
                 </div>
@@ -39,7 +39,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>3</h3>
+                  <h3>{{$countAdminsTecnicos}}</h3>
                   <p>Número de Administratores e Funcionários</p>
                 </div>
                 <div class="icon">
@@ -53,7 +53,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>1</h3>
+                  <h3>{{$countClientes}}</h3>
                   <p>Número de Clientes</p>
                 </div>
                 <div class="icon">

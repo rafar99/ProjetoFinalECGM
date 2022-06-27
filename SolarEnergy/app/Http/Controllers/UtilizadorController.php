@@ -19,12 +19,21 @@ class UtilizadorController extends Controller
         ->select('utilizador.*','tipo_utilizador.descricao')
         ->get();
 
-        // $assistencia = DB::table('pedido')
-        // ->leftJoin('tipo_painel','pedido.tipoPainel','=','tipo_painel.id')
-        // ->leftJoin('tipo_pedido','pedido.tipoPedido','=','tipo_pedido.id')
-        // ->select('tipo_painel.descricao','tipo_pedido.descricao')
-        // -get();
-        return view('backoffice.users.users',['arr_info' => $arr_info, 'utilizadores'=>$utilizadores]);
+        $countUtilizadores = DB::table('utilizador')->select('*')->get()->count();
+
+        $countAdminsTecnicos = DB::table('utilizador')->select('*')->where('tipoUtilizador_id','=','1')->orWhere('tipoUtilizador_id', '=', '2')->get()->count();
+
+        // $countTecnicos = DB::table('utilizador')->select('*')->where('tipoUtilizador_id','=','2')->get()->count();
+
+        $countClientes = DB::table('utilizador')->select('*')->where('tipoUtilizador_id','=','3')->get()->count();
+
+        return view('backoffice.users.users',[
+            'arr_info' => $arr_info, 
+            'utilizadores'=>$utilizadores,
+            'countUtilizadores'=> $countUtilizadores,
+            'countAdminsTecnicos'=> $countAdminsTecnicos,
+            'countClientes'=>$countClientes
+        ]);
 
     }
 
