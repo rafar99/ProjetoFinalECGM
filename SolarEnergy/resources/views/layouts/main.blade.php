@@ -447,13 +447,34 @@
                         <li>
                             <div id="navDivider"></div>
                         </li>
+                        @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Nome do Utilizador
+                            </a>
+                            <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
+                                <li >
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <a href="/logout" class="dropdown-item text-dark" onclick="event.preventDefault();
+                                            this.closest('form').submit();">Sair</a>
+                                    </form>
 
+                                </li>
+                            </ul>
+                        </li>
+                        @endauth
+                        @guest
                         <li class="nav-item">
                             <a href="/login" class="nav-link text-dark">
                                 <i class="bi bi-person-circle"></i>
                                 Login
                             </a>
                         </li>
+                        @endguest
                     </ul>
                 </div>
 

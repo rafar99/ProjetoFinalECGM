@@ -29,6 +29,15 @@ Route::get('/contactos', function () {
     return view('contactos');
 });
 
-Route::get('/login', function () {
-    return view('login');
+
+//login e registo
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
