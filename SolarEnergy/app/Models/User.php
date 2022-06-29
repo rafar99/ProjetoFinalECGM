@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tipoUtilizador_id'
     ];
 
     /**
@@ -58,4 +59,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function tipoUtilizador(){
+        return $this->hasMany(TipoUtilizador::class);
+    }
+
 }
