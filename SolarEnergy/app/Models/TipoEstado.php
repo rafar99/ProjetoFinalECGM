@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FormularioContactos extends Model
+class TipoEstado extends Model
 {
     use HasFactory;
-    protected $table = "formulario_contactos";
-    protected $guarded=[];
+    protected $table = "tipo_estado";
+    protected $guarded =[];
 }

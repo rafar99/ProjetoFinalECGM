@@ -60,7 +60,7 @@ class User extends Authenticatable
     ];
 
     public function tipoutilizadores(){
-        return $this->belongsTo('App\Models\TipoUtilizador');
+        return $this->belongTo('App\Models\TipoUtilizador');
     }
 
 }

@@ -456,7 +456,8 @@
                             <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-                                <li >
+                                <li><a class="dropdown-item" href="/meusPedidos">Meus Pedidos</a></li>
+                                <li>
                                     <form action="/logout" method="POST">
                                         @csrf
                                         <a href="/logout" class="dropdown-item text-dark" onclick="event.preventDefault();

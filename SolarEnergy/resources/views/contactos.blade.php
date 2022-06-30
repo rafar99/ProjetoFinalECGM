@@ -13,25 +13,29 @@
         <div class="col-md-6">
             <h3>Entre em contacto connosco!</h3>
             <div class="contactos-texto">
-                <p><img src="img/phone.svg" class="image-icone">+351 963 001 205</p>
-                <p><img src="img/location.svg" class=" image-icone">Rua das cambalhotas nº 000, 4900-000 Viana do
-                    Castelo</p>
-                <p><img src="img/email.svg" class=" image-icone">geral@geral.pt</p>
+                @foreach ($contactos as $contacto)
+                <p><img src="img/phone.svg" class="image-icone">{{$contacto->num_telefone}}</p>
+                <p><img src="img/location.svg" class=" image-icone">{{$contacto->morada}}</p>
+                <p><img src="img/email.svg" class=" image-icone">{{$contacto->email}}</p>
+                @endforeach
             </div>
         </div>
         <div class="col-md-6">
             <div class="formulario-contactos">
                 <h4>Enviar menssagem</h4>
-                <form class="form mt-5">
+                <form action="/contactos" method="POST" class="form mt-5" name="Form">
+                    @csrf
                     <div class="mb-3">
-                        <input type="assunto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Assunto">
+                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome">
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+                        <input type="text" id="assunto" name="assunto" class="form-control" placeholder="Assunto">
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        <input type="email" id="email" name ="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="menssagem" name="mensagem" rows="3"
                             placeholder="Menssagem"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success botao-form">Enviar</button>
