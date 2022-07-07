@@ -34,6 +34,7 @@ Route::get('/contactos', function () {
 
 //rota da pagina de pedidos de assistencia
 Route::get('/assistencia', [PedidoAssistenciaController::class, 'index'])->middleware('auth');
+Route::post('/assistencia', [PedidoAssistenciaController::class, 'store'])->middleware('auth');
 
 
 //rota dos detalhes do contacto na pagina contactos

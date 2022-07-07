@@ -24,41 +24,41 @@
             <form action="/assistencia" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control" id="nome" placeholder="Nome">
+                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="rua" placeholder="Rua">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="nPorta" placeholder="Nº Porta">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="codPostal" placeholder="Código-Postal">
+                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="concelho" placeholder="Concelho">
+                            <input type="text" class="form-control" name="porta" id="nPorta" placeholder="Nº Porta">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="email" placeholder="Email">
+                            <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="Código-Postal">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control"  name="concelho" id="concelho" placeholder="Concelho">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" id="contacto" placeholder="Contacto">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" name="contacto" id="contacto" placeholder="Contacto">
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="tipo_assistencia">Tipo de Assistência</label>
-                    <select name ="tipoPedido" class="form-control" id="tipoAssistencia">
+                    <select name ="tipoPedido" class="form-control" id="tipoPedido">
                         @foreach ($tipo_pedido as $pedido)
                             <option value="{{$pedido->id}}">{{$pedido->descricao}}</option>
                         @endforeach
@@ -87,19 +87,19 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-2">
-                            <input type="date" class="form-control" id="data">
+                            <input type="date" class="form-control" id="data" name="data">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-2">
-                            <input type="time" class="form-control" id="hora">
+                            <input type="time" class="form-control" id="hora" name="hora">
                         </div>
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <textarea class="form-control" id="mensagem" rows="5" placeholder="Descrição"></textarea>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Descrição"></textarea>
                 </div>
-                <button type="button" class="btn btn-success mt-4 botao-form">Enviar</button>
+                <button type="submit" class="btn btn-success mt-4 botao-form">Enviar</button>
             </form>
         </div>
     </div>

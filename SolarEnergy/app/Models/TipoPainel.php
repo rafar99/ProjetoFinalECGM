@@ -11,7 +11,11 @@ class TipoPainel extends Model
     protected $table = "tipo_painel";
     protected $guarded = [];
 
+    protected $fillable =[
+        'id', 'descricao'
+    ];
+
     public function tipoPainel(){
-        return $this->belongTo(PedidoAssistencia::class, 'tipoPainel');
+        return $this->belongTo(PedidoAssistencia::class);
     }
 }

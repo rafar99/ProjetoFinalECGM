@@ -11,6 +11,10 @@ class TipoPedido extends Model
     protected $table = "tipo_pedido";
     protected $guarded = [];
 
+    protected $fillable =[
+        'id', 'descricao'
+    ];
+
     public function tipoPedido(){
         return $this.hasMany(PedidoAssistencia::class);
     }
