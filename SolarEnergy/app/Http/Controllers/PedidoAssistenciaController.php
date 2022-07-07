@@ -41,12 +41,14 @@ class PedidoAssistenciaController extends Controller
 
     public function store(Request $request){
 
+        //Cria um novo pedido de assistencia
         $pedido = new PedidoAssistencia;
+        //guarda a descricao, o id do tipo de painel e o id do tipo de pedido na BD pedido
         $pedido ->descricao = $request->descricao;
-
         $pedido->tipoPedido= $request->tipoPedido;
         $pedido->tipoPainel= $request->tipoPainel;
 
+        //guardar a morada no pedido e na tabela morada_pedido
         
         
         $pedido->save();
