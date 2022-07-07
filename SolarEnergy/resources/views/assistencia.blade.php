@@ -21,65 +21,62 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-12">
-            <form>
+            <form action="/assistencia" method="POST">
+                @csrf
                 <div class="form-group">
-                    <input type="name" class="form-control" id="nome" placeholder="Nome">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome">
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="name" class="form-control" id="rua" placeholder="Rua">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group mt-3">
-                            <input type="name" class="form-control" id="nPorta" placeholder="Nº Porta">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group mt-3">
-                            <input type="name" class="form-control" id="codPostal" placeholder="Código-Postal">
+                            <input type="text" class="form-control" id="rua" placeholder="Rua">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="name" class="form-control" id="concelho" placeholder="Concelho">
+                            <input type="text" class="form-control" id="nPorta" placeholder="Nº Porta">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="name" class="form-control" id="email" placeholder="Email">
+                            <input type="text" class="form-control" id="codPostal" placeholder="Código-Postal">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" id="concelho" placeholder="Concelho">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="name" class="form-control" id="contacto" placeholder="Contacto">
+                            <input type="text" class="form-control" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" id="contacto" placeholder="Contacto">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group mt-3">
                     <label for="tipo_painel">Tipo Painel</label>
-                    <select class="form-control" id="tipoPainel">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <select name ="tipoPainel" class="form-control" id="tipoPainel">
+                        @foreach ($paineis as $painel)
+                            <option value="{{$painel->id}}">{{$painel->descricao}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group mt-3">
                     <label for="tipo_assistencia">Tipo de Assistência</label>
-                    <select class="form-control" id="tipoAssistencia">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <select name ="tipoPedido" class="form-control" id="tipoAssistencia">
+                        @foreach ($tipo_pedido as $pedido)
+                            <option value="{{$pedido->id}}">{{$pedido->descricao}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="row">

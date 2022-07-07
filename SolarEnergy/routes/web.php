@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PedidoAssistenciaController;
 use App\Http\Controllers\FormularioContactosController;
 use App\Http\Controllers\ContactosController;
 
@@ -30,6 +31,10 @@ Route::get('/assistencia', function () {
 Route::get('/contactos', function () {
     return view('contactos');
 });
+
+//rota da pagina de pedidos de assistencia
+Route::get('/assistencia', [PedidoAssistenciaController::class, 'index'])->middleware('auth');
+
 
 //rota dos detalhes do contacto na pagina contactos
 Route::get('/contactos', [ContactosController::class, 'index']);
