@@ -11,7 +11,7 @@ class UtilizadorController extends Controller
 {
     public function index() {
 
-        $arr_info = ['Início','Empresa','Assistência','Contactos'];
+        $arr_info = ['Início','Empresa','Nossos Projetos','Contactos'];
         // $utilizadores = Utilizador::all();
         
         $utilizadores = DB::table('utilizador')

@@ -35,8 +35,8 @@ function active_onload() {
             DOMempresa.querySelector('i').classList.add("text-light");
 
 
-        } else if (window.location.href.indexOf("assistencia") > -1) {
-            var DOMassistencia = document.getElementById("nav-assistencia");
+        } else if (window.location.href.indexOf("nossosprojetos") > -1) {
+            var DOMassistencia = document.getElementById("nav-nossosprojetos");
             DOMassistencia.querySelector('i').classList.replace("bi-circle", "bi-record-circle");
             DOMassistencia.querySelector('i').classList.add("text-light");
 

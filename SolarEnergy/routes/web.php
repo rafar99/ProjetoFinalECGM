@@ -51,16 +51,13 @@ Route::get('/admin/dashboard',[PedidoController::class,'index']);
 Route::get('/admin/users', [UtilizadorController::class,'index']);
 Route::get('/admin/users/edit/{$id}', [UtilizadorController::class,'edit']);
 
-Route::get('/admin/info/inicio',[DetalheInicioController::class,'index']);
+Route::get('/admin/info/inicio',[DetalheHomeController::class,'index']);
 
 Route::get('/admin/info/empresa',[DetalheEmpresaController::class,'index']);
 
-Route::get('/admin/info/assistencia',[DetalheAssistenciaController::class,'index']);
+Route::get('/admin/info/nossosprojetos',[DetalheNossoProjetoController::class,'index']);
 
-Route::get('/admin/info/contactos', function () {
-    $arr_info = ['Início','Empresa','Assistência','Contactos'];
-    return view('backoffice/info/tabelas/contactos', ['arr_info' => $arr_info]);
-});
+Route::get('/admin/info/contactos',[DetalheContactoController::class,'index']);
 
 Route::middleware([
     'auth:sanctum',

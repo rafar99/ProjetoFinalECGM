@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetalheInicio extends Model
+class DetalheContacto extends Model
 {
     use HasFactory;
-    protected $table = ''; //alterar para o nome da tabela info do inicio
+    protected $table = 'detalhes_contactos';
     protected $guarded =[];
 }

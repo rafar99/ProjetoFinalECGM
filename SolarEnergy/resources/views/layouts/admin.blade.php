@@ -233,8 +233,8 @@
                     <?php $menu = 'inicio'?>
                   @elseif($arr_info[$i]=="Empresa")
                     <?php $menu = 'empresa'?>
-                  @elseif($arr_info[$i]=="Assistência")
-                    <?php $menu = 'assistencia'?>
+                  @elseif($arr_info[$i]=="Nossos Projetos")
+                    <?php $menu = 'nossosprojetos'?>
                   @elseif($arr_info[$i]=="Contactos")
                     <?php $menu = 'contactos'?>
                   @else
