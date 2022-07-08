@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoUtilizador extends Model
 {
     use HasFactory;
-    protected $table = "tipo_utilizador"; //tabela tipo_painel da base de dados
+    protected $table = "tipo_utilizador";
     protected $guarded =[];
 
     public function users(){

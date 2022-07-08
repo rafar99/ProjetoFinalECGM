@@ -433,11 +433,13 @@
                                 Empresa
                             </a>
                         </li>
+                        @auth
                         <li class="nav-item">
                             <a href="/assistencia" class="nav-link text-dark">
                                 Assistência
                             </a>
                         </li>
+                        @endauth
                         <li class="nav-item">
                             <a href="/contactos" class="nav-link text-dark">
                                 Contactos
@@ -451,7 +453,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Nome do Utilizador
+                                {{auth()->user()->name}}
                             </a>
                             <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

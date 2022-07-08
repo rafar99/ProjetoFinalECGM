@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PedidoAssistencia;
+use App\Models\Pedido;
 use App\Models\TipoPedido;
 use App\Models\TipoPainel;
 use App\Models\Morada;
 use Auth;
 use DB;
 
-class PedidoAssistenciaController extends Controller
+
+class PedidoController extends Controller
 {
     //
-
     public function index(){
         
         //join à tabela de pedidos
@@ -42,7 +42,7 @@ class PedidoAssistenciaController extends Controller
     public function store(Request $request){
 
         //Cria um novo pedido de assistencia
-        $pedido = new PedidoAssistencia;
+        $pedido = new Pedido;
         //guarda a descricao, o id do tipo de painel e o id do tipo de pedido na BD pedido
         $pedido ->descricao = $request->descricao;
         $pedido->tipoPedido= $request->tipoPedido;
@@ -56,4 +56,5 @@ class PedidoAssistenciaController extends Controller
         return redirect('/assistencia')->with('msg', 'Submetido com sucesso!');
     
     }
+
 }

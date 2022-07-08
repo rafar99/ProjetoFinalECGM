@@ -110,38 +110,19 @@
 </div>
 <div class="projetos">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
+        @foreach ($nossosprojetos as $projetos)
+        <div class="col">            
             <div class="card card-projetos h-100">
                 <img src="img/imagem5.png" class="card-img-top" style="width: 100%; height:auto;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{$projetos->titulo}}</h5>
+                    <p class="card-text">{{$projetos->descricao}}</p>
                     <button type="button" class="btn btn-success botao-card">Ver mais</button>
                 </div>
             </div>
+           
         </div>
-        <div class="col">
-            <div class="card card-projetos h-100">
-                <img src="img/imagem6.png" class="card-img-top" style="width: 100%; height:auto;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a short card.</p>
-                    <button type="button" class="btn btn-success botao-card">Ver mais</button>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card card-projetos h-100">
-                <img src="img/imagem7.png" class="imagem card-img-top" style="width: 100%; height:auto;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to additional content.</p>
-                    <button type="button" class="btn btn-success botao-card">Ver mais</button>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <hr class="divisor-rodape">
