@@ -25,12 +25,15 @@ return new class extends Migration
 
             $table->unsignedBigInteger('tipoPedido')->unsigned()->nullable();
             $table->foreign('tipoPedido')->references('id')->on('tipo_pedido')->onDelete('cascade');
-            
+
             $table->unsignedBigInteger('moradaPedido')->unsigned()->nullable();
             $table->foreign('moradaPedido')->references('id')->on('morada_pedido')->onDelete('cascade');
 
             $table->unsignedBigInteger('id_funcionario')->unsigned()->nullable();
             $table->foreign('id_funcionario')->references('id')->on('funcionario')->onDelete('cascade');
+
+            $table->unsignedBigInteger('id_cliente')->unsigned()->nullable();
+            $table->foreign('id_cliente')->references('id')->on('cliente')->onDelete('cascade');
 
             $table->unsignedBigInteger('estado')->unsigned()->nullable();
             $table->foreign('estado')->references('id')->on('tipo_estado')->onDelete('cascade');

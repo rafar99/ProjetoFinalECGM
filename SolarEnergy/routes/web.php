@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UtilizadorController;
 use App\Http\Controllers\PedidoController;
-use App\Http\Controllers\DetalheInicio;
-use App\Http\Controllers\DetalheEmpresaController;
-// use App\Http\Controllers\PedidoController;
-// use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\NossosProjetosController;
+use App\Http\Controllers\ContactosController;
 
 Route::get('/', function () {
     return view('home');
@@ -45,19 +45,19 @@ Route::get('/registo', function () {
 
 });*/
 //Pagina Pedido - Admin
-Route::get('/admin/dashboard',[PedidoController::class,'index']);
+Route::get('/admin/dashboard',[PedidoController::class,'index'])->middleware('auth');
 
 //Pagina Utilizadores - Admin
-Route::get('/admin/users', [UtilizadorController::class,'index']);
-Route::get('/admin/users/edit/{$id}', [UtilizadorController::class,'edit']);
+Route::get('/admin/users', [UtilizadorController::class,'index'])->middleware('auth');
+Route::get('/admin/users/edit/{id}', [UtilizadorController::class,'edit'])->middleware('auth');
 
-Route::get('/admin/info/inicio',[DetalheHomeController::class,'index']);
+Route::get('/admin/info/inicio',[HomeController::class,'index'])->middleware('auth');
 
-Route::get('/admin/info/empresa',[DetalheEmpresaController::class,'index']);
+Route::get('/admin/info/empresa',[EmpresaController::class,'index'])->middleware('auth');
 
-Route::get('/admin/info/nossosprojetos',[DetalheNossoProjetoController::class,'index']);
+Route::get('/admin/info/nossosprojetos',[NossosProjetosController::class,'index'])->middleware('auth');
 
-Route::get('/admin/info/contactos',[DetalheContactoController::class,'index']);
+Route::get('/admin/info/contactos',[ContactosController::class,'index'])->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

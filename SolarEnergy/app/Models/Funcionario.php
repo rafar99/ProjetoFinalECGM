@@ -5,17 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoUtilizador extends Model
+class Funcionario extends Model
 {
     use HasFactory;
-
-    protected $table = "tipo_utilizador";
+    protected $table = 'funcionario';
     protected $guarded =[];
-
-    public function users(){
-        return $this->hasMany('App\Models\User');
-    }
-
 }
-
-

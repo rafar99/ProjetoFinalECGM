@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('formulario_contactos', function (Blueprint $table) {
-            $table->id();
-            $table ->string('nome',200);
-            $table ->string('email',200);
-            $table ->string('assunto',200);
-            $table ->text('mensagem');
-            $table ->date('data');
-            $table->timestamps();
-            
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('tipoUser_id')->unsigned()->nullable();
+            $table->foreign('tipoUser_id')->references('id')->on('tipo_utilizador')->onDelete('cascade');
         });
     }
 
@@ -32,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formulario_contactos');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('tipoUser_id')->unsigned()->nullable();
+        });
     }
 };

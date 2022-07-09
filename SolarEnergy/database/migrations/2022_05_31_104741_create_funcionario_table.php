@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('contacto',100);
             $table->date('dataRegisto');
 
-            $table->unsignedBigInteger('cod_utilizador_id')->unsigned()->nullable();
-            $table->foreign('cod_utilizador_id')->references('id')->on('utilizador')->onDelete('cascade');
+            $table->unsignedBigInteger('users_id')->unsigned()->nullable();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('tipoFuncionario_id')->unsigned()->nullable();
             $table->foreign('tipoFuncionario_id')->references('id')->on('tipo_funcionario')->onDelete('cascade');

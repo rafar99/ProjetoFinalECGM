@@ -60,8 +60,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function tipoUtilizador(){
-        return $this->hasMany(TipoUtilizador::class);
+    public function tipoutilizadores(){
+        return $this->belongTo('App\Models\TipoUtilizador');
     }
 
 }

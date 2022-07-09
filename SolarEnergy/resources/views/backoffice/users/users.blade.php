@@ -109,16 +109,16 @@
                           @foreach($utilizadores as $utilizador)
                           <tr>
                             <td>{{$utilizador->id}}</td>
-                            <td>{{$utilizador->nome}}</td>
+                            <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
                             <td>{{$utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
-                              <button class="btn bg-warning text-white" style="width:40px; heigth: 40px; margin:2px">
-                                <a href="/admin/users/edit/{{$utilizador->id}}" style="color:white">
+                              {{-- <button style="width:40px; heigth: 40px; margin:2px"> --}}
+                                <a href="{{url('/admin/users/edit/' . $utilizador->id)}}" class="btn bg-warning text-white" style="color:white">
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
-                            </button>
+                            {{-- </button> --}}
                         </td>
                           </tr>
                           @endforeach
@@ -171,7 +171,7 @@
                           @foreach($adminsTec as $utilizador)
                           <tr>
                             <td>{{$utilizador->id}}</td>
-                            <td>{{$utilizador->nome}}</td>
+                            <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
                             <td>{{$utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>
@@ -233,7 +233,7 @@
                           @foreach($clientes as $utilizador)
                           <tr>
                             <td>{{$utilizador->id}}</td>
-                            <td>{{$utilizador->nome}}</td>
+                            <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
                             <td>{{$utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>

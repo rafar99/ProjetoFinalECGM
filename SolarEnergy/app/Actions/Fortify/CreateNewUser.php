@@ -2,7 +2,7 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\Utilizador;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -22,8 +22,8 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'nome' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:utilizador'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             // 'tipoUtilizador_id' => ['required', 'integer', 'max:3'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
@@ -32,11 +32,11 @@ class CreateNewUser implements CreatesNewUsers
             $tipo = DB::table('tipo_utilizador')->where('descricao','Cliente')->get();
             echo $tipo;
 
-        return Utilizador::create([
-            'nome' => $input['nome'],
+        return User::create([
+            'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'tipoUtilizador_id' => $tipo['id']
+            // 'tipoUser_id' => $tipo['id']
         ]);
 
     }

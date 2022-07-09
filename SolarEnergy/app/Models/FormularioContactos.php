@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetalheContacto extends Model
+class FormularioContactos extends Model
 {
     use HasFactory;
-    protected $table = 'detalhes_contactos';
-    protected $guarded =[];
 }

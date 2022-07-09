@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DetalheNossoProjeto;
+use App\Models\Home;
 use DB;
-
-class DetalheNossoProjetoController extends Controller
+class HomeController extends Controller
 {
     public function index () {
         $arr_info = ['Início','Empresa','Nossos Projetos','Contactos'];
 
-        // $infos = DetalheEmpresa::all();
+        $infos = Home::all();
 
-        return view('backoffice/info/tabelas/nossosprojetos', [
+        return view('backoffice/info/tabelas/inicio', [
             'arr_info' => $arr_info,
             'infos' => $infos
         ]);

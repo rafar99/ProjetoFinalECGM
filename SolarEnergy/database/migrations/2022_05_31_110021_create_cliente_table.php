@@ -24,8 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('tipoCliente')->unsigned()->nullable();
             $table->foreign('tipoCliente')->references('id')->on('tipo_cliente')->onDelete('cascade');
 
-            $table->unsignedBigInteger('cod_utilizador')->unsigned()->nullable();
-            $table->foreign('cod_utilizador')->references('id')->on('utilizador')->onDelete('cascade');
+            $table->unsignedBigInteger('utilizador_id')->unsigned()->nullable();
+            $table->foreign('utilizador_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('disponibilidade')->unsigned()->nullable();
             $table->foreign('disponibilidade')->references('id')->on('disponibilidade')->onDelete('cascade');

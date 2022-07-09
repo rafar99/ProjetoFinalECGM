@@ -23,8 +23,8 @@
 
                                 <div>
                                     <x-jet-label for="nome" value="{{ __('Nome') }}" />
-                                    <x-jet-input id="nome" class="form-control form-control-md" type="text" name="nome"
-                                        :value="old('nome')" required autofocus autocomplete="nome" />
+                                    <x-jet-input id="name" class="form-control form-control-md" type="text" name="name"
+                                        :value="old('name')" required autofocus autocomplete="nome" />
                                 </div>
 
                                 <div class="mt-2">
