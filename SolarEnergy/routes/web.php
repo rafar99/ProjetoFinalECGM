@@ -61,6 +61,8 @@ Route::get('/admin/info/inserir/empresa',[EmpresaController::class,'create'])->m
 Route::post('/admin/info/empresa',[EmpresaController::class,'store'])->middleware('auth');
 
 Route::get('/admin/info/nossosprojetos',[NossosProjetosController::class,'index'])->middleware('auth');
+Route::get('/admin/info/inserir/nossosprojetos',[NossosProjetosController::class,'create'])->middleware('auth');
+Route::post('/admin/info/nossosprojetos',[NossosProjetosController::class,'store'])->middleware('auth');
 
 Route::get('/admin/info/contactos',[ContactosController::class,'index'])->middleware('auth');
 
