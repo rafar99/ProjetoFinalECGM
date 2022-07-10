@@ -25,18 +25,18 @@ class CreateNewUser implements CreatesNewUsers
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
-            // 'tipoUtilizador_id' => ['required', 'integer', 'max:3'],
+            // 'tipoUser_id' => ['required', 'integer', 'max:3'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
             $tipo = DB::table('tipo_utilizador')->where('descricao','Cliente')->get();
-            echo $tipo;
+            // var_dump($tipo[0]->id);die;
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            // 'tipoUser_id' => $tipo['id']
+            'tipoUser_id' => $tipo[0]->id
         ]);
 
     }

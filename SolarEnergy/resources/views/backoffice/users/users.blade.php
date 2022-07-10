@@ -140,7 +140,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Administradores e Técnicos</h3>
+                      <h3 class="card-title">Administradores e Funcionarios</h3>
       
                       <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -176,12 +176,10 @@
                             <td>{{$utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
-                              <button class="btn bg-warning text-white" style="width:40px; heigth: 40px; margin:2px">
-                                <a href="/admin/users/edit/{{$utilizador->id}}" style="color:white">
-                                  <i class="bi bi-pencil-square"></i>
-                                </a>
-                            </button>
-                        </td>
+                              <a href="/admin/users/edit/{{$utilizador->id}}" class="btn bg-warning text-white" style="color:white">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
@@ -238,12 +236,10 @@
                             <td>{{$utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
-                              <button class="btn bg-warning text-white" style="width:40px; heigth: 40px; margin:2px">
-                                <a href="/admin/users/edit/{{$utilizador->id}}" style="color:white">
-                                  <i class="bi bi-pencil-square"></i>
-                                </a>
-                            </button>
-                        </td>
+                              <a href="/admin/users/edit/{{$utilizador->id}}" class="btn bg-warning text-white" style="color:white">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
