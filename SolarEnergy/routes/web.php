@@ -53,6 +53,8 @@ Route::get('/admin/users/edit/{id}', [UtilizadorController::class,'edit'])->midd
 Route::put('/admin/users/update/{id}', [UtilizadorController::class,'update'])->middleware('auth');
 
 Route::get('/admin/info/inicio',[HomeController::class,'index'])->middleware('auth');
+Route::get('/admin/info/inserir/inicio',[HomeController::class,'create'])->middleware('auth');
+Route::post('/admin/info/inicio',[HomeController::class,'store'])->middleware('auth');
 
 Route::get('/admin/info/empresa',[EmpresaController::class,'index'])->middleware('auth');
 

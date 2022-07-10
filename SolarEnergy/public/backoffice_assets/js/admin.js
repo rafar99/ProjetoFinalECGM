@@ -46,5 +46,34 @@ function active_onload() {
             DOMcontactos.querySelector('i').classList.replace("bi-circle", "bi-record-circle");
             DOMcontactos.querySelector('i').classList.add("text-light");
         }
-    }
+    } /*else if (window.location.href.indexOf("info/inserir") > -1) {
+        menus[0].className = menus[0].className.replace("active", "");
+        var DOMinfo = document.getElementById("nav-info");
+        DOMinfo.classList.add("active");
+        DOMinfo.parentElement.classList.add("menu-open");
+
+        if (window.location.href.indexOf("inicio") > -1) {
+            var DOMinicio = document.getElementById("nav-new-inicio");
+            DOMinicio.querySelector('i').classList.replace("bi-circle", "bi-record-circle");
+            DOMinicio.querySelector('i').classList.add("text-light");
+
+
+        } else if (window.location.href.indexOf("empresa") > -1) {
+            var DOMempresa = document.getElementById("nav-new-empresa");
+            DOMempresa.querySelector('i').classList.replace("bi-circle", "bi-record-circle");
+            DOMempresa.querySelector('i').classList.add("text-light");
+
+
+        } else if (window.location.href.indexOf("nossosprojetos") > -1) {
+            var DOMassistencia = document.getElementById("nav-new-nossosprojetos");
+            DOMassistencia.querySelector('i').classList.replace("bi-circle", "bi-record-circle");
+            DOMassistencia.querySelector('i').classList.add("text-light");
+
+
+        } else if (window.location.href.indexOf("contactos") > -1) {
+            var DOMcontactos = document.getElementById("nav-new-contactos");
+            DOMcontactos.querySelector('i').classList.replace("bi-circle", "bi-record-circle");
+            DOMcontactos.querySelector('i').classList.add("text-light");
+        }
+    }*/
 }

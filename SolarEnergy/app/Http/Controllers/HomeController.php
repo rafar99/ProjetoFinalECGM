@@ -17,4 +17,19 @@ class HomeController extends Controller
             'infos' => $infos
         ]);
     }
+
+    public function create(){
+        return view('backoffice.info.inserir.novo_inicio');
+    }
+
+    public function store(Request $request){
+        $inicio = new Inicio();
+        $inicio->titulo = $request->titulo;
+        $inicio->descricao = $request->descricao;
+        $inicio->imagem = $request->imagem;
+        
+        $inicio->save();
+
+        return redirect('/admin/info/inicio');
+    }
 }

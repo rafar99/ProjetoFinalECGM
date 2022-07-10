@@ -180,7 +180,7 @@
           <img src="/backoffice_assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{auth()->user()->name}}</a>
+          <a href="#" class="d-block text-capitalize">{{auth()->user()->name}}</a>
         </div>
       </div>
 
@@ -252,14 +252,48 @@
           
           
           
-          {{-- <li class="nav-header">Header Example</li>
-          
+          <li class="nav-header">Inserir</li>
+          {{-----------NOVO FUNCIONÁRIO-------------}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informational</p>
+              <i class="nav-icon bi bi-person-plus-fill"></i>
+              <p>Novo Funcionário</p>
             </a>
-          </li> --}}
+          </li>
+          
+          {{-------------NOVA INFORMAÇÃO-------------}}
+          <li class="nav-item">
+            <a id="nav-info" href="#" class="nav-link">
+              <i class="nav-icon bi bi-journal-plus"></i>
+              <p>
+                Nova Informação
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              @for($i = 0; $i < count($arr_info); $i++)
+                <li class="nav-item">
+                  @if($arr_info[$i]=="Início")
+                    <?php $menu_new = 'inicio'?>
+                  @elseif($arr_info[$i]=="Empresa")
+                    <?php $menu_new = 'empresa'?>
+                  @elseif($arr_info[$i]=="Nossos Projetos")
+                    <?php $menu_new = 'nossosprojetos'?>
+                  @elseif($arr_info[$i]=="Contactos")
+                    <?php $menu_new = 'contactos'?>
+                  @else
+                    <?php $menu_new = ''?>
+                  @endif  
+
+                  <a id="nav-new-{{$menu_new}}" href="/admin/info/inserir/{{$menu_new}}" class="nav-link">
+                    <i class="bi bi-circle nav-icon"></i>
+                    <p>{{$arr_info[$i]}}</p>
+                  </a>
+                </li>
+              @endfor
+            </ul>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
