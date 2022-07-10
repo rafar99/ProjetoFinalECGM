@@ -65,6 +65,8 @@ Route::get('/admin/info/inserir/nossosprojetos',[NossosProjetosController::class
 Route::post('/admin/info/nossosprojetos',[NossosProjetosController::class,'store'])->middleware('auth');
 
 Route::get('/admin/info/contactos',[ContactosController::class,'index'])->middleware('auth');
+Route::get('/admin/info/inserir/contactos',[ContactosController::class,'create'])->middleware('auth');
+Route::post('/admin/info/contactos',[ContactosController::class,'store'])->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

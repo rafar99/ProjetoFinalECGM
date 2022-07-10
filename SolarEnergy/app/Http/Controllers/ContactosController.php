@@ -18,4 +18,19 @@ class ContactosController extends Controller
             'infos' => $infos
         ]);
     }
+    public function create(){
+        return view('backoffice.info.inserir.novo_contactos');
+    }
+
+    public function store(Request $request){
+        $contacto = new Contactos();
+        $contacto->num_telefone = $request->telefone;
+        $contacto->morada = $request->morada;
+        $contacto->email = $request->email;
+        $contacto->mapa = $request->mapa;
+        
+        $contacto->save();
+
+        return redirect('/admin/info/contactos');
+    }
 }
