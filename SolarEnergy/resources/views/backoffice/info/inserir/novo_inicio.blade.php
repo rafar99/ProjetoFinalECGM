@@ -1,6 +1,6 @@
 @extends('layouts.admin-edits')
 
-@section('title', 'Inserir: Início')
+@section('title', 'Inserir: Info Início')
 
 @section('content')
 

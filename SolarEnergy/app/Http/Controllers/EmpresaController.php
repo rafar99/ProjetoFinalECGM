@@ -17,4 +17,19 @@ class EmpresaController extends Controller
             'infos' => $infos
         ]);
     }
+
+    public function create(){
+        return view('backoffice.info.inserir.novo_empresa');
+    }
+
+    public function store(Request $request){
+        $empresa = new Empresa();
+        $empresa->titulo = $request->titulo;
+        $empresa->descricao = $request->descricao;
+        $empresa->imagem = $request->imagem;
+        
+        $empresa->save();
+
+        return redirect('/admin/info/empresa');
+    }
 }
