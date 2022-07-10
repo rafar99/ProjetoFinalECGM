@@ -15,55 +15,50 @@
         <div class="carousel-caption texto-carrousel">
             <h3>Assistência Técnica</h3>
             <p>Instalação, Manutenção e Avarias</p>
-            <button type="button" class="btn btn-success">Começar</button>
+            <a href="#seccao"><button type="button" class="btn btn-success">Começar</button></a>
           </div>
       </div>
     </div>
 </div>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5"  id="seccao">
+    @foreach($secaoUm as $secUm)
     <div class="row">
         <div class="col">
             <div class="titulo text-center">
-                <h2>Título</h2>
+                <h2>{{$secUm->titulo}}</h2>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="texto mt-5">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                    containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                    Ipsum.</p>
+                <p>{{$secUm->descricao}}</p>
             </div>
         </div>
     </div>
+    @endforeach
     <!--Fazer um ciclo para listar -->
     <div class="row justify-content-center icones mt-5">
         <div class="col-4 mt-3">
             <div class="card-img">
                 <img class="card-img-top rounded mx-auto d-block " src="img/instalacao.png" alt="Instalação">
                 <div class="card-body">
-                    <h6 class="card-title text-center">Instalação</h6>
+                    <h6 class="card-title text-center mt-2">Instalação</h6>
                 </div>
             </div>
         </div>
         <div class="col-4 mt-3">
             <div class="card-img"><img class="card-img-top rounded mx-auto d-block" src="img/manutencao.png" alt="Manutenção">
                 <div class="card-body">
-                    <h6 class="card-title text-center">Manutenção</h6>
+                    <h6 class="card-title text-center mt-2">Manutenção</h6>
                 </div>
             </div>
         </div>
         <div class="col-4 mt-3">
             <div class="card-img"><img class="card-img-top rounded mx-auto d-block" src="img/avaria.png" alt="Avaria">
                 <div class="card-body">
-                    <h6 class="card-title text-center">Avaria</h6>
+                    <h6 class="card-title text-center mt-2">Avaria</h6>
                 </div>
             </div>
         </div>
@@ -71,42 +66,43 @@
 </div>
 <!--termina aqui-->
 <div class="container-seccao mt-5">
+    @foreach($infoCard as $card)
     <div class="card" style="border:none; border-radius:0px">
+       
         <div class="row g-0">
             <div class=" col-md-6">
                 <img src="img/parceiros.png" class="img-fluid " alt="imagem">
             </div>
             <div class=" col-md-6 text-light" style="background-color:#2C3E4C; position:relative">
                 <div class="card-body mt-4">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley of type and scrambled it to make a type specimen book.</p>
-                        
-                        <!--Ver botão acertar distancias em formato desktop-->
-                    <button type="button" class="btn btn-success botaoVerMaisInicio">Ver mais</button>
+                    <h5 class="card-title">{{$card->titulo}}</h5>
+                    <br>
+                    @foreach($tipo_painel as $tipo)
+                    <p class="card-text"> <ul><li>{{$tipo->descricao}}</li></ul></p>
+                    @endforeach                   
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 <div class="container-fluid mt-5">
+    @foreach($infoProjetos as $infoProjetos)
     <div class="row">
         <div class="col">
             <div class="titulo text-center">
-                <h2>Nossos Projetos</h2>
+                <h2>{{$infoProjetos->titulo}}</h2>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="texto mt-5">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                    galley of type and scrambled it to make a type specimen book.</p>
+                <p>{{$infoProjetos->descricao}}</p>
             </div>
         </div>
     </div>
+    @endforeach
 </div>
 <div class="projetos">
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -117,7 +113,6 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$projetos->titulo}}</h5>
                     <p class="card-text">{{$projetos->descricao}}</p>
-                    <button type="button" class="btn btn-success botao-card">Ver mais</button>
                 </div>
             </div>
            

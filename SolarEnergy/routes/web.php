@@ -34,6 +34,14 @@ Route::get('/contactos', function () {
     return view('contactos');
 });
 
+Route::get('/perfil', function () {
+    return view('perfil');
+});
+
+Route::get('/meusPedidos', function () {
+    return view('meusPedidos');
+});
+
 //rota para a informação da pagina
 Route::get('/', [HomeController::class, 'index']);
 
@@ -63,5 +71,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    });
 });
