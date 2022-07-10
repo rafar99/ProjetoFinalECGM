@@ -62,12 +62,10 @@
                             <td>{{$info->descricao}}</td>
                             <td>{{$info->imagem}}</td>
                             <td>
-                              <button class="btn bg-warning text-white" style="width:40px; heigth: 40px; margin:2px">
-                                <a href="/admin/users/edit/{{$utilizador->id}}" style="color:white">
-                                  <i class="bi bi-pencil-square"></i>
-                                </a>
-                            </button>
-                        </td>
+                              <a href="/admin/empresa/edit/{{$info->id}}" class="btn bg-warning">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
