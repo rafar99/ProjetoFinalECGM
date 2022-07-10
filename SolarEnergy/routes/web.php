@@ -50,6 +50,7 @@ Route::get('/admin/dashboard',[PedidoController::class,'index'])->middleware('au
 //Pagina Utilizadores - Admin
 Route::get('/admin/users', [UtilizadorController::class,'index'])->middleware('auth');
 Route::get('/admin/users/edit/{id}', [UtilizadorController::class,'edit'])->middleware('auth');
+Route::put('/admin/users/update/{id}', [UtilizadorController::class,'update'])->middleware('auth');
 
 Route::get('/admin/info/inicio',[HomeController::class,'index'])->middleware('auth');
 

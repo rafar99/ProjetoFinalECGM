@@ -30,6 +30,7 @@ class User extends Authenticatable
         'tipoUtilizador_id'
     ];
 
+    protected $guarded = [];
     /**
      * The attributes that should be hidden for serialization.
      *

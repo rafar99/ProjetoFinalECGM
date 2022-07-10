@@ -54,7 +54,18 @@ class UtilizadorController extends Controller
 
     public function edit($id){
         $user = User::findOrFail($id);
+        $tipos = TipoUtilizador::all();
+        return view('backoffice.users.edit',['user' => $user,'tipos' => $tipos]);
+    }
 
-        return view('backoffice.users.edit',['user' => $user]);
+    public function update(Request $request){
+
+        $user = User::findOrFail($request->id);
+
+        $user->tipoUser_id = $request->tipoUser;
+
+        $user->save();
+
+        return redirect('/admin/users')->with('msg', 'Utilizador alterado com sucesso!');
     }
 }
