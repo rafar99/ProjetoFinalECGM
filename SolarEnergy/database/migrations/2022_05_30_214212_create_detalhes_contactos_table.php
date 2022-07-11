@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('num_telefone', 100);
             $table->string('morada', 255);
             $table->string('email',100);
-            $table->text('mapa');
+            $table->text('mapa')->nullable();
             $table->timestamps();
         });
     }

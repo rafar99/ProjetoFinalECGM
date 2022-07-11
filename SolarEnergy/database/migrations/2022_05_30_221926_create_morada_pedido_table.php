@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('porta');
             $table->string('codigo_postal',100);
             $table->string('concelho',100);
-            $table->decimal('latitude');
-            $table->decimal('longitude');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->timestamps();
         });
     }

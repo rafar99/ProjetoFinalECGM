@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome',100);
             $table->string('contacto',100);
-            $table->date('dataRegisto');
+            $table->timestamp('dataRegisto')->useCurrent();
 
             $table->unsignedBigInteger('users_id')->unsigned()->nullable();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
