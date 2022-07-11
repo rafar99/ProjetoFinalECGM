@@ -26,7 +26,7 @@
                 <label for="tipoUser">Tipo de Utilizador</label>
                 <select name="tipoUser" id="tipoUser" class="form-control">
                   @foreach($tipos as $tipo)
-                  <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
+                  <option value="{{$tipo->id}}" {{$tipo->id==$user->tipoUser_id ? "selected='selected'" : ""}}>{{$tipo->descricao}}</option>
                   @endforeach
                 </select>
               </div>

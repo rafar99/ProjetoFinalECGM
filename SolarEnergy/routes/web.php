@@ -53,20 +53,30 @@ Route::get('/admin/users/edit/{id}', [UtilizadorController::class,'edit'])->midd
 Route::put('/admin/users/update/{id}', [UtilizadorController::class,'update'])->middleware('auth');
 
 Route::get('/admin/info/inicio',[HomeController::class,'index'])->middleware('auth');
-Route::get('/admin/info/inserir/inicio',[HomeController::class,'create'])->middleware('auth');
+Route::get('/admin/info/inicio/inserir',[HomeController::class,'create'])->middleware('auth');
 Route::post('/admin/info/inicio',[HomeController::class,'store'])->middleware('auth');
+Route::get('/admin/info/inicio/edit/{id}',[HomeController::class,'edit'])->middleware('auth');
+Route::put('/admin/info/inicio/update/{id}', [HomeController::class,'update'])->middleware('auth');
 
 Route::get('/admin/info/empresa',[EmpresaController::class,'index'])->middleware('auth');
-Route::get('/admin/info/inserir/empresa',[EmpresaController::class,'create'])->middleware('auth');
+Route::get('/admin/info/empresa/inserir',[EmpresaController::class,'create'])->middleware('auth');
 Route::post('/admin/info/empresa',[EmpresaController::class,'store'])->middleware('auth');
+Route::get('/admin/info/empresa/edit/{id}',[EmpresaController::class,'edit'])->middleware('auth');
+Route::put('/admin/info/empresa/update/{id}', [EmpresaController::class,'update'])->middleware('auth');
 
 Route::get('/admin/info/nossosprojetos',[NossosProjetosController::class,'index'])->middleware('auth');
-Route::get('/admin/info/inserir/nossosprojetos',[NossosProjetosController::class,'create'])->middleware('auth');
+Route::get('/admin/info/nossosprojetos/inserir',[NossosProjetosController::class,'create'])->middleware('auth');
 Route::post('/admin/info/nossosprojetos',[NossosProjetosController::class,'store'])->middleware('auth');
+Route::get('/admin/info/nossosprojetos/edit/{id}',[NossosProjetosController::class,'edit'])->middleware('auth');
+Route::put('/admin/info/nossosprojetos/update/{id}', [NossosProjetosController::class,'update'])->middleware('auth');
 
 Route::get('/admin/info/contactos',[ContactosController::class,'index'])->middleware('auth');
-Route::get('/admin/info/inserir/contactos',[ContactosController::class,'create'])->middleware('auth');
+Route::get('/admin/info/contactos/inserir',[ContactosController::class,'create'])->middleware('auth');
 Route::post('/admin/info/contactos',[ContactosController::class,'store'])->middleware('auth');
+Route::get('/admin/info/contactos/edit/{id}',[ContactosController::class,'edit'])->middleware('auth');
+Route::put('/admin/info/contactos/update/{id}', [ContactosController::class,'update'])->middleware('auth');
+
+
 
 Route::middleware([
     'auth:sanctum',

@@ -66,7 +66,7 @@
                                 <td>{{$info->email}}</td>
                                 <td>{{$info->mapa}}</td>
                                 <td>
-                                    <a href="/admin/contactos/edit/{{$info->id}}" class="btn bg-warning">
+                                    <a href="/admin/info/contactos/edit/{{$info->id}}" class="btn bg-warning">
                                       <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </td>

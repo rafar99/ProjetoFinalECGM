@@ -33,4 +33,18 @@ class ContactosController extends Controller
 
         return redirect('/admin/info/contactos');
     }
+    public function edit($id){
+        $contactos = Contactos::findOrFail($id);
+        
+        return view('backoffice.info.editar.edit_contactos',['contactos' => $contactos]);
+    }
+
+    public function update(Request $request){
+
+        $data = $request->all();
+        Contactos::findOrFail($request->id)->update($data);
+
+
+        return redirect('/admin/info/contactos')->with('msg', 'Informação alterada com sucesso!');
+    }
 }

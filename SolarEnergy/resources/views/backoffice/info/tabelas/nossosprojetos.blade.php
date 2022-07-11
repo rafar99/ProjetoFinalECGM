@@ -65,7 +65,7 @@
                               <td>{{$info->descricao}}</td>
                               <td>{{$info->imagem}}</td>
                               <td>
-                                <a href="/admin/empresa/edit/{{$info->id}}" class="btn bg-warning">
+                                <a href="/admin/info/nossosprojetos/edit/{{$info->id}}" class="btn bg-warning">
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
                               </td>

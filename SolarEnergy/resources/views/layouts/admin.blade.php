@@ -285,7 +285,7 @@
                     <?php $menu_new = ''?>
                   @endif  
 
-                  <a id="nav-new-{{$menu_new}}" href="/admin/info/inserir/{{$menu_new}}" class="nav-link">
+                  <a id="nav-new-{{$menu_new}}" href="/admin/info/{{$menu_new}}/inserir" class="nav-link">
                     <i class="bi bi-circle nav-icon"></i>
                     <p>{{$arr_info[$i]}}</p>
                   </a>

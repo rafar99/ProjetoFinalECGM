@@ -23,13 +23,44 @@ class HomeController extends Controller
     }
 
     public function store(Request $request){
-        $inicio = new Inicio();
+        $inicio = new Home();
         $inicio->titulo = $request->titulo;
         $inicio->descricao = $request->descricao;
-        $inicio->imagem = $request->imagem;
-        
+       
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img'), $imageName);
+            $inicio->imagem = $imageName;
+        }
+
         $inicio->save();
 
         return redirect('/admin/info/inicio');
+    }
+
+
+    public function edit($id){
+        $inicio = Home::findOrFail($id);
+        
+        return view('backoffice.info.editar.edit_inicio',['inicio' => $inicio]);
+    }
+
+    public function update(Request $request){
+
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img'), $imageName);
+            $data['image'] = $imageName;
+        }
+        Home::findOrFail($request->id)->update($data);
+
+
+        return redirect('/admin/info/inicio')->with('msg', 'Informação alterada com sucesso!');
     }
 }

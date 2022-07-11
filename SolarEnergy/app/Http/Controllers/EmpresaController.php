@@ -26,10 +26,39 @@ class EmpresaController extends Controller
         $empresa = new Empresa();
         $empresa->titulo = $request->titulo;
         $empresa->descricao = $request->descricao;
-        $empresa->imagem = $request->imagem;
-        
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img'), $imageName);
+            $empresa->imagem = $imageName;
+        }
         $empresa->save();
 
         return redirect('/admin/info/empresa');
+    }
+
+    public function edit($id){
+        $empresa = Empresa::findOrFail($id);
+        
+        return view('backoffice.info.editar.edit_empresa',['empresa' => $empresa]);
+    }
+
+    public function update(Request $request){
+
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img'), $imageName);
+            $data['image'] = $imageName;
+        }
+        Empresa::findOrFail($request->id)->update($data);
+
+
+        return redirect('/admin/info/empresa')->with('msg', 'Informação alterada com sucesso!');
     }
 }
