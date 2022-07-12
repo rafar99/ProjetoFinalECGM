@@ -6,6 +6,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\FormularioContactosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,17 +35,23 @@ Route::get('/contactos', function () {
     return view('contactos');
 });
 
-Route::get('/perfil', function () {
-    return view('perfil');
+Route::get('/areacliente', function () {
+    return view('areacliente');
 });
 
-Route::get('/meusPedidos', function () {
-    return view('meusPedidos');
+Route::get('/infocliente', function () {
+    return view('infocliente');
 });
+
+//registo dados do cliente
+Route::get('/infocliente', [ClienteController::class, 'create'])->middleware('auth');
+Route::get('/areacliente/{id}', [ClienteController::class, 'show'])->middleware('auth');
+Route::post('/areacliente', [ClienteController::class, 'store'])->middleware('auth');
+
 
 //rota para a informação da pagina
 Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/dashboard', [HomeController::class, 'index']);
 
 
 //rota para informação da pagina empresa
@@ -64,7 +71,7 @@ Route::post('/contactos', [FormularioContactosController::class, 'store']);
 
 //login e registo
 
-Route::middleware([
+/*Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -72,4 +79,4 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     });
-});
+});*/

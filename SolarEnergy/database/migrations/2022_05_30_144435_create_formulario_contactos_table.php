@@ -20,6 +20,7 @@ return new class extends Migration
             $table ->string('assunto',200);
             $table ->text('mensagem');
             $table ->date('data');
+            $table->timestamp('data')->useCurrent();
             $table->timestamps();
             
         });

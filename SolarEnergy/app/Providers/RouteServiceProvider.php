@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Responses\RegisterResponse;
+use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
+
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -36,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+        $this->app->singleton(RegisterResponseContract::class, RegisterResponse::class); 
     }
 
     /**

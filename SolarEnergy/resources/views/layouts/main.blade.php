@@ -457,8 +457,8 @@
                             </a>
                             <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-                                <li><a class="dropdown-item" href="/meusPedidos">Meus Pedidos</a></li>
+                                <li><a class="dropdown-item" href="/areacliente/{{auth()->user()->id}}">A Minha Conta</a></li>
+                               
                                 <li>
                                     <form action="/logout" method="POST">
                                         @csrf

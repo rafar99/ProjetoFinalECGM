@@ -31,22 +31,14 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
         
         
-        //$tipo = DB::table('tipo_utilizador')
-        //    ->select('id')
-        //    ->where('descricao', 'Cliente')->get();
-        //echo $tipo;
+        $tipo = DB::table('tipo_utilizador')->where('descricao', 'Cliente')->get();
 
-        $tipo = TipoUtilizador::all()->where("descricao", "=", "Cliente");
-        //$tipo->save();
-        //var_dump($tipo);
-        //die;
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            //'tipoUser_id' =>$tipo['id'] //ver linha de código - não regista o tipo de cliente
-
+            'tipoUser_id' =>$tipo[0]->id
         ]);           
     }
 }
