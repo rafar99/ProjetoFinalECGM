@@ -14,14 +14,14 @@ class ClienteController extends Controller
 
         $tipoCliente = TipoCliente::all();
 
-        return view('/infocliente', ['tipoCliente'=>$tipoCliente]);
+        return view('frontend/perfil/infocliente', ['tipoCliente'=>$tipoCliente]);
     }
 
     public function show($id){
        
         $cliente = Cliente::findOrFail($id);
 
-        return view('areacliente', ['cliente'=> $cliente]);
+        return view('frontend/perfil/areacliente', ['cliente'=> $cliente]);
     }
 
     public function store(Request $request){
@@ -42,6 +42,21 @@ class ClienteController extends Controller
 
         return redirect('/');
 
+    }
+
+    public function edit($id){
+
+        $cliente = Cliente::findOrFail($id);
+        $tipoCliente = TipoCliente::all();
+
+        return view('frontend/perfil/editarcliente', ['cliente'=> $cliente, 'tipoCliente'=>$tipoCliente]);
+    }
+
+    public function update(Request $request){
+
+        Cliente:: findOrFail($request->id)->update($request->all());
+    
+        return redirect('areacliente/' . $request->id)->with('msg', 'Cliente editado com sucesso!');
     }
 
     

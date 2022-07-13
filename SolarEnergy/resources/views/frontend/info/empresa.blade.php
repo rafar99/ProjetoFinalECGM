@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('title', 'SolarEnergy')
+@section('imgcontacto', '/img/contacto.svg')
+@section('imgfacebook', '/img/facebook.svg')
+@section('imglinkedin', '/img/facebook.svg')
 
 @section('content')
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">

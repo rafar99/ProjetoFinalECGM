@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title')</title>
+    <link rel="icon" href="/img/logoIcon.png" type="image/x-icon">
+
 
     {{-- CSS Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -495,9 +497,9 @@
                             <img src="/img/logoLight.png" alt="SolarEnergyLogo">
                         </a>
                         <div class="redesSociais text-light mt-5">
-                            <p><img src="img/contacto.svg" class="imagem" alt="contacto">+351 963 001 205</p>
-                            <p><img src="img/facebook.svg" class="imagem" alt="facebook">SolarEnergy</p>
-                            <p><img src="img/linkedin.svg" class="imagem" alt="linkden">SolarEnergy</p>
+                            <p><img src="@yield('imgcontacto')" class="imagem" alt="contacto">+351 963 001 205</p>
+                            <p><img src="@yield('imgfacebook')" class="imagem" alt="facebook">SolarEnergy</p>
+                            <p><img src="@yield('imglinkedin')" class="imagem" alt="linkden">SolarEnergy</p>
                         </div>
 
                     </div>

@@ -36,7 +36,7 @@ class PedidoController extends Controller
         ->select('id', 'descricao')
         ->get();
 
-        return view('/assistencia', ['paineis'=>$painel, 'tipo_pedido'=>$tipo_pedido]);
+        return view('frontend/forms/assistencia', ['paineis'=>$painel, 'tipo_pedido'=>$tipo_pedido]);
     }
 
     public function store(Request $request){

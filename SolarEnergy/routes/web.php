@@ -19,54 +19,31 @@ use App\Http\Controllers\ClienteController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('dashboard');
-});*/
-
-Route::get('/empresa', function () {
-    return view('empresa');
-});
-
-Route::get('/assistencia', function () {
-    return view('assistencia');
-});
-
-Route::get('/contactos', function () {
-    return view('contactos');
-});
-
-Route::get('/areacliente', function () {
-    return view('areacliente');
-});
-
-Route::get('/infocliente', function () {
-    return view('infocliente');
-});
-
-//registo dados do cliente
+//Cliente
 Route::get('/infocliente', [ClienteController::class, 'create'])->middleware('auth');
 Route::get('/areacliente/{id}', [ClienteController::class, 'show'])->middleware('auth');
-Route::post('/areacliente', [ClienteController::class, 'store'])->middleware('auth');
+Route::post('/areacliente/{id}', [ClienteController::class, 'store'])->middleware('auth');
+Route::get('/areacliente/editarcliente/{id}', [ClienteController::class, 'edit'])->middleware('auth');
+Route::put('/areacliente/editarcliente/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
 
-
-//rota para a informação da pagina
+//Home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'index']);
 
 
-//rota para informação da pagina empresa
+//Empresa
 Route::get('/empresa', [EmpresaController::class, 'index']);
 
 
-//rota da pagina de pedidos de assistencia
+//Assistencia
 Route::get('/assistencia', [PedidoController::class, 'index'])->middleware('auth');
 Route::post('/assistencia', [PedidoController::class, 'store'])->middleware('auth');
 
 
-//rota dos detalhes do contacto na pagina contactos
+//Contactos
 Route::get('/contactos', [ContactosController::class, 'index']);
 
-//formulario contactos
+//Formulario Contactos
 Route::post('/contactos', [FormularioContactosController::class, 'store']);
 
 //login e registo

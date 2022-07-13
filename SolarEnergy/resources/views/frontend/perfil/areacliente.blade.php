@@ -1,10 +1,14 @@
 @extends('layouts.main')
 
 @section('title', 'SolarEnergy')
+@section('imgcontacto', '../img/contacto.svg')
+@section('imgfacebook', '../img/facebook.svg')
+@section('imglinkedin', '../img/facebook.svg')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row mt-5">
+
+<div class="container-fluid mt-5">
+    <div class="row ">
         <div class="col-md-12">
             <h3>Área de Cliente</h3>
         </div>
@@ -23,7 +27,7 @@
             </div>
 
             <div class="botaoPerfil">
-                <a href=""><button type="button" class="btn btn-success mt-4 botao-form">Editar</button></a>
+                <a href="/areacliente/editarcliente/{{$cliente->id}}"><button type="button" class="btn btn-success mt-4 botao-form">Editar</button></a>
             </div>
 
         </div>

@@ -28,6 +28,6 @@ class EmpresaController extends Controller
 
         $funcionarios = Funcionario::all();
 
-        return view('/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
+        return view('frontend/info/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
     }
 }

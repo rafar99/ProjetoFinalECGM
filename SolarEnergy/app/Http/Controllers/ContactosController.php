@@ -11,7 +11,7 @@ class ContactosController extends Controller
 
         $contactos = Contactos::all();
 
-        return view('contactos', ['contactos'=>$contactos]);
+        return view('frontend/forms/contactos', ['contactos'=>$contactos]);
     }
     
 
