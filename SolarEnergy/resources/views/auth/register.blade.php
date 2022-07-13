@@ -51,8 +51,8 @@
                                         :value="old('tipoUtilizador_id')" required />
                                 </div> --}}
                                 @if($errors->any())
-                                {{ implode('', $errors->all(':message')) }}
-                            @endif
+                                    {{ implode('', $errors->all(':message')) }}
+                                @endif
 
                                 
                                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

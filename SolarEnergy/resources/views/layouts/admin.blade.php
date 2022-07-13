@@ -160,6 +160,16 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      @auth
+        <li class="nav-item">
+          <form action="/logout"  method="POST">
+            @csrf
+            <a href="/logout" class="nav-link text-dark" 
+            onclick="event.preventDefault();
+            this.closest('form').submit();">Sair</a>
+          </form>
+        </li>
+      @endauth
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -255,7 +265,7 @@
           <li class="nav-header">Inserir</li>
           {{-----------NOVO FUNCIONÁRIO-------------}}
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/admin/users/novofuncionario" class="nav-link">
               <i class="nav-icon bi bi-person-plus-fill"></i>
               <p>Novo Funcionário</p>
             </a>

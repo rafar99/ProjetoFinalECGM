@@ -9,5 +9,16 @@ class Funcionario extends Model
 {
     use HasFactory;
     protected $table = 'funcionario';
+    protected $fillable = [
+        'nome',
+        'contacto',
+        'tipoFuncionario_id',
+        'users_id'
+    ];
+
     protected $guarded =[];
+
+    public function tipoFuncionario(){
+        return $this->belongTo('App\Models\TipoFuncionario');
+    }
 }

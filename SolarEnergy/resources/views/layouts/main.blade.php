@@ -457,8 +457,9 @@
                             </form>
                         </li>
                         @endauth
-                        @guest
+
                         
+                        @guest
                         <li class="nav-item">
                             <a href="/login" class="nav-link text-dark">
                                 <i class="bi bi-person-circle"></i>
