@@ -67,7 +67,7 @@
                 
 
                 <input type="submit" class="btn btn-primary" value="Inserir" >
-                <a href="{{ url()->previous() }}" class="btn btn-danger float-right">Voltar</a>
+                <a href="/admin/users" class="btn btn-danger float-right">Voltar</a>
                 @if($errors->any())
                     {{ implode('', $errors->all(':message')) }}
                 @endif

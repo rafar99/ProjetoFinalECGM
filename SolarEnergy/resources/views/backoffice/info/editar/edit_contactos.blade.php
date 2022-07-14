@@ -40,7 +40,7 @@
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Guardar" >
-                <a href="{{ url()->previous() }}" class="btn btn-danger float-right">Voltar</a>
+                <a href="/admin/info/contactos" class="btn btn-danger float-right">Voltar</a>
 
               </form>
             </div>

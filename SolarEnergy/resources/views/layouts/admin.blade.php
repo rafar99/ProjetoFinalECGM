@@ -259,6 +259,15 @@
               @endfor
             </ul>
           </li>
+          <li class="nav-item">
+            <a id="nav-formcontactos" href="/admin/formcontactos" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Form. Contactos
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
           
           
           

@@ -20,6 +20,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\NossosProjetosController;
 use App\Http\Controllers\ContactosController;
+use App\Http\Controllers\FormularioContactosController;
 
 Route::get('/', function () {
     return view('home');
@@ -77,6 +78,11 @@ Route::get('/admin/info/contactos/inserir',[ContactosController::class,'create']
 Route::post('/admin/info/contactos',[ContactosController::class,'store'])->middleware('auth');
 Route::get('/admin/info/contactos/edit/{id}',[ContactosController::class,'edit'])->middleware('auth');
 Route::put('/admin/info/contactos/update/{id}', [ContactosController::class,'update'])->middleware('auth');
+
+//Pagina Formulários de contactos - Admin
+Route::get('/admin/formcontactos',[FormularioContactosController::class,'index'])->middleware('auth');
+Route::get('/admin/formcontactos/edit/{id}',[FormularioContactosController::class,'edit'])->middleware('auth');
+Route::put('/admin/formcontactos/update/{id}', [FormularioContactosController::class,'update'])->middleware('auth');
 
 
 
