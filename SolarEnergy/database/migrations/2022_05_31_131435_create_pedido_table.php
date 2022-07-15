@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('pedido', function (Blueprint $table) {
             $table->id();
             $table->text('descricao');
-            $table->date('dataCriacao');
-            $table->date('dataExecucao');
-            $table->string('tempoExecucao', 100);
+            $table->timestamp('dataCriacao')->useCurrent();
+            $table->date('dataExecucao')->nullable();
+            $table->double('tempoExecucaoEmH')->nullable();
 
             $table->unsignedBigInteger('tipoPainel')->unsigned()->nullable();
             $table->foreign('tipoPainel')->references('id')->on('tipo_painel')->onDelete('cascade');

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('morada',100);
             $table->string('contacto',100);
             $table->integer('nif');
-            $table->date('dataRegisto');
-
+            $table->timestamp('dataRegisto')->useCurrent();
+            
             $table->unsignedBigInteger('tipoCliente')->unsigned()->nullable();
             $table->foreign('tipoCliente')->references('id')->on('tipo_cliente')->onDelete('cascade');
             

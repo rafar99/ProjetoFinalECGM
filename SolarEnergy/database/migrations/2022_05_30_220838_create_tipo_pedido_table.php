@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('tipo_pedido', function (Blueprint $table) {
             $table->id();
             $table->string('descricao', 100);
-            $table->string('tempoMedioExecucao', 100);
-            $table->double('precoBase', 50);
+            $table->double('tempoMedioExecucaoEmH');
+            $table->double('precoBase');
             $table->timestamps();
         });
     }
