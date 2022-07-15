@@ -19,7 +19,7 @@ class FormularioContactosController extends Controller
         $formulario_contactos->email = $request->email;
         $formulario_contactos->assunto = $request->assunto;
         $formulario_contactos->mensagem = $request->mensagem;
-        $formulario_contactos->estado_id = '1';
+        $formulario_contactos->estado_id = '2';
 
         $formulario_contactos->save();
 
