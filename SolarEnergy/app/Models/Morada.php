@@ -16,6 +16,6 @@ class Morada extends Model
     ];
 
     public function morada(){
-        return $this->hasMany(PedidoAssistencia::class);
+        return $this->hasMany(Pedido::class);
     }
 }

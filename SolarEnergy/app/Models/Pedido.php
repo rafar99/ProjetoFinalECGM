@@ -26,4 +26,13 @@ class Pedido extends Model
     public function morada(){
         return $this->belongTo(Morada::class);
     }
+
+    public function estado(){
+       
+        return $this->hasMany(Estado::class);
+    }
+    public function cliente(){
+        return $this->hasMany(Cliente::class);
+    }
+
 }

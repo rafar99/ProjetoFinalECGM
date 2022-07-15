@@ -26,9 +26,19 @@
         <div class="col-md-12">
             <form action="/assistencia" method="POST">
                 @csrf
-                <div class="form-group">
-                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value='{{$cliente->nome}}' disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control" name="contacto" id="contacto" placeholder="Contacto" value='{{$cliente->contacto}}' disabled>
+                        </div>
+                    </div>
                 </div>
+               
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
@@ -47,23 +57,13 @@
                             <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="Código-Postal">
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                
                     <div class="col">
                         <div class="form-group mt-3">
                             <input type="text" class="form-control"  name="concelho" id="concelho" placeholder="Concelho">
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="contacto" id="contacto" placeholder="Contacto">
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="form-group mt-3">
@@ -90,7 +90,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-2">
-                            <input type="date" class="form-control" id="data" name="data">
+                            <input type="date" class="form-control" id="dia" name="dia">
                         </div>
                     </div>
                     <div class="col">
