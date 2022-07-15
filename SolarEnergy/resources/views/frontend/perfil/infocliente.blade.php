@@ -41,7 +41,7 @@
                           </div>
                         <div class="col-12">
                           <label for="title" class="form-label">Morada</label>
-                          <input type="text" class="form-control" id="inputAddress" placeholder="Rua das Cambalhotas nº 222 Meadela Viana do Castelo">
+                          <input type="text" class="form-control" id="morada" name ="morada" placeholder="Rua das Cambalhotas nº 222 Meadela Viana do Castelo">
                         </div>
                         <div class="col-12">
                           <button type="submit" class="btn btn-success mt-4">Guardar</button>

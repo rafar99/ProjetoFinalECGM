@@ -11,7 +11,5 @@ class Cliente extends Model
     protected $table='cliente';
     protected $guarded =[];
 
-    protected $fillable = [
-        'nome','contacto', 'nif', 'mmorada'
-    ];
+    protected $fillable = [];
 }
