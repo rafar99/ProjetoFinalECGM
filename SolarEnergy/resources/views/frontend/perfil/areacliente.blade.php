@@ -42,16 +42,22 @@
                     <thead>
                         <tr>
                             <th scope="col">Data</th>
-                            <th scope="col">Informação Pedido</th>
+                            <th scope="col">Painel</th>
+                            <th scope="col">Tipo de Pedido</th>
+                            <th scope="col">Descrição do Pedido</th>
                             <th scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                        </tr>
+                        @foreach ($listaAssistencia as $lista)
+                          <tr>
+                            <th scope="row">{{$lista->dataCriacao}}</th>
+                            <td>{{$lista->painel}}</td>
+                            <td>{{$lista->tipo}}</td>
+                            <td>{{$lista->descricao}}</td>
+                            <td>{{$lista->estado}}</td>
+                        </tr>  
+                        @endforeach
                     </tbody>
                 </table>
             </div>

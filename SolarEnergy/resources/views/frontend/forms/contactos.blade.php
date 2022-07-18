@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-6">
             <div class="formulario-contactos">
-                <h4>Enviar menssagem</h4>
+                <h4>Enviar mensagem</h4>
                 <form action="/contactos" method="POST" class="form mt-5" name="Form">
                     @csrf
                     <div class="mb-3">
@@ -38,8 +38,8 @@
                         <input type="email" id="email" name ="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control" id="menssagem" name="mensagem" rows="3"
-                            placeholder="Menssagem"></textarea>
+                        <textarea class="form-control" id="mensagem" name="mensagem" rows="3"
+                            placeholder="Mensagem"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success botao-form">Enviar</button>
                 </form>
