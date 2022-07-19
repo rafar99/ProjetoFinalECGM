@@ -517,11 +517,11 @@
                     <div class="col-md-4 text-light mt-3">
                         <h5><b>Legal</b></h5>
                         <div class="menu-rodape mt-5">
-                            <p>Termos de Utilização</p>
-                            <p>Política de Privacidade</p>
-                            <p>Política de Cookies</p>
-                            <p>Resolução Alternática de Litígios</p>
-                            <p>Livro de Reclamações Online</p>
+                            <p><a href="">Termos de Utilização</a></p>
+                            <p><a href="">Política de Privacidade</a></p>
+                            <p><a href="">Política de Cookies</a></p>
+                            <p><a href="">Resolução Alternática de Litígios</a></p>
+                            <p><a href="">Livro de Reclamações Online</a></p>
                         </div>
                     </div>
                 </div>
