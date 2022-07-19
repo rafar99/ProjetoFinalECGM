@@ -42,25 +42,25 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" {{$tipoUser !=2 ? "disabled" : "" }}                            >
+                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" {{$tipoUser !=2 ? "disabled" : "" }}>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="porta" id="nPorta" placeholder="Nº Porta">
+                            <input type="text" class="form-control" name="porta" id="nPorta" placeholder="Nº Porta" {{$tipoUser !=2 ? "disabled" : "" }}>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="Código-Postal">
+                            <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="Código-Postal" {{$tipoUser !=2 ? "disabled" : "" }}>
                         </div>
                     </div>
                 
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control"  name="concelho" id="concelho" placeholder="Concelho">
+                            <input type="text" class="form-control"  name="concelho" id="concelho" placeholder="Concelho" {{$tipoUser !=2 ? "disabled" : "" }}>
                         </div>
                     </div>
                     

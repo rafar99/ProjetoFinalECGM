@@ -506,10 +506,12 @@
                     <div class="col-md-4 text-light mt-3">
                         <h5><b>Empresa</b></h5>
                         <div class="menu-rodape mt-5">
-                            <p>Início</p>
-                            <p>Empresa</p>
-                            <p>Assistência</p>
-                            <p>Contactos</p>
+                            <p><a href="/">Início</a></p>
+                            <p><a href="/empresa">Empresa</p>
+                            @auth
+                            <p><a href="/assistencia">Assistência</a></p>
+                            @endauth
+                            <p><a href="/contactos">Contactos</a></p>
                         </div>
                     </div>
                     <div class="col-md-4 text-light mt-3">

@@ -7,6 +7,14 @@
     pointer-events: none;
     cursor: default;
 }
+#navbar ul li a{
+    border-bottom: 2px solid transparent;
+}
+
+#navbar ul li a:hover{
+    border-bottom:#ffce00 2px solid;
+    margin: 0;
+}
 
 hr.divider{
       border-top: 15px solid #2C3E4C;
@@ -112,6 +120,10 @@ footer{
     padding-bottom: 1vh;
     padding-left: 5vw;
     padding-right: 5vw;
+}
+
+.menu-rodape p a:hover {
+    color: #31C16C;
 }
 .imagem{
     width: 30px;
