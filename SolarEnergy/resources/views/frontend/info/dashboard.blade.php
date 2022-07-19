@@ -65,18 +65,21 @@
 <!--termina aqui-->
 <div class="container-seccao mt-5">
     @foreach($infoCard as $card)
-    <div class="card" style="border:none; border-radius:0px">
-       
+    <div class="card" style="border:none; border-radius:0px;">
         <div class="row g-0">
-            <div class=" col-md-6">
-                <img src="img/parceiros.png" class="img-fluid " alt="imagem">
+            <div class="col-md-6 .col-lg-6">
+                <img src="img/parceiros.png" class="img-fluid " alt="imagem" class="imagemlista">
             </div>
-            <div class=" col-md-6 text-light" style="background-color:#2C3E4C; position:relative">
-                <div class="card-body mt-4">
-                    <h5 class="card-title">{{$card->titulo}}</h5>
+            <div class="col-md-6 .col-lg-6 text-light " style="background-color:#2C3E4C; position:relative">
+                <div class="card-body listapaineis">
+                    <h6 class="card-title">{{$card->titulo}}</h6>
                     <br>
                     @foreach($tipo_painel as $tipo)
-                    <p class="card-text"> <ul><li>{{$tipo->descricao}}</li></ul></p>
+                    <p>
+                        <ul class="card-text" style="white-space:nowrap;">
+                            <li>{{$tipo->descricao}}</li>
+                        </ul>
+                    </p>
                     @endforeach                   
                 </div>
             </div>

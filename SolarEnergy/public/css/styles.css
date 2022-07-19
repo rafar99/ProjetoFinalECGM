@@ -140,10 +140,30 @@ footer{
     padding-left: 20px;
 }
 
+.listapaineis{
+        padding-top:50px ;
+}
+
 @media (max-width: 992px) {
     #navDivider{
         display: none;
     }
+    #navbar ul li a{
+        border-bottom: none;
+    }
+    
+    #navbar ul li a:hover{
+        border-bottom:none;
+
+    }
+    .dropdown-menu{
+        background-color: none;
+        border: none;
+        text-align: right;
+    }
+    
+  
+
 
   }
 
@@ -151,12 +171,22 @@ footer{
     .container-fluid{
         padding: 0 32px;
     }
-   
+    
+    
+}
+@media (max-width: 880px) {
+    .container-fluid{
+        padding: 0 32px;
+    }
+    .listapaineis{
+        padding-top:25px ;
+}
+    
+    
 }
 
 
 @media (max-width: 767px) {
-   
     .icones{
         margin-right: 20px;
         margin-left: 20px;
@@ -169,6 +199,9 @@ footer{
         margin-right: auto;
         background-color: #31C16C;
         border:none;
+    }
+    .listapaineis{
+        padding-top:25px ;
     }
 
     .card-projetos{
@@ -197,4 +230,5 @@ footer{
         border:none;
     }
   }
+
  

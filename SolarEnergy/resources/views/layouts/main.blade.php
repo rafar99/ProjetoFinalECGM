@@ -458,7 +458,7 @@
                                 {{auth()->user()->name}}
                             </a>
                             <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/areacliente/{{$cliente->id}}">A Minha Conta</a></li>
                                
                                 <li>

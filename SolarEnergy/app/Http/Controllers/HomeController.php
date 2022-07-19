@@ -34,7 +34,9 @@ class HomeController extends Controller
 
         $nossosprojetos = NossosProjetos::all();
 
-        $tipo_painel = TipoPainel::all();
+        $tipo_painel = DB::table('tipo_painel')
+        ->take(4)->get();
+
         if(auth()->user()==null){
             return view('frontend/info/dashboard', ['secaoUm'=>$secaoUm, 'infoCard'=>$infoCard, 'nossosprojetos'=>$nossosprojetos, 'infoProjetos'=>$infoProjetos,'tipo_painel'=>$tipo_painel]);            
         } 
