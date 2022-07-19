@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\Funcionario;
+use App\Models\Cliente;
 
 use DB;
 
@@ -27,7 +28,10 @@ class EmpresaController extends Controller
         ->get();
 
         $funcionarios = Funcionario::all();
-
-        return view('frontend/info/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
+        if(auth()->user()==null){
+            return view('frontend/info/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
+        }
+        $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
+        return view('frontend/info/empresa', ['cliente'=>$cliente,'quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
     }
 }

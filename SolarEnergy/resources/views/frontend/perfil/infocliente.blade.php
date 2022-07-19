@@ -16,7 +16,7 @@
                     <h5>Dados Cliente</h5>
                 </div>
                 <div class="infoCliente mt-5">
-                    <form action="/areacliente" method="POST" class="row g-3">
+                    <form action="/areacliente/{{$userId}}" method="POST" class="row g-3">
                         @csrf
                         <div class="col-md-12">
                           <label for="title" class="form-label">Nome</label>

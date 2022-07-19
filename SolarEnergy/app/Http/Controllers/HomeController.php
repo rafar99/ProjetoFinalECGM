@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Home;
 use App\Models\NossosProjetos;
 use App\Models\TipoPainel;
+use App\Models\Cliente;
 
 use DB;
 
@@ -34,7 +35,12 @@ class HomeController extends Controller
         $nossosprojetos = NossosProjetos::all();
 
         $tipo_painel = TipoPainel::all();
-
-        return view('frontend/info/dashboard', ['secaoUm'=>$secaoUm, 'infoCard'=>$infoCard, 'nossosprojetos'=>$nossosprojetos, 'infoProjetos'=>$infoProjetos,'tipo_painel'=>$tipo_painel]);
+        if(auth()->user()==null){
+            return view('frontend/info/dashboard', ['secaoUm'=>$secaoUm, 'infoCard'=>$infoCard, 'nossosprojetos'=>$nossosprojetos, 'infoProjetos'=>$infoProjetos,'tipo_painel'=>$tipo_painel]);            
+        } 
+        
+        $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
+        return view('frontend/info/dashboard', ['cliente'=>$cliente,'secaoUm'=>$secaoUm, 'infoCard'=>$infoCard, 'nossosprojetos'=>$nossosprojetos, 'infoProjetos'=>$infoProjetos,'tipo_painel'=>$tipo_painel]);
+        
     }
 }

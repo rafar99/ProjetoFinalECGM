@@ -21,18 +21,20 @@ class PedidoController extends Controller
         
         //join à tabela de pedidos
 
+        $tipoUser = auth()->user()->tipoUser_id;
+        // var_dump($tipoUser);die;
         $pedido = DB::table('pedido')
-            ->join('tipo_painel', 'pedido.tipoPainel', '=', 'tipo_painel.id')
-            ->join('tipo_pedido', 'pedido.tipoPedido', '=', 'tipo_pedido.id')
-            ->join('morada_pedido', 'pedido.moradaPedido', '=', 'morada_pedido.id')
-            ->join('funcionario', 'pedido.id_funcionario', '=', 'funcionario.id')
-            ->join('cliente', 'pedido.id_cliente', '=', 'cliente.id')
+            ->leftJoin('tipo_painel', 'pedido.tipoPainel', '=', 'tipo_painel.id')
+            ->leftJoin('tipo_pedido', 'pedido.tipoPedido', '=', 'tipo_pedido.id')
+            ->leftJoin('morada_pedido', 'pedido.moradaPedido', '=', 'morada_pedido.id')
+            ->leftJoin('funcionario', 'pedido.id_funcionario', '=', 'funcionario.id')
+            ->leftJoin('cliente', 'pedido.id_cliente', '=', 'cliente.id')
             ->select('pedido.*', 'tipo_painel.descricao', 'tipo_pedido.descricao','morada_pedido.rua', 
                      'morada_pedido.porta', 'morada_pedido.codigo_postal', 'morada_pedido.concelho' )
             ->get();
 
         $cliente = DB::table('cliente')
-            ->join('disponibilidade', 'cliente.disponibilidade', '=', 'disponibilidade.id')
+            ->leftJoin('disponibilidade', 'cliente.disponibilidade', '=', 'disponibilidade.id')
             ->select('cliente.*', 'disponibilidade.dia', 'disponibilidade.hora')
             ->get();
         
@@ -48,7 +50,9 @@ class PedidoController extends Controller
         ->get();
 
         $cliente= Cliente::where('utilizador_id',auth()->user()->id)->first();
-        return view('frontend/forms/assistencia', ['paineis'=>$painel, 'tipo_pedido'=>$tipo_pedido, 'cliente'=>$cliente]);
+        
+        return view('frontend/forms/assistencia', ['paineis'=>$painel, 'tipo_pedido'=>$tipo_pedido, 'cliente'=>$cliente,'tipoUser'=>$tipoUser]);
+        
     }
 
     public function store(Request $request){

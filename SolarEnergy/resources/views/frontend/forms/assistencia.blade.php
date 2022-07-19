@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua">
+                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" {{$tipoUser !=2 ? "disabled" : "" }}                            >
                         </div>
                     </div>
                 </div>
