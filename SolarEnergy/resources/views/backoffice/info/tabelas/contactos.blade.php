@@ -58,6 +58,7 @@
                                 <th>Morada</th>
                                 <th>Email</th>
                                 <th>Mapa</th>
+                                <th></th>
                                 <th>Editar</th>
                               </tr>
                             </thead>
@@ -68,7 +69,15 @@
                                 <td>{{$info->num_telefone}}</td>
                                 <td>{{$info->morada}}</td>
                                 <td>{{$info->email}}</td>
-                                <td>{{$info->mapa}}</td>
+                                <td>
+                                  @if(strlen($info->mapa)<=50)
+                                    {{$info->mapa}}
+                                  @else
+                                    {{implode(' ', array_slice(explode(' ', $info->mapa),0,10))}}...
+                                  @endif
+                                </td>
+                                <td><button type="button" data-bs-toggle="modal" data-bs-target="#info{{$info->id}}" class="btn btn-primary">Ver mais</button></td>
+                              </td>
                                 <td>
                                     <a href="/admin/info/contactos/edit/{{$info->id}}" class="btn bg-warning">
                                       <i class="bi bi-pencil-square"></i>
@@ -79,6 +88,29 @@
                             </tbody>
                           </table>
     
+                          <!-- Modal -->
+                          @foreach($infos as $info)
+                          <div class="modal fade" id="info{{$info->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">{{$info->titulo}}</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <p><b>Número de telefone/telemóvel:</b> {{$info->num_telefone}}</p>
+                                  <p><b>Morada:</b> {{$info->morada}}</p>
+                                  <p><b>Email:</b> {{$info->email}}</p>
+                                  <p><b>Mapa:</b> {{$info->mapa}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          @endforeach
+
                         </div>
                         <!-- /.card-body -->
                       </div>

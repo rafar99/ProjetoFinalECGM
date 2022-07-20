@@ -57,7 +57,7 @@
                               <th>ID</th>
                               <th>Título</th>
                               <th>Descrição</th>
-                              <th>Imagem</th>
+                              <th></th>
                               <th>Editar</th>
                             </tr>
                           </thead>
@@ -66,8 +66,15 @@
                             <tr>
                               <td>{{$info->id}}</td>
                               <td>{{$info->titulo}}</td>
-                              <td>{{$info->descricao}}</td>
-                              <td>{{$info->imagem}}</td>
+                              <td>
+                                @if(strlen($info->descricao)<=50)
+                                  {{$info->descricao}}
+                                @else
+                                  {{implode(' ', array_slice(explode(' ', $info->descricao),0,10))}}...
+                                @endif
+                                </td>
+                              <td><button type="button" data-bs-toggle="modal" data-bs-target="#info{{$info->id}}" class="btn btn-primary">Ver mais</button></td>
+                            </td>
                               <td>
                                 <a href="/admin/info/nossosprojetos/edit/{{$info->id}}" class="btn bg-warning">
                                   <i class="bi bi-pencil-square"></i>
@@ -77,6 +84,27 @@
                             @endforeach
                         </tbody>
                       </table>
+
+                      <!-- Modal -->
+                      @foreach($infos as $info)
+                      <div class="modal fade" id="info{{$info->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">{{$info->titulo}}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>{{$info->descricao}}</p>
+                              <img src="{{$info->imagem}}" alt="{{$info->titulo}}" class="img-fluid">
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
 
                     </div>
                     <!-- /.card-body -->

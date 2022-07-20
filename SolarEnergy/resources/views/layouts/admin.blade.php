@@ -19,7 +19,8 @@
   <link rel="stylesheet" href="/backoffice_assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="/backoffice_assets/plugins/daterangepicker/daterangepicker.css">
-  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/admin.css">
 </head>
@@ -316,7 +317,7 @@
             <a id="nav-tipoestado" href="/admin/tipoestado" class="nav-link">
               <i class="nav-icon bi bi-file-earmark-text text-light"></i>
               <p>
-                Estado
+                Estados
               </p>
             </a>
           </li>
@@ -354,7 +355,7 @@
 </div>
 <!-- ./wrapper -->
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="/backoffice_assets/js/admin.js"></script>
 
 <!-- jQuery -->
@@ -366,7 +367,6 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 
-<script src="/backoffice_assets/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="/backoffice_assets/plugins/moment/moment.min.js"></script>
 <script src="/backoffice_assets/plugins/daterangepicker/daterangepicker.js"></script>

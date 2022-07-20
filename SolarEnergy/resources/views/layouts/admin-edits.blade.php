@@ -20,6 +20,8 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="/backoffice_assets/plugins/daterangepicker/daterangepicker.css">
   
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/css/admin.css">
 </head>
@@ -97,7 +99,7 @@
 
 
 <script src="/backoffice_assets/js/admin.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!-- jQuery -->
 <script src="/backoffice_assets/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -107,7 +109,6 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 
-<script src="/backoffice_assets/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="/backoffice_assets/plugins/moment/moment.min.js"></script>
 <script src="/backoffice_assets/plugins/daterangepicker/daterangepicker.js"></script>
