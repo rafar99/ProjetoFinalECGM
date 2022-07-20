@@ -70,6 +70,10 @@ class UtilizadorController extends Controller
 
         $user = User::findOrFail($request->id);
 
+        $tipos = TipoUtilizador::all()->count();
+        if($request->tipoUser > $tipos){
+            return back()->with('error_tipoUser','Tipo de Utilizador inválido!');
+        }
         $user->tipoUser_id = $request->tipoUser;
 
         $user->save();

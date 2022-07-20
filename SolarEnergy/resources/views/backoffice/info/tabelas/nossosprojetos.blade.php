@@ -10,6 +10,10 @@
         <div class="col-sm-6">
           <h1 class="m-0">Nossos Projetos</h1>
         </div><!-- /.col -->
+        <div class="col-sm-6">
+          <a href="/admin/info/nossosprojetos/inserir" class="btn btn-secondary float-right">Novo: Nossos Projetos 
+          </a>
+        </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>

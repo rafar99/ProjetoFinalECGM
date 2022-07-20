@@ -1,6 +1,6 @@
 @extends('layouts.admin-edits')
 
-@section('title', 'Atualizar: '. $user->name)
+@section('title', 'Atualizar: '. $cliente_id->descricao)
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-capitalize"> A editar: {{$user->name}}</h1>
+              <h1 class="m-0 text-capitalize"> Alterar tipo de Cliente: {{$cliente_id->descricao}}</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -19,24 +19,20 @@
         <div class="container-fluid">
           <div class="row px-2">
             <div class="col-md-12">
-              <form action="/admin/users/update/{{$user->id}}" method="POST" enctype="multipart/form-data">
+              <form action="/admin/tipocliente/update/{{$cliente_id->id}}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
               <div class="form-group mt-3">
-                <label for="tipoUser">Tipo de Utilizador</label>
-                <select name="tipoUser" id="tipoUser" class="form-control">
-                  @foreach($tipos as $tipo)
-                  <option value="{{$tipo->id}}" {{$tipo->id==$user->tipoUser_id ? "selected='selected'" : ""}}>{{$tipo->descricao}}</option>
-                  @endforeach
-                </select>
+                <label for="tipoCliente" class="form-label">Cliente</label>
+                <input class="form-control" type="text" name="tipoCliente" value="{{$cliente_id->descricao}}">
               </div>
-              @if(session()->has('error_tipoUser'))
+              {{-- @if(session()->has('error_estado'))
                 <div class="alert alert-danger">
-                    {{ session()->get('error_tipoUser') }}
+                    {{ session()->get('error_estado') }}
                 </div>
-              @endif
+              @endif --}}
               <input type="submit" class="btn btn-primary" value="Guardar" >
-              <a href="/admin/users" class="btn btn-danger float-right">Voltar</a>
+              <a href="/admin/tipocliente" class="btn btn-danger float-right">Voltar</a>
 
               </form>
             </div>

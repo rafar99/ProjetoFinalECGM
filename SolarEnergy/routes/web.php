@@ -21,6 +21,12 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\NossosProjetosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\FormularioContactosController;
+use App\Http\Controllers\TipoClienteController;
+use App\Http\Controllers\TipoEstadoController;
+use App\Http\Controllers\TipoFuncionarioController;
+use App\Http\Controllers\TipoPedidoController;
+use App\Http\Controllers\TipoUtilizadorController;
+use App\Http\Controllers\TipoPainelController;
 
 Route::get('/', function () {
     return view('home');
@@ -84,6 +90,49 @@ Route::get('/admin/formcontactos',[FormularioContactosController::class,'index']
 Route::get('/admin/formcontactos/edit/{id}',[FormularioContactosController::class,'edit'])->middleware('auth');
 Route::put('/admin/formcontactos/update/{id}', [FormularioContactosController::class,'update'])->middleware('auth');
 
+
+/////////////-----TIPOS-----////////////////
+//Pagina Tipo Utilizador - Admin
+Route::get('/admin/tipoutilizador',[TipoUtilizadorController::class,'index'])->middleware('auth');
+Route::get('/admin/tipoutilizador/inserir',[TipoUtilizadorController::class,'create'])->middleware('auth');
+Route::post('/admin/tipoutilizador',[TipoUtilizadorController::class,'store'])->middleware('auth');
+Route::get('/admin/tipoutilizador/edit/{id}',[TipoUtilizadorController::class,'edit'])->middleware('auth');
+Route::put('/admin/tipoutilizador/update/{id}', [TipoUtilizadorController::class,'update'])->middleware('auth');
+
+//Pagina Tipo Cliente - Admin
+Route::get('/admin/tipocliente',[TipoClienteController::class,'index'])->middleware('auth');
+Route::get('/admin/tipocliente/inserir',[TipoClienteController::class,'create'])->middleware('auth');
+Route::post('/admin/tipocliente',[TipoClienteController::class,'store'])->middleware('auth');
+Route::get('/admin/tipocliente/edit/{id}',[TipoClienteController::class,'edit'])->middleware('auth');
+Route::put('/admin/tipocliente/update/{id}', [TipoClienteController::class,'update'])->middleware('auth');
+
+//Pagina Tipo Funcionario - Admin
+Route::get('/admin/tipofuncionario',[TipoFuncionarioController::class,'index'])->middleware('auth');
+Route::get('/admin/tipofuncionario/inserir',[TipoFuncionarioController::class,'create'])->middleware('auth');
+Route::post('/admin/tipofuncionario',[TipoFuncionarioController::class,'store'])->middleware('auth');
+Route::get('/admin/tipofuncionario/edit/{id}',[TipoFuncionarioController::class,'edit'])->middleware('auth');
+Route::put('/admin/tipofuncionario/update/{id}', [TipoFuncionarioController::class,'update'])->middleware('auth');
+
+//Pagina Tipo Estado - Admin
+Route::get('/admin/tipoestado',[TipoEstadoController::class,'index'])->middleware('auth');
+Route::get('/admin/tipoestado/inserir',[TipoEstadoController::class,'create'])->middleware('auth');
+Route::post('/admin/tipoestado',[TipoEstadoController::class,'store'])->middleware('auth');
+Route::get('/admin/tipoestado/edit/{id}',[TipoEstadoController::class,'edit'])->middleware('auth');
+Route::put('/admin/tipoestado/update/{id}', [TipoEstadoController::class,'update'])->middleware('auth');
+
+//Pagina Tipo Painel - Admin
+Route::get('/admin/tipopainel',[TipoPainelController::class,'index'])->middleware('auth');
+Route::get('/admin/tipopainel/inserir',[TipoPainelController::class,'create'])->middleware('auth');
+Route::post('/admin/tipopainel',[TipoPainelController::class,'store'])->middleware('auth');
+Route::get('/admin/tipopainel/edit/{id}',[TipoPainelController::class,'edit'])->middleware('auth');
+Route::put('/admin/tipopainel/update/{id}', [TipoPainelController::class,'update'])->middleware('auth');
+
+//Pagina Tipo Pedido - Admin
+Route::get('/admin/tipopedido',[TipoPedidoController::class,'index'])->middleware('auth');
+Route::get('/admin/tipopedido/inserir',[TipoPedidoController::class,'create'])->middleware('auth');
+Route::post('/admin/tipopedido',[TipoPedidoController::class,'store'])->middleware('auth');
+Route::get('/admin/tipopedido/edit/{id}',[TipoPedidoController::class,'edit'])->middleware('auth');
+Route::put('/admin/tipopedido/update/{id}', [TipoPedidoController::class,'update'])->middleware('auth');
 
 
 Route::middleware([

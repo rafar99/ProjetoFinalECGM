@@ -1,31 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-
-
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Informação Página: Empresa</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <a href="/admin/info/empresa/inserir" class="btn btn-secondary float-right">Novo: Empresa 
-              </a>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Tipos de Clientes</h1>
+        </div>
+        <div class="col-sm-6">
+          <a href="/admin/tipocliente/inserir" class="btn btn-secondary float-right">Novo Tipo de Cliente
+          </a>
+        </div>
       </div>
+    </div>
+  </div>
 
-      <section class="content">
+
+
+    <section class="content">
         <div class="container-fluid">
             <div class="row">
 
             <section class="col-lg-12 connectedSortable">
 
           {{----------------------------------------------------------------}}
-          {{-----------------Tabela Informação: Empresa-------------------}}
+          {{--------------------Tabela Tipo Clientes------------------------}}
           {{----------------------------------------------------------------}}
 
               <div id="tabEmpresa" class="row">
@@ -52,23 +52,19 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Título</th>
-                            <th>Descrição</th>
-                            <th>Imagem</th>
+                            <th>Cliente</th>
                             <th>Editar</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach($infos as $info)
+                          @foreach($clientes as $cliente)
                           <tr>
-                            <td>{{$info->id}}</td>
-                            <td>{{$info->titulo}}</td>
-                            <td>{{$info->descricao}}</td>
-                            <td>{{$info->imagem}}</td>
+                            <td>{{$cliente->id}}</td>
+                            <td>{{$cliente->descricao}}</td>
                             <td>
-                              <a href="/admin/info/empresa/edit/{{$info->id}}" class="btn bg-warning">
-                                <i class="bi bi-pencil-square"></i>
-                              </a>
+                                <a href="/admin/tipocliente/edit/{{$cliente->id}}" class="btn bg-warning">
+                                  <i class="bi bi-pencil-square"></i>
+                                </a>
                             </td>
                           </tr>
                           @endforeach

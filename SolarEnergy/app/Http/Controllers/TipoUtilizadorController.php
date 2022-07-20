@@ -3,8 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\TipoUtilizador;
+use DB;
 class TipoUtilizadorController extends Controller
 {
-    //
+    public function index() {
+        $arr_info = ['Início','Empresa','Nossos Projetos','Contactos'];
+        $utilizadores = TipoUtilizador::all();
+        return view('backoffice.tipos.utilizadores.tipoutilizadores',['arr_info' => $arr_info,'utilizadores' => $utilizadores]);
+    }
+    public function create(){
+        return view('backoffice.tipos.utilizadores.create');
+    }
+
+    public function store(Request $request){
+        $validated = $request->validate([
+            'descricao'=>'required|string|unique:tipo_utilizador'
+        ]);
+        TipoUtilizador::create([
+            'descricao'=>$validated['descricao']
+        ]);
+
+        return redirect('/admin/tipoutilizador');
+    }
+    
+    public function edit($id){
+        $utilizador_id = TipoUtilizador::findOrFail($id);
+        return view('backoffice.tipos.utilizadores.edit',['utilizador_id'=>$utilizador_id,]);
+    }
+
+    public function update(Request $request){
+        $utilizador = TipoUtilizador::findOrFail($request->id);
+        // if($request->tipoutilizador > 5){
+        //     return back()->with('error_utilizador','utilizador inválido!');
+        // }
+        $utilizador->descricao = $request->tipoUtilizador;
+
+        $utilizador->save();
+
+        return redirect('/admin/tipoutilizador')->with('msg', ' ');
+    }
 }

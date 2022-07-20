@@ -10,6 +10,10 @@
         <div class="col-sm-6">
           <h1 class="m-0">Informação Página: Inicio</h1>
         </div><!-- /.col -->
+        <div class="col-sm-6">
+          <a href="/admin/info/inicio/inserir" class="btn btn-secondary float-right">Novo: Início 
+          </a>
+        </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>

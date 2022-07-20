@@ -20,7 +20,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="/backoffice_assets/plugins/daterangepicker/daterangepicker.css">
   
-
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -194,7 +194,7 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
+      {{-- <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -204,7 +204,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -271,7 +271,57 @@
           
           
           
-          <li class="nav-header">Inserir</li>
+          <li class="nav-header"><b>Tipos de:</b> </li>
+          <li class="nav-item">
+            <a id="nav-tipopedido" href="/admin/tipopedido" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Pedidos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-tipoutilizador" href="/admin/tipoutilizador" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Utilizadores
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-tipofuncionario" href="/admin/tipofuncionario" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Funcionários
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-tipocliente" href="/admin/tipocliente" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Clientes
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-tipopainel" href="/admin/tipopainel" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Paineis
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="nav-tipoestado" href="/admin/tipoestado" class="nav-link">
+              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <p>
+                Estado
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-header"><b>Inserir</b></li>
           {{-----------NOVO FUNCIONÁRIO-------------}}
           <li class="nav-item">
             <a href="/admin/users/novofuncionario" class="nav-link">
@@ -279,40 +329,6 @@
               <p>Novo Funcionário</p>
             </a>
           </li>
-          
-          {{-------------NOVA INFORMAÇÃO-------------}}
-          <li class="nav-item">
-            <a id="nav-info" href="#" class="nav-link">
-              <i class="nav-icon bi bi-journal-plus"></i>
-              <p>
-                Nova Informação
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              @for($i = 0; $i < count($arr_info); $i++)
-                <li class="nav-item">
-                  @if($arr_info[$i]=="Início")
-                    <?php $menu_new = 'inicio'?>
-                  @elseif($arr_info[$i]=="Empresa")
-                    <?php $menu_new = 'empresa'?>
-                  @elseif($arr_info[$i]=="Nossos Projetos")
-                    <?php $menu_new = 'nossosprojetos'?>
-                  @elseif($arr_info[$i]=="Contactos")
-                    <?php $menu_new = 'contactos'?>
-                  @else
-                    <?php $menu_new = ''?>
-                  @endif  
-
-                  <a id="nav-new-{{$menu_new}}" href="/admin/info/{{$menu_new}}/inserir" class="nav-link">
-                    <i class="bi bi-circle nav-icon"></i>
-                    <p>{{$arr_info[$i]}}</p>
-                  </a>
-                </li>
-              @endfor
-            </ul>
-          </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
