@@ -9,7 +9,26 @@ use DB;
 
 class FormularioContactosController extends Controller
 {
-    public function index(){
+    //Função responsável pelo envio dos dados do pedido de contacto para a base de dados.
+    //Através do request os campos do formulario_contacto são preenchidos. 
+    //Redireciona para a view Contactos e apresenta a mensagem de sucesso.
+
+    public function store(Request $request){
+
+        $formulario_contactos = new FormularioContactos;
+
+        $formulario_contactos->nome = $request->nome;
+        $formulario_contactos->email = $request->email;
+        $formulario_contactos->assunto = $request->assunto;
+        $formulario_contactos->mensagem = $request->mensagem;
+        $formulario_contactos->estado_id = '2';
+
+        $formulario_contactos->save();
+
+        return redirect('/contactos')->with('msg', 'Pedido de Contacto enviado com sucesso!');
+        }
+
+    public function indexAdmin(){
         $infos = DB::table('formulario_contactos')
         ->leftJoin('tipo_estado','formulario_contactos.estado_id','=','tipo_estado.id')
         ->select('formulario_contactos.*','tipo_estado.descricao')

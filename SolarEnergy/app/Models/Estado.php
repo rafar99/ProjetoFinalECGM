@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Estado extends Model
 {
     use HasFactory;
-    protected $table='cliente';
+    protected $table='estado';
     protected $guarded =[];
-
     protected $fillable = [];
-
-    protected $dates=['dataRegisto'];
 }

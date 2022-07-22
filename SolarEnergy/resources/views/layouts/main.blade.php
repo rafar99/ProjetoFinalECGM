@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title')</title>
+    <link rel="icon" href="/img/logoIcon.png" type="image/x-icon">
+
 
     {{-- CSS Bootstrap --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -433,11 +435,13 @@
                                 Empresa
                             </a>
                         </li>
+                        @auth
                         <li class="nav-item">
                             <a href="/assistencia" class="nav-link text-dark">
                                 Assistência
                             </a>
                         </li>
+                        @endauth
                         <li class="nav-item">
                             <a href="/contactos" class="nav-link text-dark">
                                 Contactos
@@ -448,17 +452,26 @@
                             <div id="navDivider"></div>
                         </li>
                         @auth
-                        <li class="nav-item">
-                            <form action="/logout"  method="POST">
-                                @csrf
-                                <a href="/logout" class="nav-link text-dark" 
-                                onclick="event.preventDefault();
-                                this.closest('form').submit();">Sair</a>
-                            </form>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{auth()->user()->name}}
+                            </a>
+                            <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
+                            <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/areacliente/{{$cliente->id}}">A Minha Conta</a></li>
+                               
+                                <li>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <a href="/logout" class="dropdown-item text-dark" onclick="event.preventDefault();
+                                            this.closest('form').submit();">Sair</a>
+                                    </form>
+
+                                </li>
+                            </ul>
                         </li>
                         @endauth
-
-                        
                         @guest
                         <li class="nav-item">
                             <a href="/login" class="nav-link text-dark">
@@ -484,29 +497,31 @@
                             <img src="/img/logoLight.png" alt="SolarEnergyLogo">
                         </a>
                         <div class="redesSociais text-light mt-5">
-                            <p><img src="img/contacto.svg" class="imagem" alt="contacto">+351 963 001 205</p>
-                            <p><img src="img/facebook.svg" class="imagem" alt="facebook">SolarEnergy</p>
-                            <p><img src="img/linkedin.svg" class="imagem" alt="linkden">SolarEnergy</p>
+                            <p><img src="@yield('imgcontacto')" class="imagem" alt="contacto">+351 963 001 205</p>
+                            <p><img src="@yield('imgfacebook')" class="imagem" alt="facebook">SolarEnergy</p>
+                            <p><img src="@yield('imglinkedin')" class="imagem" alt="linkden">SolarEnergy</p>
                         </div>
 
                     </div>
                     <div class="col-md-4 text-light mt-3">
                         <h5><b>Empresa</b></h5>
                         <div class="menu-rodape mt-5">
-                            <p>Início</p>
-                            <p>Empresa</p>
-                            <p>Assistência</p>
-                            <p>Contactos</p>
+                            <p><a href="/">Início</a></p>
+                            <p><a href="/empresa">Empresa</p>
+                            @auth
+                            <p><a href="/assistencia">Assistência</a></p>
+                            @endauth
+                            <p><a href="/contactos">Contactos</a></p>
                         </div>
                     </div>
                     <div class="col-md-4 text-light mt-3">
                         <h5><b>Legal</b></h5>
                         <div class="menu-rodape mt-5">
-                            <p>Termos de Utilização</p>
-                            <p>Política de Privacidade</p>
-                            <p>Política de Cookies</p>
-                            <p>Resolução Alternática de Litígios</p>
-                            <p>Livro de Reclamações Online</p>
+                            <p><a href="">Termos de Utilização</a></p>
+                            <p><a href="">Política de Privacidade</a></p>
+                            <p><a href="">Política de Cookies</a></p>
+                            <p><a href="">Resolução Alternática de Litígios</a></p>
+                            <p><a href="">Livro de Reclamações Online</a></p>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,6 @@ class TipoPedido extends Model
     protected $guarded =[];
     
     public function tipoPedido(){
-        return $this->belongTo(TipoPedido::class, 'tipoPedido');
+        return $this->hasMany(TipoPedido::class, 'tipoPedido');
     }
 }

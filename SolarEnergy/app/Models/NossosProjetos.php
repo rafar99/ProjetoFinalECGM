@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class NossosProjetos extends Model
 {
     use HasFactory;
-    protected $table = 'nossosprojetos';
+    protected $table ='nossosprojetos';
     protected $guarded =[];
+
+    protected $fillable =[
+        'rua', 'porta', 'codigo_postal', 'concelho'
+    ];
 }

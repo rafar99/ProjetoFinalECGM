@@ -3,11 +3,13 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\TipoUtilizador;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -27,17 +29,17 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
+        
+        
+        $tipo = DB::table('tipo_utilizador')->where('descricao', 'Cliente')->get();
 
-            $tipo = DB::table('tipo_utilizador')->where('descricao','Cliente')->get();
-            // var_dump($tipo[0]->id);die;
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'tipoUser_id' => $tipo[0]->id,
-            'ativo' => '1'
-        ]);
-
+            'tipoUser_id' =>$tipo[0]->id,
+            'ativo'=>'1'
+        ]);           
     }
 }

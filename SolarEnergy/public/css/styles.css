@@ -7,6 +7,14 @@
     pointer-events: none;
     cursor: default;
 }
+#navbar ul li a{
+    border-bottom: 2px solid transparent;
+}
+
+#navbar ul li a:hover{
+    border-bottom:#ffce00 2px solid;
+    margin: 0;
+}
 
 hr.divider{
       border-top: 15px solid #2C3E4C;
@@ -113,18 +121,50 @@ footer{
     padding-left: 5vw;
     padding-right: 5vw;
 }
+
+.menu-rodape p a:hover {
+    color: #31C16C;
+}
 .imagem{
     width: 30px;
     height: auto;
     margin-right: 15px;
 }
 
+.perfil{
+    padding:5px; 
+    border-bottom:#ccc 1px solid;
+}
+
+.infoPerfil{
+    padding-left: 20px;
+}
+
+.listapaineis{
+        padding-top:50px ;
+}
 
 
 @media (max-width: 992px) {
     #navDivider{
         display: none;
     }
+    #navbar ul li a{
+        border-bottom: none;
+    }
+    
+    #navbar ul li a:hover{
+        border-bottom:none;
+
+    }
+    .dropdown-menu{
+        background-color: none;
+        border: none;
+        text-align: right;
+    }
+    
+  
+
 
   }
 
@@ -132,8 +172,18 @@ footer{
     .container-fluid{
         padding: 0 32px;
     }
-
+    
+    
 }
+@media (max-width: 880px) {
+    .container-fluid{
+        padding: 0 32px;
+    }
+    .listapaineis{
+        padding-top:25px ;
+    }
+}
+
 
 @media (max-width: 767px) {
     .icones{
@@ -148,6 +198,9 @@ footer{
         margin-right: auto;
         background-color: #31C16C;
         border:none;
+    }
+    .listapaineis{
+        padding-top:25px ;
     }
 
     .card-projetos{
@@ -165,6 +218,7 @@ footer{
 
   }
   @media (max-width: 450px) {
+    
     .botaoVerMaisInicio{
         position: relative;
         bottom: 0;
@@ -175,3 +229,5 @@ footer{
         border:none;
     }
   }
+
+ 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->text('descricao');
             $table->timestamp('dataCriacao')->useCurrent();
-            $table->date('dataExecucao')->nullable();;
-            $table->double('tempoExecucaoEmH')->nullable();;
+            $table->date('dataExecucao')->nullable();
+            $table->double('tempoExecucaoEmH')->nullable();
 
             $table->unsignedBigInteger('tipoPainel')->unsigned()->nullable();
             $table->foreign('tipoPainel')->references('id')->on('tipo_painel')->onDelete('cascade');

@@ -4,11 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contactos;
+use App\Models\Cliente;
 use DB;
 
 class ContactosController extends Controller
 {
     public function index() {
+
+        $contactos = Contactos::all();
+        
+        if(auth()->user()==null){
+            return view('frontend/forms/contactos', ['contactos'=>$contactos]);
+        }
+        $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
+        return view('frontend/forms/contactos', ['contactos'=>$contactos,'cliente'=>$cliente]);
+
+
+       
+    }
+
+    public function indexAdmin(){
         $arr_info = ['Início','Empresa','Nossos Projetos','Contactos'];
 
         $infos = Contactos::all();

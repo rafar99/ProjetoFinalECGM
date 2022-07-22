@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nossosprojetos', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo', 100);
-            $table->text('descricao')->nullable();;
-            $table->text('imagem')->nullable();;
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('tipoUser_id')->unsigned()->nullable();
+            $table->foreign('tipoUser_id')->references('id')->on('tipo_utilizador')->onDelete('cascade');
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nossosprojetos');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('tipoUser_id')->unsigned()->nullable();
+        });
     }
 };

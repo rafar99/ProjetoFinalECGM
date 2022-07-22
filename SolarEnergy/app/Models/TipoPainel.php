@@ -13,6 +13,6 @@ class TipoPainel extends Model
     protected $guarded =[];
 
     public function tipoPainel(){
-        return $this->belongTo(TipoPainel::class, 'tipoPainel');
+        return $this->hasMany(TipoPainel::class, 'tipoPainel');
     }
 }
