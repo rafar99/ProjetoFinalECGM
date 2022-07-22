@@ -1,30 +1,43 @@
 //botões
 var btnTodos = document.getElementById('btnTodos');
-var btnAdTec = document.getElementById('btnAdTec');
+var btnAdmin = document.getElementById('btnAdmin');
+var btnTecnicos = document.getElementById('btnTecnicos');
 var btnClientes = document.getElementById('btnClientes');
 
 //tabelas
 var tabTodos = document.getElementById('tabTodos');
-var tabAdTec = document.getElementById('tabAdTec');
+var tabAdmin = document.getElementById('tabAdmin');
+var tabTecnicos = document.getElementById('tabTecnicos');
 var tabClientes = document.getElementById('tabClientes');
 
-//mostrar tabela de total de assistencias
+//mostrar tabela de total de utilizador
 btnTodos.onclick = function(){
-    tabTodos.classList.remove('d-none');
-    tabAdTec.classList.add('d-none');
-    tabClientes.classList.add('d-none');
-}
-
-//mostrar tabela de assistencias finalizadas
-btnAdTec.onclick = function(){
-     tabTodos.classList.add('d-none');
-     tabAdTec.classList.remove('d-none');
+     tabTodos.classList.remove('d-none');
+     tabAdmin.classList.add('d-none');
+     tabTecnicos.classList.add('d-none'); 
      tabClientes.classList.add('d-none');
 }
 
-//mostrar tabela de assistencias a serem executadas
+//mostrar tabela de administradores
+btnAdmin.onclick = function(){
+     tabTodos.classList.add('d-none');
+     tabAdmin.classList.remove('d-none');
+     tabTecnicos.classList.add('d-none');
+     tabClientes.classList.add('d-none');
+}
+
+//mostrar tabela de total tecnicos
+btnTecnicos.onclick = function(){
+     tabTodos.classList.add('d-none');
+     tabAdmin.classList.add('d-none');
+     tabTecnicos.classList.remove('d-none');
+     tabClientes.classList.add('d-none');
+}
+
+//mostrar tabela de total Clientes
 btnClientes.onclick = function(){
      tabTodos.classList.add('d-none');
-     tabAdTec.classList.add('d-none');
+     tabAdmin.classList.add('d-none');
+     tabTecnicos.classList.add('d-none');
      tabClientes.classList.remove('d-none');
 }

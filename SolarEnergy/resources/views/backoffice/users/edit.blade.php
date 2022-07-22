@@ -30,9 +30,16 @@
                   @endforeach
                 </select>
               </div>
-              @if(session()->has('error_tipoUser'))
+              <div class="form-group mt-3">
+                <label for="ativo">Estado</label>
+                <select name="ativo" id="ativo" class="form-control">
+                  <option value="0">Desativar</option>
+                  <option value="1" {{$user->ativo==1 ? "selected='selected'" : ""}}>Ativar</option>
+                </select>
+              </div>
+              @if(session()->has('error'))
                 <div class="alert alert-danger">
-                    {{ session()->get('error_tipoUser') }}
+                    {{ session()->get('error') }}
                 </div>
               @endif
               <input type="submit" class="btn btn-primary" value="Guardar" >

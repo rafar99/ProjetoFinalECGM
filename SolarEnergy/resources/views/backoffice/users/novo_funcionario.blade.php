@@ -35,7 +35,7 @@
                     
                     <div class="mb-3 form-group col-md-6">
                         <label for="contacto" class="form-label">Função</label>
-                        <select name="funcao" class="form-control" id="funcao">
+                        <select name="funcao" class="form-select" id="funcao">
                         @foreach($funcoes as $funcao)
                             <option value="{{ $funcao->id }}">{{ $funcao->descricao }}</option>
                         @endforeach

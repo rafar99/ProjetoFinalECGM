@@ -46,6 +46,7 @@ Route::get('/contactos', function () {
 
 
 //Pagina Pedido - Admin
+Route::get('/admin',[PedidoController::class,'index'])->middleware('auth');
 Route::get('/admin/dashboard',[PedidoController::class,'index'])->middleware('auth');
 
 //Pagina Utilizadores - Admin
@@ -134,6 +135,9 @@ Route::post('/admin/tipopedido',[TipoPedidoController::class,'store'])->middlewa
 Route::get('/admin/tipopedido/edit/{id}',[TipoPedidoController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipopedido/update/{id}', [TipoPedidoController::class,'update'])->middleware('auth');
 
+// Route::get('/show', function (){
+//     return view('profile.show');
+// });
 
 Route::middleware([
     'auth:sanctum',

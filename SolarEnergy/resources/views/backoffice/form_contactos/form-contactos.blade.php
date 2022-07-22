@@ -55,6 +55,7 @@
                             <th>Data</th>
                             <th>Mensagem</th>
                             <th>Estado</th>
+                            <th>Informação</th>
                             <th>Editar</th>
                           </tr>
                         </thead>
@@ -66,8 +67,11 @@
                             <td>{{$info->email}}</td>
                             <td>{{$info->assunto}}</td>
                             <td>{{$info->data}}</td>
-                            <td>{{$info->mensagem}}</td>
+                            <td>
+                              {{strlen($info->mensagem) > 50 ? implode(' ', array_slice(explode(' ', $info->mensagem),0,10)).'....' : $info->mensagem}}
+                            </td>
                             <td>{{$info->descricao}}</td>
+                            <td><button type="button" data-bs-toggle="modal" data-bs-target="#info{{$info->id}}" class="btn btn-primary">Ver mais</button></td>
                             <td>
                                 <a href="/admin/formcontactos/edit/{{$info->id}}" class="btn bg-warning">
                                   <i class="bi bi-pencil-square"></i>
@@ -77,6 +81,30 @@
                           @endforeach
                         </tbody>
                       </table>
+
+                      <!-- Modal -->
+                      @foreach($infos as $info)
+                      <div class="modal fade" id="info{{$info->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="exampleModalLabel">{{$info->nome}}</h4>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <h5 class="modal-title"><b>Assunto:</b> {{$info->assunto}}</h6>
+                              <p><b>Email:</b> {{$info->email}}</p>
+                              <p><b>Data:</b> {{$info->data}}</p>
+                              <p><b>Mensagem:</b> {{$info->mensagem}}</p>
+                              <p><b>Estado:</b> {{$info->descricao}}</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
 
                     </div>
                     <!-- /.card-body -->

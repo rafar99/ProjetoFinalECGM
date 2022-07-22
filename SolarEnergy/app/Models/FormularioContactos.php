@@ -11,6 +11,7 @@ class FormularioContactos extends Model
     protected $table = 'formulario_contactos';
     protected $guarded =[];
 
+    protected $dates = ['data'];
     public function tipo_estado(){
         return $this->belongTo('App\Models\TipoEstado');
     }

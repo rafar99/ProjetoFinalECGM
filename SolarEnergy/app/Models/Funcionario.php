@@ -18,6 +18,8 @@ class Funcionario extends Model
 
     protected $guarded =[];
 
+    protected $dates = ['dataRegisto'];
+
     public function tipoFuncionario(){
         return $this->belongTo('App\Models\TipoFuncionario');
     }
