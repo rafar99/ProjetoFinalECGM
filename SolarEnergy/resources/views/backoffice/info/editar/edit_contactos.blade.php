@@ -1,5 +1,10 @@
 @extends('layouts.admin-edits')
-
+@if(auth()->user()->tipoUser_id!=1)
+  @php
+    header("Location: " . URL::to('/admin/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 @section('title', 'Editar: Contactos')
 
 @section('content')

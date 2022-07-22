@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+@if(auth()->user()->tipoUser_id==2)
+  @php
+  // var_dump(auth()->user()->tipoUser_id);die;
+    header("Location: " . URL::to('/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 <html lang="pt">
 <head>
   <meta charset="utf-8">
@@ -188,7 +196,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/backoffice_assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/backoffice_assets/dist/img/perfil.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block text-capitalize">{{auth()->user()->name}}</a>
@@ -229,6 +237,8 @@
               </p>
             </a>
           </li>
+
+          @if(auth()->user()->tipoUser_id==1)
           <li class="nav-item">
             <a id="nav-info" href="#" class="nav-link">
               <i class="nav-icon bi bi-layout-text-sidebar-reverse"></i>
@@ -260,6 +270,8 @@
               @endfor
             </ul>
           </li>
+          @endif
+
           <li class="nav-item">
             <a id="nav-formcontactos" href="/admin/formcontactos" class="nav-link">
               <i class="nav-icon bi bi-file-earmark-text text-light"></i>
@@ -271,11 +283,11 @@
           </li>
           
           
-          
+          @if(auth()->user()->tipoUser_id==1)
           <li class="nav-header"><b>Tipos de:</b> </li>
           <li class="nav-item">
             <a id="nav-tipopedido" href="/admin/tipopedido" class="nav-link">
-              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <i class="nav-icon bi bi-bookmark text-light"></i>
               <p>
                 Pedidos
               </p>
@@ -283,7 +295,7 @@
           </li>
           <li class="nav-item">
             <a id="nav-tipoutilizador" href="/admin/tipoutilizador" class="nav-link">
-              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <i class="nav-icon bi bi-people text-light"></i>
               <p>
                 Utilizadores
               </p>
@@ -291,7 +303,7 @@
           </li>
           <li class="nav-item">
             <a id="nav-tipofuncionario" href="/admin/tipofuncionario" class="nav-link">
-              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <i class="nav-icon bi bi-person-workspace text-light"></i>
               <p>
                 Funcionários
               </p>
@@ -299,7 +311,7 @@
           </li>
           <li class="nav-item">
             <a id="nav-tipocliente" href="/admin/tipocliente" class="nav-link">
-              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <i class="nav-icon bi bi-person-circle text-light"></i>
               <p>
                 Clientes
               </p>
@@ -307,7 +319,7 @@
           </li>
           <li class="nav-item">
             <a id="nav-tipopainel" href="/admin/tipopainel" class="nav-link">
-              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <i class="nav-icon bi bi-border-outer text-light"></i>
               <p>
                 Paineis
               </p>
@@ -315,7 +327,7 @@
           </li>
           <li class="nav-item">
             <a id="nav-tipoestado" href="/admin/tipoestado" class="nav-link">
-              <i class="nav-icon bi bi-file-earmark-text text-light"></i>
+              <i class="nav-icon bi bi-clipboard2-check text-light"></i>
               <p>
                 Estados
               </p>
@@ -330,6 +342,9 @@
               <p>Novo Funcionário</p>
             </a>
           </li>
+          @endif
+
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

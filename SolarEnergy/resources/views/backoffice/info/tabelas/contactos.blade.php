@@ -1,5 +1,10 @@
 @extends('layouts.admin')
-
+@if(auth()->user()->tipoUser_id!=1)
+  @php
+    header("Location: " . URL::to('/admin/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 @section('content')
 
     <!-- Content Header (Page header) -->
@@ -58,7 +63,7 @@
                                 <th>Morada</th>
                                 <th>Email</th>
                                 <th>Mapa</th>
-                                <th></th>
+                                <th>Informação</th>
                                 <th>Editar</th>
                               </tr>
                             </thead>
@@ -70,11 +75,7 @@
                                 <td>{{$info->morada}}</td>
                                 <td>{{$info->email}}</td>
                                 <td>
-                                  @if(strlen($info->mapa)<=50)
-                                    {{$info->mapa}}
-                                  @else
-                                    {{implode(' ', array_slice(explode(' ', $info->mapa),0,10))}}...
-                                  @endif
+                                  {{strlen($info->mapa) > 50 ? implode(' ', array_slice(explode(' ', $info->mapa),0,10)).'....' : $info->mapa}}
                                 </td>
                                 <td><button type="button" data-bs-toggle="modal" data-bs-target="#info{{$info->id}}" class="btn btn-primary">Ver mais</button></td>
                               </td>

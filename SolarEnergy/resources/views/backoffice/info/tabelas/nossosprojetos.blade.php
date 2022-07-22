@@ -1,5 +1,10 @@
 @extends('layouts.admin')
-
+@if(auth()->user()->tipoUser_id!=1)
+  @php
+    header("Location: " . URL::to('/admin/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 @section('content')
 
 
@@ -57,7 +62,7 @@
                               <th>ID</th>
                               <th>Título</th>
                               <th>Descrição</th>
-                              <th></th>
+                              <th>Informação</th>
                               <th>Editar</th>
                             </tr>
                           </thead>
@@ -67,12 +72,8 @@
                               <td>{{$info->id}}</td>
                               <td>{{$info->titulo}}</td>
                               <td>
-                                @if(strlen($info->descricao)<=50)
-                                  {{$info->descricao}}
-                                @else
-                                  {{implode(' ', array_slice(explode(' ', $info->descricao),0,10))}}...
-                                @endif
-                                </td>
+                                {{strlen($info->descricao) > 50 ? implode(' ', array_slice(explode(' ', $info->descricao),0,10)).'....' : $info->descricao}}
+                              </td>
                               <td><button type="button" data-bs-toggle="modal" data-bs-target="#info{{$info->id}}" class="btn btn-primary">Ver mais</button></td>
                             </td>
                               <td>

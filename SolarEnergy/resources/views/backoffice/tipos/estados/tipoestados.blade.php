@@ -1,5 +1,10 @@
 @extends('layouts.admin')
-
+@if(auth()->user()->tipoUser_id!=1)
+  @php
+    header("Location: " . URL::to('/admin/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 @section('content')
 <!-- Content Header (Page header) -->
 <div class="content-header">
@@ -55,6 +60,7 @@
                             <th>ID</th>
                             <th>Estado</th>
                             <th>Editar</th>
+                            <th>Apagar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -67,6 +73,11 @@
                                   <i class="bi bi-pencil-square"></i>
                                 </a>
                             </td>
+                            <td>
+                              <a href="" class="btn bg-danger">
+                                <i class="bi bi-x-square"></i>
+                              </a>
+                          </td>
                           </tr>
                           @endforeach
                         </tbody>
