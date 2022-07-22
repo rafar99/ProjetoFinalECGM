@@ -24,7 +24,7 @@
               @method('PUT')
               <div class="form-group mt-3">
                 <label for="tipoUser">Tipo de Utilizador</label>
-                <select name="tipoUser" id="tipoUser" class="form-control">
+                <select name="tipoUser" id="tipoUser" class="form-select">
                   @foreach($tipos as $tipo)
                   <option value="{{$tipo->id}}" {{$tipo->id==$user->tipoUser_id ? "selected='selected'" : ""}}>{{$tipo->descricao}}</option>
                   @endforeach
@@ -32,7 +32,7 @@
               </div>
               <div class="form-group mt-3">
                 <label for="ativo">Estado</label>
-                <select name="ativo" id="ativo" class="form-control">
+                <select name="ativo" id="ativo" class="form-select">
                   <option value="0">Desativar</option>
                   <option value="1" {{$user->ativo==1 ? "selected='selected'" : ""}}>Ativar</option>
                 </select>

@@ -268,7 +268,7 @@
                             <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
                             <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
-                            <td>{{$utilizador->descricao}}</td>
+                            <td>{{$utilizador->tipo}}</td>
                             <td>
                               {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}
                             </td>
@@ -289,27 +289,31 @@
 
                       <!-- Modal -->
                       @foreach($tecnicos as $utilizador)
-                      <div class="modal fade" id="info{{$utilizador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">{{$utilizador->name}}</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        @foreach($tecnicosFuncao as $funcao)
+                          @if($utilizador->fid == $funcao->fid)
+                            <div class="modal fade" id="info{{$utilizador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{$utilizador->name}}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p><b>Nome completo:</b> {{$utilizador->nome}}</p>
+                                    <p><b>Email:</b> {{$utilizador->email}}</p>
+                                    <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
+                                    <p><b>Função:</b> {{$funcao->tipo}}</p>
+                                    <p><b>Estado:</b> {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
+                                    {{-- <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p> --}}
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="modal-body">
-                              <p><b>Nome completo:</b> {{$utilizador->nome}}</p>
-                              <p><b>Email:</b> {{$utilizador->email}}</p>
-                              <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
-                              <p><b>Email:</b> {{$utilizador->email}}</p>
-                              <p><b>Estado:</b> {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
-                              <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                          @endif
+                        @endforeach
                       @endforeach
 
 
@@ -353,6 +357,7 @@
                             <th>Passes</th>
                             <th>Tipo de Utilizador</th>
                             <th>Estado</th>
+                            <th>Informação</th>
                             @if(auth()->user()->tipoUser_id==1)
                             <th>Editar</th>
                             @endif
@@ -365,9 +370,12 @@
                             <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
                             <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
-                            <td>{{$utilizador->descricao}}</td>
+                            <td>{{$utilizador->tipo}}</td>
                             <td>
                               {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}
+                            </td>
+                            <td>
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$utilizador->id}}" class="btn btn-primary">Ver mais</button>
                             </td>
                             @if(auth()->user()->tipoUser_id==1)
                             <td>
@@ -381,6 +389,39 @@
                         </tbody>
                       </table>
 
+
+                      <!-- Modal -->
+                      @foreach($clientes as $utilizador)
+                      @foreach($clienteTipo as $tipo)
+                        @if($utilizador->cid == $tipo->cid)
+                          <div class="modal fade" id="info{{$utilizador->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">{{$utilizador->name}}</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <p><b>Nome completo:</b> {{$utilizador->nome}}</p>
+                                  <p><b>Email:</b> {{$utilizador->email}}</p>
+                                  <p><b>Morada:</b> {{$utilizador->morada}}</p>
+                                  <p><b>NIF:</b> {{$utilizador->nif}}</p>
+                                  <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
+                                  <p><b>Cliente:</b> {{$tipo->tipo}}</p>
+                                  <p><b>Estado:</b> {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
+                                  {{-- <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p> --}}
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          @endif
+                      @endforeach
+                      @endforeach
+
+                       
                     </div>
                     <!-- /.card-body -->
                   </div>
