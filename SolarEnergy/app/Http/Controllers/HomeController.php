@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Home;
 use App\Models\NossosProjetos;
 use App\Models\TipoPainel;
@@ -38,7 +40,11 @@ class HomeController extends Controller
         if(auth()->user()==null){
             return view('frontend/info/dashboard', ['secaoUm'=>$secaoUm, 'infoCard'=>$infoCard, 'nossosprojetos'=>$nossosprojetos, 'infoProjetos'=>$infoProjetos,'tipo_painel'=>$tipo_painel]);            
         } 
-        
+        if(auth()->user()->ativo!=1){
+            Session::flush();        
+            Auth::logout();
+            return redirect('/login')->with('msg', 'A sua conta está desativada! Envie um email através do formulário de contactos caso queira recuperá-la.');
+        }
         $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
         return view('frontend/info/dashboard', ['cliente'=>$cliente,'secaoUm'=>$secaoUm, 'infoCard'=>$infoCard, 'nossosprojetos'=>$nossosprojetos, 'infoProjetos'=>$infoProjetos,'tipo_painel'=>$tipo_painel]);
     }

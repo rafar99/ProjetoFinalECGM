@@ -9,7 +9,7 @@ use App\Models\TipoUtilizador;
 use DB;
 class UtilizadorController extends Controller
 {
-    public function index() {
+    public function indexAdmin() {
 
         $arr_info = ['Início','Empresa','Nossos Projetos','Contactos'];
         
@@ -40,7 +40,6 @@ class UtilizadorController extends Controller
         ->get();
 
 
-
         $clientes = DB::table('users')
         ->leftJoin('tipo_utilizador','users.tipoUser_id','=','tipo_utilizador.id')
         ->leftJoin('cliente as c', 'users.id','=','c.utilizador_id')
@@ -49,13 +48,12 @@ class UtilizadorController extends Controller
         ->where('users.tipoUser_id','=','2')
         ->get();
 
-        // dd($clientes);
         $clienteTipo = DB::table('cliente')
         ->leftJoin('users','cliente.utilizador_id','=','users.id')
         ->leftJoin('tipo_cliente','cliente.tipoCliente','=','tipo_cliente.id')
         ->select('tipo_cliente.descricao as tipo' , 'cliente.id as cid')
         ->get();
-        // dd($tecnicos);
+
         $countUtilizadores = DB::table('users')->select('*')->count();
 
         $countAdmins = DB::table('users')->select('*')->where('tipoUser_id','=','1')->count();

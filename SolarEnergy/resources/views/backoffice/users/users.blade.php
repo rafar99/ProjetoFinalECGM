@@ -133,7 +133,7 @@
                             </td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
-                              {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}
+                              {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
                             </td>
                             @if(auth()->user()->tipoUser_id==1)
                             <td>
@@ -201,7 +201,7 @@
                             <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
-                              {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}
+                              {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
                             </td>
                             @if(auth()->user()->tipoUser_id==1)
                             <td>
@@ -303,7 +303,7 @@
                                     <p><b>Email:</b> {{$utilizador->email}}</p>
                                     <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
                                     <p><b>Função:</b> {{$funcao->tipo}}</p>
-                                    <p><b>Estado:</b> {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
+                                    <p><b>Estado:</b> {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
                                     {{-- <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p> --}}
                                   </div>
                                   <div class="modal-footer">
@@ -372,7 +372,7 @@
                             <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
                             <td>{{$utilizador->tipo}}</td>
                             <td>
-                              {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}
+                              {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
                             </td>
                             <td>
                               <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$utilizador->id}}" class="btn btn-primary">Ver mais</button>
@@ -408,7 +408,7 @@
                                   <p><b>NIF:</b> {{$utilizador->nif}}</p>
                                   <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
                                   <p><b>Cliente:</b> {{$tipo->tipo}}</p>
-                                  <p><b>Estado:</b> {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
+                                  <p><b>Estado:</b> {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
                                   {{-- <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p> --}}
                                 </div>
                                 <div class="modal-footer">

@@ -4,7 +4,13 @@
 @section('imgcontacto', '../img/contacto.svg')
 @section('imgfacebook', '../img/facebook.svg')
 @section('imglinkedin', '../img/facebook.svg')
-
+@if(auth()->user()!=null && auth()->user()->tipoUser_id!=2 )
+  @php
+  var_dump(auth()->user());
+    header("Location: " . URL::to('/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 @section('content')
 
 <div class="container-fluid mt-5">
@@ -26,9 +32,34 @@
                 <p>Morada: {{$cliente->morada}}</p>
             </div>
 
-            <div class="botaoPerfil">
-                <a href="/areacliente/editarcliente/{{$cliente->id}}"><button type="button" class="btn btn-success mt-4 botao-form">Editar</button></a>
+            <div>
+                <button type="button" class="btn btn-danger mt-4 ml-4 float-end" data-bs-toggle="modal" data-bs-target="#desativar{{auth()->user()->id}}">Apagar</button>
+                <a href="/areacliente/editarcliente/{{$cliente->id}}" class="btn btn-success mt-4 botao-form">Editar</a>
             </div>
+
+            <!-- Modal Desativar conta -->
+            <div id="desativar{{auth()->user()->id}}" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Desativar Conta</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Tem a certeza que pretende desativar a conta?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/areacliente/desativar/{{auth()->user()->id}}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="ativo" value="0">
+                            <button type="submit" class="btn btn-danger">Desativar</button>
+                        </form>
+                      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         </div>
     </div>
@@ -46,20 +77,51 @@
                             <th scope="col">Tipo de Pedido</th>
                             <th scope="col">Descrição do Pedido</th>
                             <th scope="col">Estado</th>
+                            <th scope="col">Informação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($listaAssistencia as $lista)
+                        @foreach ($listaAssistencia as $pedido)
                           <tr>
-                            <th scope="row">{{$lista->dataCriacao}}</th>
-                            <td>{{$lista->painel}}</td>
-                            <td>{{$lista->tipo}}</td>
-                            <td>{{$lista->descricao}}</td>
-                            <td>{{$lista->estado}}</td>
+                            <th scope="row">{{$pedido->dataCriacao}}</th>
+                            <td>{{$pedido->painel}}</td>
+                            <td>{{$pedido->tipo}}</td>
+                            <td>{{strlen($pedido->descricao)>30 ? substr($pedido->descricao,0,30).'....' : $pedido->descricao}}</td>
+                            <td>{{$pedido->estado}}</td>
+                            <td>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$pedido->id}}" class="btn btn-primary">Ver mais</button>
+                            </td>
                         </tr>  
                         @endforeach
+                        
                     </tbody>
                 </table>
+                @if($nAssistencias<=0)  
+                    <div class="text-center"><b>Sem pedidos efetuados!</b></div>
+                @endif
+                <!-- Modal Ver Mais Informação -->
+                @foreach($listaAssistencia as $pedido)
+                    <div class="modal fade" id="info{{$pedido->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{$cliente->nome}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <p><b>Painel:</b> {{$pedido->painel}}</p>
+                            <p><b>Pedido:</b> {{$pedido->tipo}}</p>
+                            <p><b>Data de Registo:</b> {{$pedido->dataCriacao}}</p>
+                            <p><b>Estado:</b> {{$pedido->estado}}</p>
+                            {{-- <p><b>Disponibilidade:</b>{{$pedido->dia}} - {{$utilizador->hora}}</p> --}}
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

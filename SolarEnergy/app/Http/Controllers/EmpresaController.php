@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;        
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Empresa;
 use App\Models\Funcionario;
 use App\Models\Cliente;
@@ -23,7 +25,17 @@ class EmpresaController extends Controller
         ->where ('id', '2')
         ->get();
 
-        $funcionarios = Funcionario::all();
+        
+        if(auth()->user()->ativo!=1){
+            Session::flush();        
+            Auth::logout();
+            return redirect('/login')->with('msg', 'A sua conta está desativada! Envie um email através do formulário de contactos caso queira recuperá-la.');
+        }
+        $funcionarios = Funcionario::
+        leftJoin('tipo_funcionario as tf','funcionario.tipoFuncionario_id','=','tf.id')
+        ->select('tf.descricao as funcao','funcionario.nome','funcionario.contacto')
+        ->limit(4)
+        ->get();
         if(auth()->user()==null){
             return view('frontend/info/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
         }

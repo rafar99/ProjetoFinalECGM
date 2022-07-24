@@ -6,7 +6,13 @@
 @section('imglinkedin', '/img/facebook.svg')
 
 @section('content')
-
+@if(auth()->user()!=null && auth()->user()->tipoUser_id!=2 )
+  @php
+  var_dump(auth()->user());
+    header("Location: " . URL::to('/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 <div class="container-fluid mt-5">
     <div class="container-fluid">
         <div class="row mt-5">
@@ -32,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label for="title">Tipo de Cliente</label>
-                              <select class="form-control" id="tipoCliente" name="tipoCliente">
+                              <select class="form-select" id="tipoCliente" name="tipoCliente">
                                 @foreach ($tipoCliente as $tipo)
                                     <option value="{{$tipo->id}}"{{$tipo->id==$cliente->tipoCliente ? "selected='selected'": ""}}>{{$tipo->descricao}}</option>
                                 @endforeach
@@ -43,9 +49,9 @@
                           <label for="title" class="form-label">Morada</label>
                           <input type="text" class="form-control" id="morada" name="morada" placeholder="Rua das Cambalhotas nº 222 Meadela Viana do Castelo" value="{{$cliente->morada}}">
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 text-end">
                           <button type="submit" class="btn btn-success mt-4">Guardar</button>
-                          <a href="{{url()->previous()}}"><button type="button" class="btn btn-success mt-4">Voltar</button></a>
+                          <a href="{{url()->previous()}}"><button type="button" class="btn btn-secondary mt-4">Voltar</button></a>
                         </div>
                       </form>
                 </div>

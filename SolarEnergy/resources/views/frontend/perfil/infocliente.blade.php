@@ -1,4 +1,10 @@
 <!doctype html>
+@if(auth()->user()->tipoUser_id!=2)
+  @php
+    header("Location: " . URL::to('/dashboard'), true, 302);
+    exit();
+  @endphp
+@endif
 <html lang="en">
   <head>
     <meta charset="utf-8">

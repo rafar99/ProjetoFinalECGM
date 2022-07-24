@@ -31,7 +31,7 @@
                 </select>
               </div>
               <div class="form-group mt-3">
-                <label for="ativo">Estado</label>
+                <label for="ativo">Estado: {{$user->ativo==1 ? "Ativada" : "Desativada"}} </label>
                 <select name="ativo" id="ativo" class="form-select">
                   <option value="0">Desativar</option>
                   <option value="1" {{$user->ativo==1 ? "selected='selected'" : ""}}>Ativar</option>

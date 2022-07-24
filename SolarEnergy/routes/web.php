@@ -16,6 +16,7 @@ use App\Http\Controllers\UtilizadorController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\NossosProjetosController;
 use App\Http\Controllers\ContactosController;
@@ -33,7 +34,7 @@ Route::get('/areacliente/{id}', [ClienteController::class, 'show'])->middleware(
 Route::post('/areacliente/{id}', [ClienteController::class, 'store'])->middleware('auth');
 Route::get('/areacliente/editarcliente/{id}', [ClienteController::class, 'edit'])->middleware('auth');
 Route::put('/areacliente/editarcliente/update/{id}', [ClienteController::class, 'update'])->middleware('auth');
-
+Route::put('/areacliente/desativar/{id}',[ClienteController::class, 'desativar'])->middleware('auth');
 //Home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'index']);

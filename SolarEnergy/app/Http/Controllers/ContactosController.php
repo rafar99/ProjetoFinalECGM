@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\Contactos;
 use App\Models\Cliente;
 use DB;
@@ -16,11 +18,13 @@ class ContactosController extends Controller
         if(auth()->user()==null){
             return view('frontend/forms/contactos', ['contactos'=>$contactos]);
         }
+        if(auth()->user()->ativo!=1){
+            Session::flush();        
+            Auth::logout();
+            return redirect('/login')->with('msg', 'A sua conta está desativada! Envie um email através do formulário de contactos caso queira recuperá-la.');
+        }
         $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
         return view('frontend/forms/contactos', ['contactos'=>$contactos,'cliente'=>$cliente]);
-
-
-       
     }
 
     public function indexAdmin(){

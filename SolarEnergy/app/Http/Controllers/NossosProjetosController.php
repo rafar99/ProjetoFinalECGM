@@ -8,7 +8,7 @@ use DB;
 
 class NossosProjetosController extends Controller
 {
-    public function index() {
+    public function indexAdmin() {
         $arr_info = ['Início','Empresa','Nossos Projetos','Contactos'];
 
         $infos = NossosProjetos::all();

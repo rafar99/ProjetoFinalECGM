@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('disponibilidade', function (Blueprint $table) {
             $table->id();
             $table->date('dia');
-            $table->date('hora');
+            $table->time('hora');
             $table->timestamps();
         });
     }

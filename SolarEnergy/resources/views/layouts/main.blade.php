@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -453,23 +454,45 @@
                         </li>
                         @auth
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{auth()->user()->name}}
-                            </a>
-                            <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
-                            <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/areacliente/{{$cliente->id}}">A Minha Conta</a></li>
-                               
-                                <li>
-                                    <form action="/logout" method="POST">
-                                        @csrf
-                                        <a href="/logout" class="dropdown-item text-dark" onclick="event.preventDefault();
-                                            this.closest('form').submit();">Sair</a>
-                                    </form>
+                            @if(auth()->user()->tipoUser_id==2)
+                                <a class="nav-link dropdown-toggle text-capitalize" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{auth()->user()->name}}
+                                </a>
+                                
+                                <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
+                                <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/areacliente/{{$cliente->id}}">A Minha Conta</a></li>
+                                
+                                    <li>
+                                        <form action="/logout" method="POST">
+                                            @csrf
+                                            <a href="/logout" class="dropdown-item text-dark" onclick="event.preventDefault();
+                                                this.closest('form').submit();">Sair</a>
+                                        </form>
 
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            @else
+                                <a class="nav-link dropdown-toggle text-capitalize" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{auth()->user()->name}}
+                                </a>
+                                
+                                <!--Dropdown para aceder ao perfil da página e para sair da sessão-->
+                                <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/admin">Área Admin</a></li>
+                                
+                                    <li>
+                                        <form action="/logout" method="POST">
+                                            @csrf
+                                            <a href="/logout" class="dropdown-item text-dark" onclick="event.preventDefault();
+                                                this.closest('form').submit();">Sair</a>
+                                        </form>
+
+                                    </li>
+                                </ul>
+                            @endif
                         </li>
                         @endauth
                         @guest

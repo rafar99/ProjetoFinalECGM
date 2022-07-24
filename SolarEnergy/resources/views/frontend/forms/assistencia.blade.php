@@ -68,7 +68,7 @@
 
                 <div class="form-group mt-3">
                     <label for="tipo_painel">Tipo Painel</label>
-                    <select name ="tipoPainel" class="form-control" id="tipoPainel">
+                    <select name ="tipoPainel" class="form-select" id="tipoPainel">
                         @foreach ($paineis as $painel)
                             <option value="{{$painel->id}}">{{$painel->descricao}}</option>
                         @endforeach
@@ -76,7 +76,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="tipo_assistencia">Tipo de Assistência</label>
-                    <select name ="tipoPedido" class="form-control" id="tipoPedido">
+                    <select name ="tipoPedido" class="form-select" id="tipoPedido">
                         @foreach ($tipo_pedido as $pedido)
                             <option value="{{$pedido->id}}">{{$pedido->descricao}}</option>
                         @endforeach

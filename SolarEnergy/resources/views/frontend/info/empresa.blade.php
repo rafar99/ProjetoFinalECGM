@@ -62,7 +62,7 @@
                     <img src="img/imagem5.png" class="card-img-top" style="width: 100%; height:auto;">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{$funcionario->nome}}</h5>
-                        <p class="card-text text-center">{{$funcionario->contacto}}</p>
+                        <p class="card-text text-center">{{$funcionario->funcao}}</p>
                     </div>
                 </div>
             </div>

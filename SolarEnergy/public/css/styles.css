@@ -162,19 +162,14 @@ footer{
         border: none;
         text-align: right;
     }
-    
-  
-
-
-  }
+}
 
 @media (min-width: 992px) {
     .container-fluid{
         padding: 0 32px;
-    }
-    
-    
+    }   
 }
+
 @media (max-width: 880px) {
     .container-fluid{
         padding: 0 32px;
@@ -230,4 +225,5 @@ footer{
     }
   }
 
- 
+
+
