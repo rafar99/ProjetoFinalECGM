@@ -75,7 +75,7 @@
                                 <td>{{$info->morada}}</td>
                                 <td>{{$info->email}}</td>
                                 <td>
-                                  {{strlen($info->mapa) > 50 ? implode(' ', array_slice(explode(' ', $info->mapa),0,10)).'....' : $info->mapa}}
+                                  {{strlen($info->mapa)>45 ? substr($info->mapa,0,45).'....' : $info->mapa}}
                                 </td>
                                 <td><button type="button" data-bs-toggle="modal" data-bs-target="#info{{$info->id}}" class="btn btn-primary">Ver mais</button></td>
                               </td>

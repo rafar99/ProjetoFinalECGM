@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\TipoPedido;
 use App\Models\TipoPainel;
+use App\Models\TipoEstado;
 use App\Models\Morada;
 use App\Models\Cliente;
 use App\Models\User;
@@ -22,7 +23,6 @@ class PedidoController extends Controller
         //join à tabela de pedidos
 
         $tipoUser = auth()->user()->tipoUser_id;
-        // var_dump($tipoUser);die;
         $pedido = DB::table('pedido')
             ->leftJoin('tipo_painel', 'pedido.tipoPainel', '=', 'tipo_painel.id')
             ->leftJoin('tipo_pedido', 'pedido.tipoPedido', '=', 'tipo_pedido.id')
@@ -134,7 +134,9 @@ class PedidoController extends Controller
         ->leftJoin('tipo_painel','pedido.tipoPainel','=','tipo_painel.id')
         ->leftJoin('tipo_pedido','pedido.tipoPedido','=','tipo_pedido.id')
         ->leftJoin('tipo_estado','pedido.estado','=','tipo_estado.id')
-        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado')
+        ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
+        ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
+        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado','cliente.nome as cliente','morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude')
         ->get();
 
         //pedidos finalizados
@@ -142,8 +144,10 @@ class PedidoController extends Controller
         ->leftJoin('tipo_painel','pedido.tipoPainel','=','tipo_painel.id')
         ->leftJoin('tipo_pedido','pedido.tipoPedido','=','tipo_pedido.id')
         ->leftJoin('tipo_estado','pedido.estado','=','tipo_estado.id')
-        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado')
-        ->where('pedido.estado','=','1')
+        ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
+        ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
+        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado','cliente.nome as cliente','morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude')
+        ->where('pedido.estado','=','3')
         ->get();
 
         //pedidos atuais
@@ -151,8 +155,10 @@ class PedidoController extends Controller
         ->leftJoin('tipo_painel','pedido.tipoPainel','=','tipo_painel.id')
         ->leftJoin('tipo_pedido','pedido.tipoPedido','=','tipo_pedido.id')
         ->leftJoin('tipo_estado','pedido.estado','=','tipo_estado.id')
-        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado')
-        ->where('pedido.estado','=','2')
+        ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
+        ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
+        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado','cliente.nome as cliente','morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude')
+        ->where('pedido.estado','=','4')
         ->get();
 
         //pedidos P/ executar
@@ -160,21 +166,23 @@ class PedidoController extends Controller
         ->leftJoin('tipo_painel','pedido.tipoPainel','=','tipo_painel.id')
         ->leftJoin('tipo_pedido','pedido.tipoPedido','=','tipo_pedido.id')
         ->leftJoin('tipo_estado','pedido.estado','=','tipo_estado.id')
-        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado')
-        ->where('pedido.estado','=','3')
+        ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
+        ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
+        ->select('pedido.*','tipo_painel.descricao as painel','tipo_pedido.descricao as tipo','tipo_estado.descricao as estado','cliente.nome as cliente','morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude')
+        ->where('pedido.estado','=','5')
         ->get();
 
         $countAss = DB::table('pedido')->select('*')->get()->count();
 
-        $countAssFinalizadas = DB::table('pedido')->select('*')->where('estado','=','1')->get()->count();
+        $countAssFinalizadas = DB::table('pedido')->select('*')->where('estado','=','3')->get()->count();
         
-        $countAssAtuais = DB::table('pedido')->select('*')->where('estado','=','2')->get()->count();
+        $countAssAtuais = DB::table('pedido')->select('*')->where('estado','=','4')->get()->count();
 
-        $countAssPorExecutar = DB::table('pedido')->select('*')->where('estado','=','3')->get()->count();
+        $countAssPorExecutar = DB::table('pedido')->select('*')->where('estado','=','5')->get()->count();
 
-        return view('backoffice.dashboard',[
+        return view('backoffice.pedidos.dashboard',[
             'arr_info' => $arr_info, 
-            'ass'=>$ass,
+            'assistencias'=>$ass,
             'assFin' =>$assFin,
             'assAtuais' =>$assAtuais,
             'assPExe' =>$assPExe,
@@ -182,7 +190,6 @@ class PedidoController extends Controller
             'countAssFinalizadas'=>$countAssFinalizadas,
             'countAssAtuais'=>$countAssAtuais,
             'countAssPorExecutar'=>$countAssPorExecutar
-
         ]);
     }
 }

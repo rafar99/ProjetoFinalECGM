@@ -120,22 +120,35 @@
                             <th>Descrição</th>
                             <th>Tipo de Pedido</th>
                             <th>Estado</th>
+                            <th>Informação</th>
+                            <th>Editar</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach($ass as $assistencia)
+                          @foreach($assistencias as $assistencia)
                           
                           <tr>
                             <td>{{$assistencia->id}}</td>
                             <td>{{$assistencia->painel}}</td>
                             <td>{{$assistencia->dataCriacao}}</td>
-                            <td>{{$assistencia->descricao}}</td>
+                            <td>{{strlen($assistencia->descricao)>15 ? substr($assistencia->descricao,0,15).'....' : $assistencia->descricao}}</td>
                             <td>{{$assistencia->tipo}}</td>
                             <td>{{$assistencia->estado}}</td>
+                            <td>
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$assistencia->id}}" class="btn btn-primary">Ver mais</button>  
+                            </td>
+                            <td>
+                              <a href="/admin/dashboard/edit/{{$assistencia->id}}" class="btn bg-warning text-white" style="color:white">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
                       </table>
+
+                      
+
                     </div>
                     <!-- /.card-body -->
                   </div>
@@ -175,6 +188,8 @@
                             <th>Descrição</th>
                             <th>Tipo de Pedido</th>
                             <th>Estado</th>
+                            <th>Informação</th>
+                            <th>Editar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -184,9 +199,17 @@
                             <td>{{$assistencia->id}}</td>
                             <td>{{$assistencia->painel}}</td>
                             <td>{{$assistencia->dataCriacao}}</td>
-                            <td>{{$assistencia->descricao}}</td>
+                            <td>{{strlen($assistencia->descricao)>15 ? substr($assistencia->descricao,0,15).'....' : $assistencia->descricao}}</td>
                             <td>{{$assistencia->tipo}}</td>
                             <td>{{$assistencia->estado}}</td>
+                            <td>
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$assistencia->id}}" class="btn btn-primary">Ver mais</button>  
+                            </td>
+                            <td>
+                              <a href="/admin/dashboard/edit/{{$assistencia->id}}" class="btn bg-warning text-white" style="color:white">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
@@ -229,6 +252,8 @@
                             <th>Descrição</th>
                             <th>Tipo de Pedido</th>
                             <th>Estado</th>
+                            <th>Informação</th>
+                            <th>Editar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -241,6 +266,14 @@
                             <td>{{$assistencia->descricao}}</td>
                             <td>{{$assistencia->tipo}}</td>
                             <td>{{$assistencia->estado}}</td>
+                            <td>
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$assistencia->id}}" class="btn btn-primary">Ver mais</button>  
+                            </td>
+                            <td>
+                              <a href="/admin/dashboard/edit/{{$assistencia->id}}" class="btn bg-warning text-white" style="color:white">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
@@ -283,6 +316,8 @@
                             <th>Descrição</th>
                             <th>Tipo de Pedido</th>
                             <th>Estado</th>
+                            <th>Informação</th>
+                            <th>Editar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -295,6 +330,14 @@
                             <td>{{$assistencia->descricao}}</td>
                             <td>{{$assistencia->tipo}}</td>
                             <td>{{$assistencia->estado}}</td>
+                            <td>
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$assistencia->id}}" class="btn btn-primary">Ver mais</button>  
+                            </td>
+                            <td>
+                              <a href="/admin/dashboard/edit/{{$assistencia->id}}" class="btn bg-warning text-white" style="color:white">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
@@ -305,7 +348,33 @@
                   <!-- /.card -->
                 </div>
               </div>
-
+              <!-- Modal -->
+              @foreach($assistencias as $info)
+              <div class="modal fade" id="info{{$info->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">{{$info->tipo}} - {{$info->cliente}}</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h5 class="modal-title"><b>Painel:</b> {{$info->painel}}</h6>
+                      <p><b>Data do Pedido:</b> {{$info->dataCriacao}}</p>
+                      <p><b>Data do Pedido Efetuado:</b> {{$info->dataExecucao != null ? $info->dataExecucao : "Por Efetuar"}}</p>
+                      <p><b>Tempo do Pedido (em H):</b> {{$info->tempoExecucaoEmH != null ? $info->tempoExecucaoEmH : "Por Efetuar"}}</p>
+                      <p><b>Morada:</b> {{$info->rua}}, {{$info->porta}}, {{$info->codigo_postal}} - {{$info->concelho}} </p>
+                      {{-- <p><b>Disponibilidade:</b> {{$info->disponibilidade}}</p> --}}
+                      <p><b>Descrição:</b> {{$info->descricao}}</p>
+                      <p><b>Tipo de Pedido:</b> {{$info->tipo}}</p>
+                      <p><b>Estado:</b> {{$info->estado}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endforeach
             </section>
 
           </div>

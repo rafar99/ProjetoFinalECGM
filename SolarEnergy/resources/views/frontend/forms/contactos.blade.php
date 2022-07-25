@@ -8,7 +8,7 @@
 @section('content')
 <div id="mapa">
     <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191143.04784379067!2d-8.760304123610243!3d41.5343851653762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24523381abf019%3A0xa586144daaa86f60!2sBarcelos!5e0!3m2!1spt-PT!2spt!4v1551626827784"
+        src="{{$mapa[0]->mapa}}"
         width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 <div class="container-fluid">

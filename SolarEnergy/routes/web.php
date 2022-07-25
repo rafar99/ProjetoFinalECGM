@@ -59,6 +59,8 @@ Route::post('/contactos', [FormularioContactosController::class, 'store']);
 //Pagina Pedido - Admin
 Route::get('/admin',[PedidoController::class,'indexAdmin'])->middleware('auth');
 Route::get('/admin/dashboard',[PedidoController::class,'indexAdmin'])->middleware('auth');
+Route::get('/admin/dashboard/edit/{id}',[PedidoController::class,'edit'])->middleware('auth');
+Route::put('/admin/dashboard/update/{id}',[PedidoController::class,'update'])->middleware('auth');
 
 //Pagina Utilizadores - Admin
 Route::get('/admin/users', [UtilizadorController::class,'indexAdmin'])->middleware('auth');
@@ -145,16 +147,3 @@ Route::get('/admin/tipopedido/inserir',[TipoPedidoController::class,'create'])->
 Route::post('/admin/tipopedido',[TipoPedidoController::class,'store'])->middleware('auth');
 Route::get('/admin/tipopedido/edit/{id}',[TipoPedidoController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipopedido/update/{id}', [TipoPedidoController::class,'update'])->middleware('auth');
-
-
-//login e registo
-
-/*Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
-});*/

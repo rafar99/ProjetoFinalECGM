@@ -42,7 +42,6 @@ class FormularioContactosController extends Controller
         $form_id = FormularioContactos::findOrFail($id);
         $estados = TipoEstado::where('descricao','Lido')->orWhere('descricao','Não lido')->get();
         $countEstados = $estados->count();
-        // var_dump($estados[0]->id);die;
         return view('backoffice.form_contactos.edit-form-contactos',['form_id'=>$form_id,'estados'=>$estados,'countEst'=>$countEstados]);
     }
 
