@@ -14,4 +14,8 @@ class TipoCliente extends Model
     protected $fillable = [
         'id','descricao'
     ];
+
+    public function tipo_pedido(){
+        return $this->hasMany('App\Models\Pedido');
+    }
 }

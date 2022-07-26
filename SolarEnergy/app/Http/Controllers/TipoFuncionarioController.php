@@ -26,7 +26,7 @@ class TipoFuncionarioController extends Controller
             'descricao'=>$validated['descricao']
         ]);
 
-        return redirect('/admin/tipofuncionario');
+        return redirect('/admin/tipofuncionario')->with('msg_create','Tipo de Funcionário criado com sucesso');
     }
     
     public function edit($id){
@@ -36,13 +36,18 @@ class TipoFuncionarioController extends Controller
 
     public function update(Request $request){
         $funcionario = TipoFuncionario::findOrFail($request->id);
-        // if($request->tipofuncionario > 5){
-        //     return back()->with('error_funcionario','funcionario inválido!');
-        // }
+        if($request->tipoFuncionario == null){
+            return back()->with('error','Campo(s) vazio(s)!');
+        }
         $funcionario->descricao = $request->tipoFuncionario;
 
         $funcionario->save();
 
-        return redirect('/admin/tipofuncionario')->with('msg', ' ');
+        return redirect('/admin/tipofuncionario')->with('msg_edit', 'Tipo de Funcionário alterado com sucesso!');
+    }
+
+    public function destroy($id){
+        TipoFuncionario::findOrFail($id)->delete();
+        return redirect('/admin/tipofuncionario')->with('msg_delete', 'Tipo de Funcionário - ' . $id . ' - eliminado com sucesso!');
     }
 }

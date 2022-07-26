@@ -31,11 +31,11 @@
                 <label for="tipofuncionario" class="form-label">Funcionário</label>
                 <input class="form-control" type="text" name="tipoFuncionario" value="{{$funcionario_id->descricao}}">
               </div>
-              {{-- @if(session()->has('error_funcionario'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error_funcionario') }}
+              @if(session()->has('error'))
+                <div id="alerta"class="alert alert-danger">
+                    {{ session()->get('error') }}
                 </div>
-              @endif --}}
+              @endif
               <input type="submit" class="btn btn-primary" value="Guardar" >
               <a href="/admin/tipofuncionario" class="btn btn-danger float-right">Voltar</a>
 

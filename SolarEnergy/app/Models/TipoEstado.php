@@ -14,4 +14,7 @@ class TipoEstado extends Model
     public function formulario_contactos(){
         return $this->hasMany('App\Models\FormularioContactos');
     }
+    public function tipo_estado(){
+        return $this->hasMany('App\Models\Pedido');
+    }
 }

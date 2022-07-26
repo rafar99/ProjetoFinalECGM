@@ -24,7 +24,7 @@ class TipoUtilizadorController extends Controller
             'descricao'=>$validated['descricao']
         ]);
 
-        return redirect('/admin/tipoutilizador');
+        return redirect('/admin/tipoutilizador')->with('msg_create','Tipo de Utilizador criado com sucesso!');
     }
     
     public function edit($id){
@@ -34,13 +34,18 @@ class TipoUtilizadorController extends Controller
 
     public function update(Request $request){
         $utilizador = TipoUtilizador::findOrFail($request->id);
-        // if($request->tipoutilizador > 5){
-        //     return back()->with('error_utilizador','utilizador inválido!');
-        // }
+        if($request->tipoUtilizador == null){
+            return back()->with('error','Campo(s) vazio(s)!');
+        }
         $utilizador->descricao = $request->tipoUtilizador;
 
         $utilizador->save();
 
-        return redirect('/admin/tipoutilizador')->with('msg', ' ');
+        return redirect('/admin/tipoutilizador')->with('msg_edit', 'Tipo de Utilizador alterado com sucesso!');
+    }
+
+    public function destroy($id){
+        TipoUtilizador::findOrFail($id)->delete();
+        return redirect('/admin/tipoutilizador')->with('msg_delete', 'Tipo de Utilizador - ' . $id . ' - eliminado com sucesso!');
     }
 }

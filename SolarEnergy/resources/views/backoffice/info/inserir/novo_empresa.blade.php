@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3 form-group">
                   <label for="exampleInputPassword1" class="form-label">Descrição</label>
-                  <textarea class="form-control" id="descricao" rows="3" name="descricao" required></textarea>
+                  <textarea class="form-control" id="descricao" rows="3" name="descricao"></textarea>
                 </div>
                 <div class="mb-3 form-group">
                   <label for="formFile" class="form-label">Insira uma imagem</label>

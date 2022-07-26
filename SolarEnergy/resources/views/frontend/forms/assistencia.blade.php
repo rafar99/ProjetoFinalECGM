@@ -13,6 +13,15 @@
         </div>
     </div>
 </div>
+@if(session()->has('msg'))
+<div id="alerta" class="text-center alert alert-success">
+    {{session()->get('msg')}}
+</div>
+@elseif(session()->has('error'))
+<div id="alerta" class="text-center alert alert-danger">
+    {{session()->get('error')}}
+</div>
+@endif
 
 <div class="container-fluid mt-5">
     <div class="row">
@@ -29,12 +38,12 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value='{{$cliente->nome}}' disabled>
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value='{{$cliente==null ? "" : $cliente->nome}}' disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="contacto" id="contacto" placeholder="Contacto" value='{{$cliente->contacto}}' disabled>
+                            <input type="text" class="form-control" name="contacto" id="contacto" placeholder="Contacto" value='{{$cliente==null ? "" : $cliente->contacto}}' disabled>
                         </div>
                     </div>
                 </div>
@@ -68,7 +77,7 @@
 
                 <div class="form-group mt-3">
                     <label for="tipo_painel">Tipo Painel</label>
-                    <select name ="tipoPainel" class="form-select" id="tipoPainel">
+                    <select name ="tipoPainel" class="form-select" id="tipoPainel" {{$tipoUser !=2 ? "disabled" : "" }}>
                         @foreach ($paineis as $painel)
                             <option value="{{$painel->id}}">{{$painel->descricao}}</option>
                         @endforeach
@@ -76,7 +85,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="tipo_assistencia">Tipo de Assistência</label>
-                    <select name ="tipoPedido" class="form-select" id="tipoPedido">
+                    <select name ="tipoPedido" class="form-select" id="tipoPedido" {{$tipoUser !=2 ? "disabled" : "" }}>
                         @foreach ($tipo_pedido as $pedido)
                             <option value="{{$pedido->id}}">{{$pedido->descricao}}</option>
                         @endforeach
@@ -90,19 +99,19 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-2">
-                            <input type="date" class="form-control" id="dia" name="dia">
+                            <input type="date" class="form-control" id="dia" name="dia"{{$tipoUser !=2 ? "disabled" : "" }}>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-2">
-                            <input type="time" class="form-control" id="hora" name="hora">
+                            <input type="time" class="form-control" id="hora" name="hora"{{$tipoUser !=2 ? "disabled" : "" }}>
                         </div>
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Descrição"></textarea>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Descrição" {{$tipoUser !=2 ? "disabled" : "" }}></textarea>
                 </div>
-                <button type="submit" class="btn btn-success mt-4 botao-form">Enviar</button>
+                <button type="submit" class="btn btn-success mt-4 botao-form" {{$tipoUser !=2 ? "disabled" : "" }}>Enviar</button>
             </form>
         </div>
     </div>

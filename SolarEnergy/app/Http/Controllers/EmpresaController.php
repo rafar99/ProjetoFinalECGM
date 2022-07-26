@@ -73,7 +73,7 @@ class EmpresaController extends Controller
         }
         $empresa->save();
 
-        return redirect('/admin/info/empresa');
+        return redirect('/admin/info/empresa')->with('msg_create','Informação de Empresa criada com sucesso!');
     }
 
     public function edit($id){
@@ -96,6 +96,11 @@ class EmpresaController extends Controller
         Empresa::findOrFail($request->id)->update($data);
 
 
-        return redirect('/admin/info/empresa')->with('msg', 'Informação alterada com sucesso!');
+        return redirect('/admin/info/empresa')->with('msg_edit', 'Informação de Empresa - ' . $request->id .' - alterada com sucesso!');
+    }
+
+    public function destroy($id){
+        Empresa::findOrFail($id)->delete();
+        return redirect('/admin/info/empresa')->with('msg_delete', 'Informação de Empresa - ' . $id . ' - eliminada com sucesso!');
     }
 }

@@ -59,7 +59,7 @@
             @foreach ($funcionarios as $funcionario)
             <div class="col-md-3">
                 <div class="card card-projetos h-100">
-                    <img src="img/imagem5.png" class="card-img-top" style="width: 100%; height:auto;">
+                    <img src="backoffice_assets/dist/img/func/{{$funcionario->foto}}" class="card-img-top" style="width: 100%; height:auto;">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{$funcionario->nome}}</h5>
                         <p class="card-text text-center">{{$funcionario->funcao}}</p>

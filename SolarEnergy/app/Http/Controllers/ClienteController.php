@@ -18,6 +18,8 @@ class ClienteController extends Controller
         $tipoCliente = TipoCliente::all();
 
         $userId = auth()->user()->id;
+
+        //verifica se o utilizador já tem conta de cliente, caso tenha, redireciona para o inicio  
         $temConta = Cliente::select('utilizador_id')->where('utilizador_id',$userId)->first();
         if($temConta!==null){
             return redirect('dashboard');
@@ -27,6 +29,7 @@ class ClienteController extends Controller
 
     public function store(Request $request){
         
+        //guarda as informaçoes de cliente do utilizador acabado de criar conta
         $userId = auth()->user()->id;
         $cliente = new Cliente;
 
@@ -45,6 +48,7 @@ class ClienteController extends Controller
     }
 
     public function show($id){
+        //lista a informação do cliente logado e os seus pedidos
         $cliente = Cliente::findOrFail($id);
         $listaAssistencia = DB::table('pedido')
         ->leftJoin('tipo_painel', 'pedido.tipoPainel', '=', 'tipo_painel.id')
@@ -55,8 +59,10 @@ class ClienteController extends Controller
         ->select('pedido.*', 'tipo_estado.descricao as estado', 'tipo_painel.descricao as painel', 'tipo_pedido.descricao as tipo')
         ->get();
 
+        //total de assistencias deste cliente
         $countAssistencias = $listaAssistencia->count();
         
+        //verifica se o utilizador tem a conta ativada
         if(auth()->user()->ativo!=1){
             Session::flush();        
             Auth::logout();
@@ -65,6 +71,7 @@ class ClienteController extends Controller
         return view('frontend/perfil/areacliente', ['cliente'=> $cliente,'listaAssistencia'=> $listaAssistencia,'nAssistencias'=>$countAssistencias]);
     }
 
+    //Desativa conta do proprio utilizador e faz logout
     public function desativar(Request $request){
         $user = User::findOrFail(auth()->user()->id);
         $user->ativo = $request->ativo;
@@ -72,9 +79,9 @@ class ClienteController extends Controller
         Session::flush();        
         Auth::logout();
         return redirect('/');
-
     }
 
+    // editar o cliente atual
     public function edit($id){
 
         $cliente = Cliente::findOrFail($id);
@@ -86,10 +93,11 @@ class ClienteController extends Controller
         return view('frontend/perfil/editarcliente', ['cliente'=> $cliente, 'tipoCliente'=>$tipoCliente]);
     }
 
+    //guardar as alterações
     public function update(Request $request){
 
         Cliente::findOrFail($request->id)->update($request->all());
-        return redirect('areacliente/' . $request->id)->with('msg', 'Cliente editado com sucesso!');
+        return redirect('areacliente/' . $request->id)->with('msg_edit', 'Cliente alterado com sucesso!');
     }
 
     

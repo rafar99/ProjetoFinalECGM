@@ -31,11 +31,11 @@
                 <label for="tipoEstado" class="form-label">Estado</label>
                 <input class="form-control" type="text" name="tipoEstado" value="{{$estado_id->descricao}}">
               </div>
-              {{-- @if(session()->has('error_estado'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error_estado') }}
+              @if(session()->has('error'))
+                <div id="alerta" class="alert alert-danger">
+                    {{ session()->get('error') }}
                 </div>
-              @endif --}}
+              @endif
               <input type="submit" class="btn btn-primary" value="Guardar" >
               <a href="/admin/tipoestado" class="btn btn-danger float-right">Voltar</a>
 

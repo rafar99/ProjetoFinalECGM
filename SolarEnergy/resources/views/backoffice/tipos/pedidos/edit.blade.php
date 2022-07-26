@@ -33,13 +33,13 @@
               </div>
               <div class="form-group mt-3">
                 <label for="tipoPreco" class="form-label">Preço Base</label>
-                <input class="form-control" type="text" name="tipoPreco" value="{{$pedido_id->precoBase}}">
+                <input class="form-control" type="text" name="precoBase" value="{{$pedido_id->precoBase}}">
               </div>
-              {{-- @if(session()->has('error_estado'))
-                <div class="alert alert-danger">
-                    {{ session()->get('error_estado') }}
+              @if(session()->has('error'))
+                <div id="alerta" class="alert alert-danger">
+                    {{ session()->get('error') }}
                 </div>
-              @endif --}}
+              @endif
               <input type="submit" class="btn btn-primary" value="Guardar" >
               <a href="/admin/tipopedido" class="btn btn-danger float-right">Voltar</a>
 

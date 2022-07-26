@@ -51,7 +51,7 @@ class ContactosController extends Controller
         
         $contacto->save();
 
-        return redirect('/admin/info/contactos');
+        return redirect('/admin/info/contactos')->with('msg_create', 'Novo Contacto criado com sucesso!');
     }
     public function edit($id){
         $contactos = Contactos::findOrFail($id);
@@ -61,10 +61,15 @@ class ContactosController extends Controller
 
     public function update(Request $request){
 
-        $data = $request->all();
-        Contactos::findOrFail($request->id)->update($data);
+        $dados = $request->all();
+        Contactos::findOrFail($request->id)->update($dados);
 
 
-        return redirect('/admin/info/contactos')->with('msg', 'Informação alterada com sucesso!');
+        return redirect('/admin/info/contactos')->with('msg_edit', 'Contacto - '. $request->id . ' - alterado com sucesso!');
+    }
+
+    public function destroy($id){
+        Contactos::findOrFail($id)->delete();
+        return redirect('/admin/info/contactos')->with('msg_delete', 'Contacto - ' . $id . ' - eliminado com sucesso!');
     }
 }

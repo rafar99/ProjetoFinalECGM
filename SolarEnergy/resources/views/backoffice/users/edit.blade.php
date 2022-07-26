@@ -38,7 +38,7 @@
                 </select>
               </div>
               @if(session()->has('error'))
-                <div class="alert alert-danger">
+                <div id="alerta" class="alert alert-danger">
                     {{ session()->get('error') }}
                 </div>
               @endif

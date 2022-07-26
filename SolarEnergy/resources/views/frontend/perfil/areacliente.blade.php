@@ -20,6 +20,11 @@
         </div>
     </div>
     <div class="row mt-5">
+        @if(session()->has('msg_edit'))
+        <div id="alerta" class="text-center alert alert-success">
+          {{session()->get('msg_edit')}}  
+        </div>  
+        @endif 
         <div class="col">
             <div class="perfil">
                 <h5>Perfil</h5>
@@ -33,7 +38,7 @@
             </div>
 
             <div>
-                <button type="button" class="btn btn-danger mt-4 ml-4 float-end" data-bs-toggle="modal" data-bs-target="#desativar{{auth()->user()->id}}">Apagar</button>
+                <button type="button" class="btn btn-danger mt-4 ml-4 float-end" data-bs-toggle="modal" data-bs-target="#desativar{{auth()->user()->id}}">Desativar Conta</button>
                 <a href="/areacliente/editarcliente/{{$cliente->id}}" class="btn btn-success mt-4 botao-form">Editar</a>
             </div>
 

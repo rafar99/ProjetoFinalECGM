@@ -26,7 +26,7 @@ class TipoEstadoController extends Controller
             'descricao'=>$validated['descricao']
         ]);
 
-        return redirect('/admin/tipocliente');
+        return redirect('/admin/tipoestado')->with('msg_create','Tipo de Estado criado com sucesso!');
     }
     public function edit($id){
         $estado_id = TipoEstado::findOrFail($id);
@@ -35,13 +35,18 @@ class TipoEstadoController extends Controller
 
     public function update(Request $request){
         $estado = TipoEstado::findOrFail($request->id);
-        // if($request->tipoEstado > 5){
-        //     return back()->with('error_estado','Estado inválido!');
-        // }
+        if($request->tipoEstado == null){
+            return back()->with('error','Campo(s) vazio(s)!');
+        }
         $estado->descricao = $request->tipoEstado;
 
         $estado->save();
 
-        return redirect('/admin/tipoestado')->with('msg', 'Marcado como ' . $request->tipoEstado . '!');
+        return redirect('/admin/tipoestado')->with('msg_edit', 'Tipo de Estado alterado com sucesso!');
+    }
+
+    public function destroy($id){
+        TipoEstado::findOrFail($id)->delete();
+        return redirect('/admin/tipoestado')->with('msg_delete', 'Tipo de Estado - ' . $id . ' - eliminado com sucesso!');
     }
 }

@@ -32,7 +32,19 @@
       {{----------------------------------------------------------------}}
       {{-----------------Tabela Informação: Inicio-------------------}}
       {{----------------------------------------------------------------}}
-
+      @if(session()->has('msg_create'))
+      <div id="alerta" class="text-center alert alert-success">
+        {{session()->get('msg_create')}}
+      </div>
+      @elseif(session()->has('msg_edit'))
+      <div id="alerta" class="text-center alert alert-success">
+        {{session()->get('msg_edit')}}  
+      </div>  
+      @elseif(session()->has('msg_delete'))
+      <div id="alerta" class="text-center alert alert-danger">
+        {{session()->get('msg_delete')}}  
+      </div>  
+      @endif 
           <div id="tabInicio" class="row">
             <div class="col-12">
               <div class="card">
@@ -40,7 +52,7 @@
                   <h3 class="card-title">Informação</h3>
   
                   <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
+                    {{-- <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
   
                       <div class="input-group-append">
@@ -48,7 +60,7 @@
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
                 <!-- /.card-header -->
@@ -61,6 +73,7 @@
                         <th>Descrição</th>
                         <th>Informação</th>
                         <th>Editar</th>
+                        <th>Eliminar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,6 +97,13 @@
                             <i class="bi bi-pencil-square"></i>
                           </a>
                         </td>
+                        <td>
+                          <form action="/admin/info/inicio/{{$info->id}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn bg-danger"><i class="bi bi-x-square"></i></button>
+                          </form>
+                      </td>
                       </tr>
                       @endforeach
                     </tbody>

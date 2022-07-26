@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('nome',100);
             $table->string('contacto',100);
             $table->timestamp('dataRegisto')->useCurrent();
-
+            $table->text('foto')->nullable();
+            
             $table->unsignedBigInteger('users_id')->unsigned()->nullable();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
 

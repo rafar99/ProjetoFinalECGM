@@ -15,7 +15,11 @@
         </div><!-- /.container-fluid -->
       </div>
         <!-- /.content-header -->
-
+        @if(session()->has('error'))
+        <div id="alerta" class="text-center alert alert-danger">
+          {{session()->get('error')}}  
+        </div> 
+        @endif
         <div class="container-fluid">
           <div class="row px-2">
             <div class="col-md-12">

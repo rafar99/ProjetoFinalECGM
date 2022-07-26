@@ -11,6 +11,11 @@
         src="{{$mapa[0]->mapa}}"
         width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
+@if(session()->has('msg'))
+<div id="alerta" class="text-center alert alert-success">
+    {{session()->get('msg')}}
+</div>
+@endif
 <div class="container-fluid">
     <div class="row mt-5">
         <div class="col-md-6">
@@ -48,4 +53,5 @@
     </div>
 </div>
 <hr class="divisor-rodape">
+
 @endsection

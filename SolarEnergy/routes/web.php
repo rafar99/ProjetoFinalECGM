@@ -77,6 +77,7 @@ Route::get('/admin/info/inicio/inserir',[HomeController::class,'create'])->middl
 Route::post('/admin/info/inicio',[HomeController::class,'store'])->middleware('auth');
 Route::get('/admin/info/inicio/edit/{id}',[HomeController::class,'edit'])->middleware('auth');
 Route::put('/admin/info/inicio/update/{id}', [HomeController::class,'update'])->middleware('auth');
+Route::delete('/admin/info/inicio/{id}', [HomeController::class,'destroy'])->middleware('auth');
 
 //Pagina Informação: Empresa - Admin
 Route::get('/admin/info/empresa',[EmpresaController::class,'indexAdmin'])->middleware('auth');
@@ -84,6 +85,7 @@ Route::get('/admin/info/empresa/inserir',[EmpresaController::class,'create'])->m
 Route::post('/admin/info/empresa',[EmpresaController::class,'store'])->middleware('auth');
 Route::get('/admin/info/empresa/edit/{id}',[EmpresaController::class,'edit'])->middleware('auth');
 Route::put('/admin/info/empresa/update/{id}', [EmpresaController::class,'update'])->middleware('auth');
+Route::delete('/admin/info/empresa/{id}', [EmpresaController::class,'destroy'])->middleware('auth');
 
 //Pagina Informação: Nossos Projetos - Admin
 Route::get('/admin/info/nossosprojetos',[NossosProjetosController::class,'indexAdmin'])->middleware('auth');
@@ -91,6 +93,7 @@ Route::get('/admin/info/nossosprojetos/inserir',[NossosProjetosController::class
 Route::post('/admin/info/nossosprojetos',[NossosProjetosController::class,'store'])->middleware('auth');
 Route::get('/admin/info/nossosprojetos/edit/{id}',[NossosProjetosController::class,'edit'])->middleware('auth');
 Route::put('/admin/info/nossosprojetos/update/{id}', [NossosProjetosController::class,'update'])->middleware('auth');
+Route::delete('/admin/info/nossosprojetos/{id}', [NossosProjetosController::class,'destroy'])->middleware('auth');
 
 //Pagina Informação: Contactos - Admin
 Route::get('/admin/info/contactos',[ContactosController::class,'indexAdmin'])->middleware('auth');
@@ -98,6 +101,7 @@ Route::get('/admin/info/contactos/inserir',[ContactosController::class,'create']
 Route::post('/admin/info/contactos',[ContactosController::class,'store'])->middleware('auth');
 Route::get('/admin/info/contactos/edit/{id}',[ContactosController::class,'edit'])->middleware('auth');
 Route::put('/admin/info/contactos/update/{id}', [ContactosController::class,'update'])->middleware('auth');
+Route::delete('/admin/info/contactos/{id}', [ContactosController::class,'destroy'])->middleware('auth');
 
 //Pagina Formulários de contactos - Admin
 Route::get('/admin/formcontactos',[FormularioContactosController::class,'indexAdmin'])->middleware('auth');
@@ -112,6 +116,7 @@ Route::get('/admin/tipoutilizador/inserir',[TipoUtilizadorController::class,'cre
 Route::post('/admin/tipoutilizador',[TipoUtilizadorController::class,'store'])->middleware('auth');
 Route::get('/admin/tipoutilizador/edit/{id}',[TipoUtilizadorController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipoutilizador/update/{id}', [TipoUtilizadorController::class,'update'])->middleware('auth');
+Route::delete('/admin/tipoutilizador/{id}', [TipoUtilizadorController::class,'destroy'])->middleware('auth');
 
 //Pagina Tipo Cliente - Admin
 Route::get('/admin/tipocliente',[TipoClienteController::class,'index'])->middleware('auth');
@@ -119,6 +124,7 @@ Route::get('/admin/tipocliente/inserir',[TipoClienteController::class,'create'])
 Route::post('/admin/tipocliente',[TipoClienteController::class,'store'])->middleware('auth');
 Route::get('/admin/tipocliente/edit/{id}',[TipoClienteController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipocliente/update/{id}', [TipoClienteController::class,'update'])->middleware('auth');
+Route::delete('/admin/tipocliente/{id}', [TipoClienteController::class,'destroy'])->middleware('auth');
 
 //Pagina Tipo Funcionario - Admin
 Route::get('/admin/tipofuncionario',[TipoFuncionarioController::class,'index'])->middleware('auth');
@@ -126,6 +132,7 @@ Route::get('/admin/tipofuncionario/inserir',[TipoFuncionarioController::class,'c
 Route::post('/admin/tipofuncionario',[TipoFuncionarioController::class,'store'])->middleware('auth');
 Route::get('/admin/tipofuncionario/edit/{id}',[TipoFuncionarioController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipofuncionario/update/{id}', [TipoFuncionarioController::class,'update'])->middleware('auth');
+Route::delete('/admin/tipofuncionario/{id}', [TipoFuncionarioController::class,'destroy'])->middleware('auth');
 
 //Pagina Tipo Estado - Admin
 Route::get('/admin/tipoestado',[TipoEstadoController::class,'index'])->middleware('auth');
@@ -133,6 +140,7 @@ Route::get('/admin/tipoestado/inserir',[TipoEstadoController::class,'create'])->
 Route::post('/admin/tipoestado',[TipoEstadoController::class,'store'])->middleware('auth');
 Route::get('/admin/tipoestado/edit/{id}',[TipoEstadoController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipoestado/update/{id}', [TipoEstadoController::class,'update'])->middleware('auth');
+Route::delete('/admin/tipoestado/{id}', [TipoEstadoController::class,'destroy'])->middleware('auth');
 
 //Pagina Tipo Painel - Admin
 Route::get('/admin/tipopainel',[TipoPainelController::class,'index'])->middleware('auth');
@@ -140,6 +148,7 @@ Route::get('/admin/tipopainel/inserir',[TipoPainelController::class,'create'])->
 Route::post('/admin/tipopainel',[TipoPainelController::class,'store'])->middleware('auth');
 Route::get('/admin/tipopainel/edit/{id}',[TipoPainelController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipopainel/update/{id}', [TipoPainelController::class,'update'])->middleware('auth');
+Route::delete('/admin/tipopainel/{id}', [TipoPainelController::class,'destroy'])->middleware('auth');
 
 //Pagina Tipo Pedido - Admin
 Route::get('/admin/tipopedido',[TipoPedidoController::class,'index'])->middleware('auth');
@@ -147,3 +156,4 @@ Route::get('/admin/tipopedido/inserir',[TipoPedidoController::class,'create'])->
 Route::post('/admin/tipopedido',[TipoPedidoController::class,'store'])->middleware('auth');
 Route::get('/admin/tipopedido/edit/{id}',[TipoPedidoController::class,'edit'])->middleware('auth');
 Route::put('/admin/tipopedido/update/{id}', [TipoPedidoController::class,'update'])->middleware('auth');
+Route::delete('/admin/tipopedido/{id}', [TipoPedidoController::class,'destroy'])->middleware('auth');

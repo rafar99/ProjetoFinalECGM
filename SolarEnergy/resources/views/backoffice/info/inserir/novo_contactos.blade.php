@@ -28,17 +28,17 @@
                 @csrf
                 <div class="mb-3 form-group">
                   <label for="telefone" class="form-label">Telemóvel/Telefone</label>
-                  <input type="text" class="form-control" id="telefone" name="telefone" required>
+                  <input type="text" class="form-control" id="telefone" name="telefone">
                 </div>
                
                 <div class="mb-3 form-group">
                   <label for="morada" class="form-label">Morada</label>
-                  <textarea class="form-control" id="morada" rows="3" name="morada" required></textarea>
+                  <textarea class="form-control" id="morada" rows="3" name="morada"></textarea>
                 </div>
 
                 <div class="mb-3 form-group">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" required>
+                  <input type="email" class="form-control" id="email" name="email">
                 </div>
 
                 <div class="mb-3 form-group">

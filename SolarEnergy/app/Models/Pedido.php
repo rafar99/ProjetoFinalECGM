@@ -16,15 +16,15 @@ class Pedido extends Model
     ];
 
     public function tipoEstado(){
-        return $this->hasMany(TipoEstado::class);
+        return $this->belongTo(TipoEstado::class);
     }
 
     public function tipoPedido(){
-        return $this->hasMany(TipoPedido::class);
+        return $this->belongTo(TipoPedido::class);
     }
 
     public function tipoPainel(){
-        return $this->hasMany(TipoPainel::class);
+        return $this->belongTo(TipoPainel::class);
     }
 
     public function morada(){
@@ -32,7 +32,7 @@ class Pedido extends Model
     }
 
     public function cliente(){
-        return $this->hasMany(Cliente::class);
+        return $this->belongTo(Cliente::class);
     }
 
 }

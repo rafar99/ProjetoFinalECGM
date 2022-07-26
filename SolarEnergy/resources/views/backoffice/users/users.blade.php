@@ -88,6 +88,15 @@
           {{-----------------Tabela Todos os Utilizadores-------------------}}
           {{----------------------------------------------------------------}}
 
+              @if(session()->has('msg_create_func'))
+              <div id="alerta" class="text-center alert alert-success">
+                {{session()->get('msg_create_func')}}
+              </div>
+              @elseif(session()->has('msg_edit_estado'))
+              <div id="alerta" class="text-center alert alert-success">
+                {{session()->get('msg_edit_estado')}}  
+              </div>
+              @endif 
               <div id="tabTodos" class="row">
                 <div class="col-12">
                   <div class="card">
@@ -95,7 +104,7 @@
                       <h3 class="card-title">Todos os Utilizadores</h3>
       
                       <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        {{-- <div class="input-group input-group-sm" style="width: 150px;">
                           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
       
                           <div class="input-group-append">
@@ -103,7 +112,7 @@
                               <i class="fas fa-search"></i>
                             </button>
                           </div>
-                        </div>
+                        </div> --}}
                       </div>
                     </div>
                     <!-- /.card-header -->
@@ -165,7 +174,7 @@
                       <h3 class="card-title">Administradores</h3>
       
                       <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        {{-- <div class="input-group input-group-sm" style="width: 150px;">
                           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
       
                           <div class="input-group-append">
@@ -173,7 +182,7 @@
                               <i class="fas fa-search"></i>
                             </button>
                           </div>
-                        </div>
+                        </div> --}}
                       </div>
                     </div>
                     <!-- /.card-header -->
@@ -222,7 +231,6 @@
                 </div>
               </div>
         
-        
               {{----------------------------------------------------------------}}
               {{-------------------------Tabela Tecnicos------------------------}}
               {{----------------------------------------------------------------}}
@@ -233,7 +241,7 @@
                       <h3 class="card-title">Técnicos</h3>
       
                       <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        {{-- <div class="input-group input-group-sm" style="width: 150px;">
                           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
       
                           <div class="input-group-append">
@@ -241,7 +249,7 @@
                               <i class="fas fa-search"></i>
                             </button>
                           </div>
-                        </div>
+                        </div> --}}
                       </div>
                     </div>
                     <!-- /.card-header -->
@@ -335,7 +343,7 @@
                       <h3 class="card-title">Clientes</h3>
       
                       <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
+                        {{-- <div class="input-group input-group-sm" style="width: 150px;">
                           <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
       
                           <div class="input-group-append">
@@ -343,7 +351,7 @@
                               <i class="fas fa-search"></i>
                             </button>
                           </div>
-                        </div>
+                        </div> --}}
                       </div>
                     </div>
                     <!-- /.card-header -->

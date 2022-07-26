@@ -1,5 +1,12 @@
 window.onload = function () {
-    active_onload()
+    active_onload();
+    
+    setTimeout(hideElement, 5000); //milliseconds until timeout//
+
+    function hideElement() {
+        var alert = document.getElementById("alerta");
+        alert.classList.add("d-none");
+      }
 };
 
 function active_onload() {

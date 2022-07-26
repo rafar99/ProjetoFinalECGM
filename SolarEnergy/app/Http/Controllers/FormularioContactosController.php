@@ -54,6 +54,6 @@ class FormularioContactosController extends Controller
 
         $estado->save();
 
-        return redirect('/admin/formcontactos')->with('msg', 'Marcado como ' . $request->tipoEstado . '!');
+        return redirect('/admin/formcontactos')->with('msg_edit', $request->tipoEstado== 1 ? $estado->assunto . ' marcado como: Lido' : $estado->assunto . ' marcado como: Não lido');
     }
 }

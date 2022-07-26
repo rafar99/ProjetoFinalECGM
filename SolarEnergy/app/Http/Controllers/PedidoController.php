@@ -61,6 +61,10 @@ class PedidoController extends Controller
         $getClienteLogado= Cliente::where('utilizador_id',auth()->user()->id)->first();
         $pedido = new Pedido;
 
+        if(auth()->user()->tipoUser_id !=2){
+            return redirect()->back()->with('error', 'Não é um cliente válido!');
+        }
+
         //guarda a descricao, o id do tipo de painel e o id do tipo de pedido na BD pedido
         $pedido ->descricao = $request->descricao;
         $pedido->tipoPedido= $request->tipoPedido;
@@ -191,5 +195,44 @@ class PedidoController extends Controller
             'countAssAtuais'=>$countAssAtuais,
             'countAssPorExecutar'=>$countAssPorExecutar
         ]);
+    }
+
+    public function edit($id){
+
+        $pedido = DB::table('pedido')
+        ->leftJoin('tipo_painel as painel','pedido.tipoPainel','=','painel.id')
+        ->leftJoin('tipo_estado as est','pedido.estado','=','est.id')
+        ->select('pedido.*','painel.descricao as painel','est.descricao as est_desc')
+        ->where('pedido.id','=',$id)
+        ->first();
+        $tipos = TipoEstado::where('descricao','Like','%desenvolvi%')->get();
+        $countEstados = $tipos->count();
+
+        // $funcDisponivel = 
+        return view('backoffice.pedidos.edit',['pedido' => $pedido,'tipos' => $tipos,'countEstados' => $countEstados]);
+    }
+
+    public function update(Request $request){
+
+        $pedido = Pedido::findOrFail($request->id);
+
+        $tipospainel = TipoPainel::all()->count();
+        $tiposest = TipoEstado::all()->count();
+        if($request->tipoEstado == 3){
+            $pedido->estado = $request->tipoEstado;
+            $pedido->save();    
+            return redirect('/admin/dashboard')->with('msg', 'Pedido ' . $request->id . ' alterado com sucesso!');
+        }
+        
+        if($request->tipoEstado != 4 && $request->tempoExecucaoEmH == 0 || $request->tempoExecucaoEmH == null || $request->dataExecucao==null )
+            return back()->with('error','Tipo de Estado não atualizado! Insira os dados corretamente.');
+        
+        $pedido->estado = $request->tipoEstado;
+        $pedido->dataExecucao = $request->dataExecucao;
+        $pedido->tempoExecucaoEmH = $request->tempoExecucaoEmH;
+
+        $pedido->save();
+
+        return redirect('/admin/dashboard')->with('msg', 'Pedido ' . $request->id . ' alterado com sucesso!');
     }
 }

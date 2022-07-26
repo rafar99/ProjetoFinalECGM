@@ -25,7 +25,7 @@ class TipoPainelController extends Controller
             'descricao'=>$validated['descricao']
         ]);
 
-        return redirect('/admin/tipopainel');
+        return redirect('/admin/tipopainel')->with('msg_create','Painel criado com sucesso!');
     }
     
     public function edit($id){
@@ -35,13 +35,18 @@ class TipoPainelController extends Controller
 
     public function update(Request $request){
         $painel = TipoPainel::findOrFail($request->id);
-        // if($request->tipoEstado > 5){
-        //     return back()->with('error_estado','Estado inválido!');
-        // }
+        if($request->tipoPainel == null){
+            return back()->with('error','Campo(s) vazio(s)!');
+        }
         $painel->descricao = $request->tipoPainel;
 
         $painel->save();
 
-        return redirect('/admin/tipopainel')->with('msg', 'Painel alterado!');
+        return redirect('/admin/tipopainel')->with('msg_edit', 'Painel alterado com sucesso!');
+    }
+
+    public function destroy($id){
+        TipoPainel::findOrFail($id)->delete();
+        return redirect('/admin/tipopainel')->with('msg_delete', 'Tipo de Painel - ' . $id . ' - eliminado com sucesso!');
     }
 }

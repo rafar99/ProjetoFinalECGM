@@ -11,7 +11,7 @@ class TipoPedido extends Model
     protected $table = 'tipo_pedido';
     protected $guarded =[];
     
-    public function tipoPedido(){
-        return $this->hasMany(TipoPedido::class, 'tipoPedido');
+    public function tipo_pedido(){
+        return $this->hasMany('App\Models\Pedido');
     }
 }

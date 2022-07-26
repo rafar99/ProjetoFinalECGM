@@ -12,7 +12,7 @@ class TipoPainel extends Model
     protected $table = 'tipo_painel';
     protected $guarded =[];
 
-    public function tipoPainel(){
-        return $this->hasMany(TipoPainel::class, 'tipoPainel');
+    public function tipo_painel(){
+        return $this->hasMany('App\Models\Pedido');
     }
 }

@@ -38,7 +38,7 @@ class NossosProjetosController extends Controller
         }
         $np->save();
 
-        return redirect('/admin/info/nossosprojetos');
+        return redirect('/admin/info/nossosprojetos')->with('msg_create', 'Novo projeto adicionado com sucesso!');
     }
     public function edit($id){
         $nossosprojetos = NossosProjetos::findOrFail($id);
@@ -60,6 +60,11 @@ class NossosProjetosController extends Controller
         NossosProjetos::findOrFail($request->id)->update($data);
 
 
-        return redirect('/admin/info/nossosprojetos')->with('msg', 'Informação alterada com sucesso!');
+        return redirect('/admin/info/nossosprojetos')->with('msg_edit', 'Informação - ' . $request->id .' alterada com sucesso!');
+    }
+
+    public function destroy($id){
+        NossosProjetos::findOrFail($id)->delete();
+        return redirect('/admin/info/nossosprojetos')->with('msg_delete', 'Informação - ' . $id . ' - eliminada com sucesso!');
     }
 }

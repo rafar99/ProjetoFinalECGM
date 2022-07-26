@@ -79,7 +79,7 @@ class HomeController extends Controller
 
         $inicio->save();
 
-        return redirect('/admin/info/inicio');
+        return redirect('/admin/info/inicio')->with('msg_create', 'Informação em Inicio criada com sucesso!');
     }
 
 
@@ -103,6 +103,11 @@ class HomeController extends Controller
         Home::findOrFail($request->id)->update($data);
 
 
-        return redirect('/admin/info/inicio')->with('msg', 'Informação alterada com sucesso!');
+        return redirect('/admin/info/inicio')->with('msg_edit', 'Informação ' . $request->id .' alterada com sucesso!');
+    }
+
+    public function destroy($id){
+        Home::findOrFail($id)->delete();
+        return redirect('/admin/info/inicio')->with('msg_delete', 'Informção - ' . $id . ' - eliminada com sucesso!');
     }
 }

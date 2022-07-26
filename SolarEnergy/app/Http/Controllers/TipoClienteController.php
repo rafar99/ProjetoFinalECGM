@@ -26,7 +26,7 @@ class TipoClienteController extends Controller
             'descricao'=>$validated['descricao']
         ]);
 
-        return redirect('/admin/tipocliente');
+        return redirect('/admin/tipocliente')->with('msg_create','Tipo de Cliente criado com sucesso!');
     }
 
 
@@ -37,13 +37,18 @@ class TipoClienteController extends Controller
 
     public function update(Request $request){
         $cliente = TipoCliente::findOrFail($request->id);
-        // if($request->tipoCliente > 5){
-        //     return back()->with('error_cliente','cliente inválido!');
-        // }
+        if($request->tipoCliente == null){
+            return back()->with('error','Campo(s) vazio(s)!');
+        }
         $cliente->descricao = $request->tipoCliente;
 
         $cliente->save();
 
-        return redirect('/admin/tipocliente')->with('msg', ' ');
+        return redirect('/admin/tipocliente')->with('msg_edit', 'Tipo de Cliente alterado com sucesso!');
+    }
+
+    public function destroy($id){
+        TipoCliente::findOrFail($id)->delete();
+        return redirect('/admin/tipocliente')->with('msg_delete', 'Tipo de Cliente - ' . $id . ' - eliminado com sucesso!');
     }
 }

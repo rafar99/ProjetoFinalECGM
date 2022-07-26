@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('detalhes_contactos', function (Blueprint $table) {
             $table->id();
-            $table->string('num_telefone', 100);
-            $table->string('morada', 255);
-            $table->string('email',100);
+            $table->string('num_telefone', 100)->nullable();
+            $table->string('morada', 255)->nullable();
+            $table->string('email',100)->nullable();
             $table->text('mapa')->nullable();
             $table->timestamps();
         });
