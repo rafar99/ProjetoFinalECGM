@@ -8,7 +8,7 @@
 @section('content')
 <div id="mapa">
     <iframe
-        src="{{$mapa[0]->mapa}}"
+        src="{{$contactos->where('id','1')->first()->mapa}}"
         width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 @if(session()->has('msg'))

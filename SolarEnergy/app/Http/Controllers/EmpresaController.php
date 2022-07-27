@@ -25,20 +25,22 @@ class EmpresaController extends Controller
         ->where ('id', '2')
         ->get();
 
-        
+
+        $funcionarios = Funcionario::
+        leftJoin('tipo_funcionario as tf','funcionario.tipoFuncionario_id','=','tf.id')
+        ->select('tf.descricao as funcao','funcionario.nome','funcionario.contacto','funcionario.foto')
+        ->limit(4)
+        ->get();
+       
+         if(auth()->user()==null){
+            return view('frontend/info/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
+        }
         if(auth()->user()->ativo!=1){
             Session::flush();        
             Auth::logout();
             return redirect('/login')->with('msg', 'A sua conta está desativada! Envie um email através do formulário de contactos caso queira recuperá-la.');
         }
-        $funcionarios = Funcionario::
-        leftJoin('tipo_funcionario as tf','funcionario.tipoFuncionario_id','=','tf.id')
-        ->select('tf.descricao as funcao','funcionario.nome','funcionario.contacto')
-        ->limit(4)
-        ->get();
-        if(auth()->user()==null){
-            return view('frontend/info/empresa', ['quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
-        }
+        
         $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
         return view('frontend/info/empresa', ['cliente'=>$cliente,'quemsomos'=>$quemsomos, 'equipa'=>$equipa, 'funcionarios'=>$funcionarios]);
     }
@@ -61,16 +63,22 @@ class EmpresaController extends Controller
 
     public function store(Request $request){
         $empresa = new Empresa();
+       
+        if($request->titulo==null && $request->descricao == null){
+            return redirect('/admin/info/empresa')->with('msg_none','Nenhuma informação adicionada!');
+        }
+
         $empresa->titulo = $request->titulo;
         $empresa->descricao = $request->descricao;
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->file('imagem');
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img'), $imageName);
             $empresa->imagem = $imageName;
         }
+       
         $empresa->save();
 
         return redirect('/admin/info/empresa')->with('msg_create','Informação de Empresa criada com sucesso!');
@@ -86,12 +94,12 @@ class EmpresaController extends Controller
 
         $data = $request->all();
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->imagem;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img'), $imageName);
-            $data['image'] = $imageName;
+            $data['imagem'] = $imageName;
         }
         Empresa::findOrFail($request->id)->update($data);
 

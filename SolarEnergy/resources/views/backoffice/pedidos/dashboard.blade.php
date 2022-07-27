@@ -91,6 +91,11 @@
             {{----------------------------------------------------------------}}
             {{-------------------Tabela Todos os Pedidos----------------------}}
             {{----------------------------------------------------------------}}
+            @if(session()->has('msg_edit'))
+              <div id="alerta" class="text-center alert alert-success">
+                {{session()->get('msg_edit')}}  
+              </div> 
+            @endif
               <div id="tabTotal" class="row">
                 <div class="col-12">
                   <div class="card">
@@ -351,14 +356,15 @@
               <!-- Modal -->
               @foreach($assistencias as $info)
               <div class="modal fade" id="info{{$info->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h4 class="modal-title">{{$info->tipo}} - {{$info->cliente}}</h4>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <h5 class="modal-title"><b>Painel:</b> {{$info->painel}}</h6>
+                      <h5 class="modal-title mb-2"><b>Painel:</b> {{$info->painel}}</h6>
+                      <p><b>Funcionário:</b> {{$info->funcionario==null ? "Sem funcionário associado" : $info->funcionario}}</p>
                       <p><b>Data do Pedido:</b> {{$info->dataCriacao}}</p>
                       <p><b>Data do Pedido Efetuado:</b> {{$info->dataExecucao != null ? $info->dataExecucao : "Por Efetuar"}}</p>
                       <p><b>Tempo do Pedido (em H):</b> {{$info->tempoExecucaoEmH != null ? $info->tempoExecucaoEmH : "Por Efetuar"}}</p>

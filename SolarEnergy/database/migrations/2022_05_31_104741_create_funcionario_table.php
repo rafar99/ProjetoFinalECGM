@@ -26,9 +26,6 @@ return new class extends Migration
             $table->unsignedBigInteger('tipoFuncionario_id')->unsigned()->nullable();
             $table->foreign('tipoFuncionario_id')->references('id')->on('tipo_funcionario')->onDelete('cascade');
 
-            $table->unsignedBigInteger('disponibilidade_id')->unsigned()->nullable();
-            $table->foreign('disponibilidade_id')->references('id')->on('disponibilidade')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

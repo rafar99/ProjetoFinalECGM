@@ -28,6 +28,7 @@ class FuncionarioController extends Controller
             'funcao' => 'required',
             'nomecompleto' => 'required|string|max:255',
             'contacto' => 'required|string|max:13',
+            'foto' => 'string'
         ]);
 
         //verifica se o contacto possui letras e caso possua volta atras no registo e mostra a mensagem de erro
@@ -40,7 +41,14 @@ class FuncionarioController extends Controller
         }
         //obter os nomes de tipos de funcionario
         $tipo = DB::table('tipo_utilizador')->where('descricao','Funcionario')->get();
-
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('backoffice_assets/dist/img/func'), $imageName);
+        } else{
+            $imageName = 'perfil.png';
+        }
         //cria um utilizador e depois cria o funcionario associado ao ultimo utilizador criado
         User::create([
             'name' => $validated['name'],
@@ -50,11 +58,13 @@ class FuncionarioController extends Controller
             'ativo' => '1'
         ]);
         
+        
         Funcionario::create([
             'nome' =>$validated['nomecompleto'],
             'contacto'=>$validated['contacto'],
             'tipoFuncionario_id' =>$validated['funcao'],
-            'users_id' => User::latest()->first()->id,
+            'foto'=>$imageName,
+            'users_id' => User::latest()->first()->id
         ]);
         
         return redirect('/admin/users')->with('msg_create_func', 'Funcionario ' . $validated['nomecompleto'] . ' adicionado!');

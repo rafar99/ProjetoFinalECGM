@@ -116,9 +116,10 @@
                             <div class="modal-body">
                             <p><b>Painel:</b> {{$pedido->painel}}</p>
                             <p><b>Pedido:</b> {{$pedido->tipo}}</p>
+                            <p><b>Descrição:</b> {{$pedido->descricao}}</p>
                             <p><b>Data de Registo:</b> {{$pedido->dataCriacao}}</p>
                             <p><b>Estado:</b> {{$pedido->estado}}</p>
-                            {{-- <p><b>Disponibilidade:</b>{{$pedido->dia}} - {{$utilizador->hora}}</p> --}}
+                            <p><b>Disponibilidade: </b>{{$pedido->dia}} - {{$pedido->hora}}</p>
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

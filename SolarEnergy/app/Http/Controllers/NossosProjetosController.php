@@ -25,12 +25,16 @@ class NossosProjetosController extends Controller
 
     public function store(Request $request){
         $np = new NossosProjetos();
+
+        if($request->titulo==null && $request->descricao == null){
+            return redirect('/admin/info/nossosprojetos')->with('msg_none','Nenhuma informação adicionada!');
+        }
+
         $np->titulo = $request->titulo;
         $np->descricao = $request->descricao;
-        // $np->imagem = $request->imagem;
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->imagem;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img'), $imageName);
@@ -50,12 +54,12 @@ class NossosProjetosController extends Controller
 
         $data = $request->all();
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->imagem;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img'), $imageName);
-            $data['image'] = $imageName;
+            $data['imagem'] = $imageName;
         }
         NossosProjetos::findOrFail($request->id)->update($data);
 

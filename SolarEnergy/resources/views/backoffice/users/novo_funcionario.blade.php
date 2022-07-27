@@ -33,8 +33,8 @@
                 </div>
                 <div class="row">
                     <div class="mb-3 form-group col-md-6">
-                    <label for="contacto" class="form-label">Contacto</label>
-                    <input type="text" class="form-control" id="contacto" name="contacto" required>
+                      <label for="contacto" class="form-label">Contacto</label>
+                      <input type="text" class="form-control" id="contacto" name="contacto" required>
                     </div>
                     
                     <div class="mb-3 form-group col-md-6">
@@ -44,6 +44,12 @@
                             <option value="{{ $funcao->id }}">{{ $funcao->descricao }}</option>
                         @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3 form-group">
+                      <label for="formFile" class="form-label"> *Insirir foto:</label>
+                      <span class="badge badge-secondary ms-3">Opcional</span>
+                     
+                      <input class="form-control" type="file" id="formFile" name="image">
                     </div>
                 </div>
                 <hr>

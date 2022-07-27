@@ -21,7 +21,7 @@ class FormularioContactosController extends Controller
         $formulario_contactos->email = $request->email;
         $formulario_contactos->assunto = $request->assunto;
         $formulario_contactos->mensagem = $request->mensagem;
-        $formulario_contactos->estado_id = '2';
+        $formulario_contactos->id_estado = '2';
 
         $formulario_contactos->save();
 
@@ -30,7 +30,7 @@ class FormularioContactosController extends Controller
 
     public function indexAdmin(){
         $infos = DB::table('formulario_contactos')
-        ->leftJoin('tipo_estado','formulario_contactos.estado_id','=','tipo_estado.id')
+        ->leftJoin('tipo_estado','formulario_contactos.id_estado','=','tipo_estado.id')
         ->select('formulario_contactos.*','tipo_estado.descricao')
         ->get();
         
@@ -50,7 +50,7 @@ class FormularioContactosController extends Controller
         if($request->tipoEstado > 2){
             return back()->with('error_estado','Estado inválido!');
         }
-        $estado->estado_id = $request->tipoEstado;
+        $estado->id_estado = $request->tipoEstado;
 
         $estado->save();
 

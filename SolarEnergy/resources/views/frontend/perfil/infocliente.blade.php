@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label for="title">Tipo de Cliente</label>
-                              <select class="form-control" id="tipoCliente" name="tipoCliente">
+                              <select class="form-select" id="tipoCliente" name="tipoCliente">
                                 @foreach ($tipoCliente as $tipo)
                                     <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
                                 @endforeach

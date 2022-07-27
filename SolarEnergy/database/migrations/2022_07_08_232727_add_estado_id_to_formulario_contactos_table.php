@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('formulario_contactos', function (Blueprint $table) {
-            $table->unsignedBigInteger('estado_id')->unsigned()->nullable();
-            $table->foreign('estado_id')->references('id')->on('tipo_estado')->onDelete('cascade');
+            $table->unsignedBigInteger('id_estado')->unsigned()->nullable();
+            $table->foreign('id_estado')->references('id')->on('tipo_estado')->onDelete('cascade');
         });
     }
 
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('formulario_contactos', function (Blueprint $table) {
-            $table->dropColumn('estado_id')->unsigned()->nullable();
+            $table->dropColumn('id_estado')->unsigned()->nullable();
         });
     }
 };

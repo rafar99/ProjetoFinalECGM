@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\TipoUtilizador;
+use App\Models\TipoFuncionario;
+use App\Models\Funcionario;
 use DB;
 class UtilizadorController extends Controller
 {
@@ -29,9 +31,10 @@ class UtilizadorController extends Controller
         $tecnicos = DB::table('users')
         ->leftJoin('tipo_utilizador','users.tipoUser_id','=','tipo_utilizador.id')
         ->leftJoin('funcionario as f', 'users.id','=','f.users_id')
-        // ->leftJoin('disponibilidade','funcionario.disponibilidade_id','=','disponibilidade.id')
-        ->select('users.*','tipo_utilizador.descricao as tipo','f.id as fid','f.nome','f.contacto','f.dataRegisto'/*,'disponibilidade.dia','disponibilidade.hora'*/)
-        // ->select('users.id','users.name','f.id as fid','f.nome')
+        ->select('users.*',
+            'tipo_utilizador.descricao as tipo',
+            'f.id as fid','f.nome','f.contacto','f.dataRegisto','f.foto'
+        )
         ->where('users.tipoUser_id','=','3')
         ->get();
         
@@ -47,8 +50,9 @@ class UtilizadorController extends Controller
         $clientes = DB::table('users')
         ->leftJoin('tipo_utilizador','users.tipoUser_id','=','tipo_utilizador.id')
         ->leftJoin('cliente as c', 'users.id','=','c.utilizador_id')
-        ->leftJoin('disponibilidade','c.disponibilidade','=','disponibilidade.id')
-        ->select('users.*','tipo_utilizador.descricao as tipo','c.id as cid','c.nome','c.morada','c.contacto','c.nif','c.dataRegisto','disponibilidade.*')
+        ->select('users.*',
+            'tipo_utilizador.descricao as tipo',
+            'c.id as cid','c.nome','c.morada','c.contacto','c.nif','c.dataRegisto')
         ->where('users.tipoUser_id','=','2')
         ->get();
 
@@ -87,7 +91,9 @@ class UtilizadorController extends Controller
     public function edit($id){
         $user = User::findOrFail($id);
         $tipos = TipoUtilizador::all();
-        return view('backoffice.users.edit',['user' => $user,'tipos' => $tipos]);
+        $funcionario = Funcionario::where('users_id','=',$id)->first();
+        $tipos_func = TipoFuncionario::all();
+        return view('backoffice.users.edit',['user' => $user,'tipos' => $tipos,'funcionario'=>$funcionario ,'funcs' => $tipos_func]);
     }
 
     //funcao que atualiza, de facto, o utilizador
@@ -97,6 +103,11 @@ class UtilizadorController extends Controller
 
         //total de tipos de utilizador
         $tipos = TipoUtilizador::all()->count();
+
+        //obter conta do funcionario associado ao id passado como parametro
+        $funcionario = Funcionario::where('users_id','=',$request->id)->first();
+        
+
         //verifica se o tipo de utilizador é maior que o count() ou se é menor que 0, caso seja verdade, volta atrás e mostra uma msg de erro
         if($request->tipoUser > $tipos || $request->tipoUser < 0 )
             return back()->with('error','Tipo de Utilizador inválido!');
@@ -107,6 +118,21 @@ class UtilizadorController extends Controller
         //guarda as alterações e redireciona com uma mensagem de sucesso
         $user->tipoUser_id = $request->tipoUser;
         $user->ativo = $request->ativo;
+
+        if($funcionario->users_id==$request->id){
+            $funcionario->nome = $request->nomecompleto;
+            $funcionario->contacto = $request->contacto;
+            $funcionario->tipoFuncionario_id = $request->tipoFunc;
+
+            if($request->hasFile('foto') && $request->file('foto')->isValid()){
+                $requestImage = $request->foto;
+                $extension = $requestImage->extension();
+                $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+                $requestImage->move(public_path('backoffice_assets/dist/img/func'), $imageName);
+                $funcionario->foto = $imageName;
+            }
+            $funcionario->save();
+        }
 
         $user->save();
 

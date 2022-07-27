@@ -66,17 +66,19 @@ class HomeController extends Controller
 
     public function store(Request $request){
         $inicio = new Home();
+        if($request->titulo==null && $request->descricao == null){
+            return redirect('/admin/info/inicio')->with('msg_none','Nenhuma informação adicionada!');
+        }
         $inicio->titulo = $request->titulo;
         $inicio->descricao = $request->descricao;
        
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->file('imagem');
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img'), $imageName);
             $inicio->imagem = $imageName;
         }
-
         $inicio->save();
 
         return redirect('/admin/info/inicio')->with('msg_create', 'Informação em Inicio criada com sucesso!');
@@ -93,15 +95,15 @@ class HomeController extends Controller
 
         $data = $request->all();
 
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->imagem;
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img'), $imageName);
-            $data['image'] = $imageName;
+            $data['imagem'] = $imageName;
         }
+        
         Home::findOrFail($request->id)->update($data);
-
 
         return redirect('/admin/info/inicio')->with('msg_edit', 'Informação ' . $request->id .' alterada com sucesso!');
     }

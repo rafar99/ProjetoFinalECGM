@@ -13,6 +13,7 @@ class Funcionario extends Model
         'nome',
         'contacto',
         'tipoFuncionario_id',
+        'foto',
         'users_id'
     ];
 

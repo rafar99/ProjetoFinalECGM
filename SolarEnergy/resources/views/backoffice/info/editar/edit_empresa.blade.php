@@ -36,8 +36,11 @@
                   <textarea class="form-control" id="descricao" rows="3" name="descricao">{{$empresa->descricao}}</textarea>
                 </div>
                 <div class="mb-3 form-group">
-                  <label for="formFile" class="form-label">Insira uma imagem</label>
-                  <input class="form-control" type="file" id="formFile" name="image">
+                  <label for="formFile" class="form-label me-3">Atualizar imagem:</label>
+                  @if ($empresa->imagem != null)
+                  <img src="{{ url('img/'.$empresa->imagem) }}" alt="{{$empresa->titulo}}" class="img-fluid mb-3" width="20%">
+                  @endif
+                  <input class="form-control" type="file" id="formFile" name="imagem">
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Guardar" >

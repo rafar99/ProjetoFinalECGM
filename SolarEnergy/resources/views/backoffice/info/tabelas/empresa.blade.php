@@ -36,6 +36,10 @@
           <div id="alerta" class="text-center alert alert-success">
             {{session()->get('msg_create')}}
           </div>
+          @elseif(session()->has('msg_none'))
+          <div id="alerta" class="text-center alert alert-warning">
+            {{session()->get('msg_none')}}  
+          </div>  
           @elseif(session()->has('msg_edit'))
           <div id="alerta" class="text-center alert alert-success">
             {{session()->get('msg_edit')}}  
@@ -113,8 +117,13 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                <p>{{$info->descricao}}</p>
-                                <img src="{{$info->imagem}}" alt="{{$info->titulo}}" class="img-fluid">
+                                <p><b>Descrição: </b>{{$info->descricao != null ? $info->descricao : "Sem Descrição"}}</p>
+                                @if ($info->imagem != null)
+                                <p><b>Imagem: </b></p>
+                                <img src="{{ url('img/'.$info->imagem) }}" alt="{{$info->titulo}}" class="img-fluid">
+                                @else
+                                <p><b>Imagem: </b> Sem Imagem</p>
+                                @endif
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

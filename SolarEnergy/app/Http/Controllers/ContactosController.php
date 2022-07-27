@@ -14,8 +14,7 @@ class ContactosController extends Controller
     public function index() {
 
         $contactos = Contactos::all();
-        $mapa = $contactos->where('id','1');
-        
+               
         if(auth()->user()==null){
             return view('frontend/forms/contactos', ['contactos'=>$contactos]);
         }
@@ -25,7 +24,7 @@ class ContactosController extends Controller
             return redirect('/login')->with('msg', 'A sua conta está desativada! Envie um email através do formulário de contactos caso queira recuperá-la.');
         }
         $cliente = Cliente::where('utilizador_id',auth()->user()->id)->first();
-        return view('frontend/forms/contactos', ['contactos'=>$contactos,'cliente'=>$cliente,'mapa'=>$mapa]);
+        return view('frontend/forms/contactos', ['contactos'=>$contactos,'cliente'=>$cliente]);
     }
 
     public function indexAdmin(){

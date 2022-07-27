@@ -278,7 +278,7 @@
                             <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
                             <td>{{$utilizador->tipo}}</td>
                             <td>
-                              {{$utilizador->ativo=1 ? 'Conta Ativada' : "Conta Desativada"}}
+                              {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
                             </td>
                             <td>
                               <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$utilizador->id}}" class="btn btn-primary">Ver mais</button>
@@ -312,7 +312,10 @@
                                     <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
                                     <p><b>Função:</b> {{$funcao->tipo}}</p>
                                     <p><b>Estado:</b> {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
-                                    {{-- <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p> --}}
+                                    <p><b>Foto:</b> {{$utilizador->foto !='perfil.png' && $utilizador->foto !=null  ? '' : "Sem foto"}}</p>
+                                    @if ($utilizador->foto != null && $utilizador->foto !=null)
+                                    <img src="{{ url('backoffice_assets/dist/img/func/'.$utilizador->foto) }}" alt="{{$utilizador->nome}}" class="img-fluid mb-3" width="20%">
+                                    @endif
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -417,7 +420,6 @@
                                   <p><b>Data de Registo:</b> {{$utilizador->dataRegisto}}</p>
                                   <p><b>Cliente:</b> {{$tipo->tipo}}</p>
                                   <p><b>Estado:</b> {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}</p>
-                                  {{-- <p><b>Disponibilidade:</b>{{$utilizador->dia}} - {{$utilizador->hora}}</p> --}}
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

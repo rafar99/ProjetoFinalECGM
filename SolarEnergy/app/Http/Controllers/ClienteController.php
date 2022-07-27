@@ -54,9 +54,15 @@ class ClienteController extends Controller
         ->leftJoin('tipo_painel', 'pedido.tipoPainel', '=', 'tipo_painel.id')
         ->leftJoin('tipo_pedido', 'pedido.tipoPedido', '=', 'tipo_pedido.id')
         ->leftJoin('cliente', 'pedido.id_cliente', '=', 'cliente.id')
-        ->leftJoin('tipo_estado', 'pedido.estado', '=', 'tipo_estado.id')
+        ->leftJoin('tipo_estado', 'pedido.id_estado', '=', 'tipo_estado.id')
+        ->leftJoin('disponibilidade', 'pedido.id_disponibilidade', '=', 'disponibilidade.id')
         ->where('cliente.utilizador_id', auth()->user()->id)
-        ->select('pedido.*', 'tipo_estado.descricao as estado', 'tipo_painel.descricao as painel', 'tipo_pedido.descricao as tipo')
+        ->select('pedido.*', 
+            'tipo_estado.descricao as estado',
+            'tipo_painel.descricao as painel', 
+            'tipo_pedido.descricao as tipo',
+            'disponibilidade.dia', 'disponibilidade.hora'
+         )
         ->get();
 
         //total de assistencias deste cliente

@@ -37,7 +37,7 @@
                 </div>
                 <div class="mb-3 form-group">
                   <label for="formFile" class="form-label">Insira uma imagem</label>
-                  <input class="form-control" type="file" id="formFile" name="image">
+                  <input class="form-control" type="file" id="formFile" name="imagem">
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Guardar" >
