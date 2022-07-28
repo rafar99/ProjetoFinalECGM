@@ -26,12 +26,13 @@
             </form>
 
             <div>
+                @if(auth()->user()->tipoUser_id==2)
                 <a
                     href="{{ route('areacliente',['id'=>auth()->user()->id]) }}"
                     class="btn btn-success text-sm text-gray-600 hover:text-gray-900"
                 >
                     {{ __('Perfil') }}</a>
-
+                @endif
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
 

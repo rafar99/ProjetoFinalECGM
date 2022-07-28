@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+
 use App\Models\Cliente;
 use App\Models\User;
 use App\Models\TipoCliente;
@@ -111,6 +113,37 @@ class ClienteController extends Controller
 
         Cliente::findOrFail($request->id)->update($request->all());
         return redirect('areacliente/' . $request->id)->with('msg_edit', 'Cliente alterado com sucesso!');
+    }
+
+    public function changePassword()
+    {
+        $cliente = Cliente::where('utilizador_id', auth()->user()->id)->first();
+
+       return view('frontend.perfil.update-password',['cliente'=>$cliente]);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $cliente = Cliente::where('utilizador_id', auth()->user()->id)->first();
+            # Validation
+            $request->validate([
+                'old_password' => 'required',
+                'new_password' => 'required|confirmed',
+            ]);
+    
+    
+            #Match The Old Password
+            if(!Hash::check($request->old_password, auth()->user()->password)){
+                return back()->with("error", "Palavra-passe atual não coincide!");
+            }
+    
+    
+            #Update the new Password
+            User::whereId(auth()->user()->id)->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+    
+            return redirect('areacliente/'.$cliente->id)->with("status", "Palavra-passe atualizada com sucesso!");
     }
 
     
