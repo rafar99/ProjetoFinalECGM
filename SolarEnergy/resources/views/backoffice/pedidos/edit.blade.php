@@ -48,10 +48,15 @@
                 <input type="number" step=".01" class="form-control" name="tempoExecucaoEmH" id="tempoExecucao" value="{{$pedido->tempoExecucaoEmH ==null ? "" : $pedido->tempoExecucaoEmH}}" >
               </div>
               @if(session()->has('error'))
-                <div id="alerta" class="alert alert-danger">
+                <div id="alerta" class="text-center alert alert-danger">
                     {{ session()->get('error') }}
                 </div>
               @endif
+              @if(session()->has('msg_edit'))
+              <div id="alerta"class="text-center alert alert-danger">
+                  {{ session()->get('msg_edit') }}
+              </div>              
+            @endif
               <input type="submit" class="btn btn-primary" value="Guardar" >
               <a href="/admin/dashboard" class="btn btn-danger float-right">Voltar</a>
 

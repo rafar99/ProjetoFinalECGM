@@ -26,7 +26,7 @@
                 <label for="tipoEstado">Estado</label>
                 <select name="tipoEstado" id="tipoEstado" class="form-select">
                   @for($i = 0;$i<$countEst;$i++)
-                    <option value="{{$estados[$i]->id}}" {{$estados[$i]->id==$form_id->estado_id ? "selected='selected'" : ""}}>{{$estados[$i]->descricao}}</option>
+                    <option value="{{$estados[$i]->id}}" {{$estados[$i]->id==$form_id->id_estado ? "selected='selected'" : ""}}>{{$estados[$i]->descricao}}</option>
                   @endfor
                 </select>
               </div>

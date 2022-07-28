@@ -95,6 +95,10 @@
               <div id="alerta" class="text-center alert alert-success">
                 {{session()->get('msg_edit')}}  
               </div> 
+            @elseif(session()->has('msg_done'))
+              <div id="alerta"class="text-center alert alert-warning">
+                  {{ session()->get('msg_done') }}
+              </div>
             @endif
               <div id="tabTotal" class="row">
                 <div class="col-12">
@@ -142,11 +146,13 @@
                             <td>
                               <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$assistencia->id}}" class="btn btn-primary">Ver mais</button>  
                             </td>
+                            @if($assistencia->id_estado !=4)
                             <td>
                               <a href="/admin/dashboard/edit/{{$assistencia->id}}" class="btn bg-warning text-white" style="color:white">
                                 <i class="bi bi-pencil-square"></i>
                               </a>
                             </td>
+                            @endif
                           </tr>
                           @endforeach
                         </tbody>
@@ -210,11 +216,13 @@
                             <td>
                               <button type="button" data-bs-toggle="modal" data-bs-target="#info{{$assistencia->id}}" class="btn btn-primary">Ver mais</button>  
                             </td>
+                            @if($assistencia->id_estado !=4 && $assistencia->id_funcionario == 0 && $assistencia->tempoExecucaoEmH == null && $assistencia->tempoExecucaoEmH == 0 && $assistencia->dataExecucao == null)
                             <td>
                               <a href="/admin/dashboard/edit/{{$assistencia->id}}" class="btn bg-warning text-white" style="color:white">
                                 <i class="bi bi-pencil-square"></i>
                               </a>
                             </td>
+                            @endif
                           </tr>
                           @endforeach
                         </tbody>
@@ -369,7 +377,7 @@
                       <p><b>Data do Pedido Efetuado:</b> {{$info->dataExecucao != null ? $info->dataExecucao : "Por Efetuar"}}</p>
                       <p><b>Tempo do Pedido (em H):</b> {{$info->tempoExecucaoEmH != null ? $info->tempoExecucaoEmH : "Por Efetuar"}}</p>
                       <p><b>Morada:</b> {{$info->rua}}, {{$info->porta}}, {{$info->codigo_postal}} - {{$info->concelho}} </p>
-                      {{-- <p><b>Disponibilidade:</b> {{$info->disponibilidade}}</p> --}}
+                      <p><b>Disponibilidade:</b> {{$info->dia}} - {{$info->hora}} </p>
                       <p><b>Descrição:</b> {{$info->descricao}}</p>
                       <p><b>Tipo de Pedido:</b> {{$info->tipo}}</p>
                       <p><b>Estado:</b> {{$info->estado}}</p>

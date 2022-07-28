@@ -110,7 +110,7 @@
         @foreach ($nossosprojetos as $projetos)
         <div class="col">            
             <div class="card card-projetos h-100">
-                <img src="img/imagem5.png" class="card-img-top" style="width: 100%; height:auto;">
+                <img src="{{url('img/'.$projetos->imagem)}}" class="card-img-top" style="width: 100%; height:auto;">
                 <div class="card-body">
                     <h5 class="card-title">{{$projetos->titulo}}</h5>
                     <p class="card-text">{{$projetos->descricao}}</p>

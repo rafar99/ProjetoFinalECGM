@@ -13,6 +13,7 @@ use App\Models\Funcionario;
 use App\Models\User;
 use App\Models\Disponibilidade;
 use Auth;
+use Carbon\Carbon;
 use DB;
 
 class PedidoController extends Controller
@@ -123,6 +124,7 @@ class PedidoController extends Controller
         ->leftJoin('tipo_estado','pedido.id_estado','=','tipo_estado.id')
         ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
         ->leftJoin('funcionario','pedido.id_funcionario','=','funcionario.id')
+        ->leftJoin('disponibilidade','pedido.id_disponibilidade','=','disponibilidade.id')
         ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
         ->select('pedido.*',
             'tipo_painel.descricao as painel',
@@ -130,6 +132,7 @@ class PedidoController extends Controller
             'tipo_estado.descricao as estado',
             'cliente.nome as cliente',
             'funcionario.nome as funcionario',
+            'disponibilidade.dia', 'disponibilidade.hora',
             'morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude'
         )
         ->get();
@@ -141,6 +144,7 @@ class PedidoController extends Controller
         ->leftJoin('tipo_estado','pedido.id_estado','=','tipo_estado.id')
         ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
         ->leftJoin('funcionario','pedido.id_funcionario','=','funcionario.id')
+        ->leftJoin('disponibilidade','pedido.id_disponibilidade','=','disponibilidade.id')
         ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
         ->select('pedido.*',
             'tipo_painel.descricao as painel',
@@ -148,9 +152,10 @@ class PedidoController extends Controller
             'tipo_estado.descricao as estado',
             'cliente.nome as cliente',
             'funcionario.nome as funcionario',
+            'disponibilidade.dia', 'disponibilidade.hora',
             'morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude'
         )
-        ->where('pedido.id_estado','=','3')
+        ->where('pedido.id_estado','=','4')
         ->get();
 
         //pedidos atuais
@@ -160,6 +165,7 @@ class PedidoController extends Controller
         ->leftJoin('tipo_estado','pedido.id_estado','=','tipo_estado.id')
         ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
         ->leftJoin('funcionario','pedido.id_funcionario','=','funcionario.id')
+        ->leftJoin('disponibilidade','pedido.id_disponibilidade','=','disponibilidade.id')
         ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
         ->select('pedido.*',
             'tipo_painel.descricao as painel',
@@ -167,9 +173,10 @@ class PedidoController extends Controller
             'tipo_estado.descricao as estado',
             'cliente.nome as cliente',
             'funcionario.nome as funcionario',
+            'disponibilidade.dia', 'disponibilidade.hora',
             'morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude'
         )
-        ->where('pedido.id_estado','=','4')
+        ->where('pedido.id_estado','=','3')
         ->get();
 
         //pedidos P/ executar
@@ -179,6 +186,7 @@ class PedidoController extends Controller
         ->leftJoin('tipo_estado','pedido.id_estado','=','tipo_estado.id')
         ->leftJoin('cliente','pedido.id_cliente','=','cliente.id')
         ->leftJoin('funcionario','pedido.id_funcionario','=','funcionario.id')
+        ->leftJoin('disponibilidade','pedido.id_disponibilidade','=','disponibilidade.id')
         ->leftJoin('morada_pedido as morada', 'pedido.moradaPedido', '=', 'morada.id')
         ->select('pedido.*',
             'tipo_painel.descricao as painel',
@@ -186,6 +194,7 @@ class PedidoController extends Controller
             'tipo_estado.descricao as estado',
             'cliente.nome as cliente',
             'funcionario.nome as funcionario',
+            'disponibilidade.dia', 'disponibilidade.hora',
             'morada.rua','morada.porta','morada.codigo_postal','morada.concelho', 'morada.latitude', 'morada.longitude'
         )
         ->where('pedido.id_estado','=','5')
@@ -193,9 +202,9 @@ class PedidoController extends Controller
 
         $countAss = DB::table('pedido')->select('*')->get()->count();
 
-        $countAssFinalizadas = DB::table('pedido')->select('*')->where('id_estado','=','3')->get()->count();
+        $countAssFinalizadas = DB::table('pedido')->select('*')->where('id_estado','=','4')->get()->count();
         
-        $countAssAtuais = DB::table('pedido')->select('*')->where('id_estado','=','4')->get()->count();
+        $countAssAtuais = DB::table('pedido')->select('*')->where('id_estado','=','3')->get()->count();
 
         $countAssPorExecutar = DB::table('pedido')->select('*')->where('id_estado','=','5')->get()->count();
 
@@ -224,7 +233,10 @@ class PedidoController extends Controller
         $funcionarios = Funcionario::where('tipoFuncionario_id','3')->get();
         $tipos = TipoEstado::where('descricao','Like','%desenvolvi%')->get();
         $countEstados = $tipos->count();
-
+        
+        if($pedido->id_estado ==4 && $pedido->id_funcionario != 0 && $pedido->tempoExecucaoEmH != null && $pedido->tempoExecucaoEmH != 0 && $pedido->dataExecucao != null){
+            return redirect()->back()->with('msg_done', 'Pedido já efetuado!');
+        }
         // $funcDisponivel = 
         return view('backoffice.pedidos.edit',['pedido' => $pedido,'tipos' => $tipos,'countEstados' => $countEstados,'funcionarios' => $funcionarios]);
     }
@@ -235,21 +247,51 @@ class PedidoController extends Controller
         
         $tipospainel = TipoPainel::all()->count();
         $tiposest = TipoEstado::all()->count();
-        if($request->tipoEstado == 3){
-            $pedido->estado = $request->tipoEstado;
-            $pedido->save();    
-            return redirect('/admin/dashboard')->with('msg', 'Pedido ' . $request->id . ' alterado com sucesso!');
+
+        
+        //Tipos de estado: 3- Em desenvolvimento; 4- Desenvolvido; 5- Não Desenvolvido
+        
+        //Se o estado é 'Não Desenvolvido', então passa neste if
+        if($request->tipoEstado == 5){
+            $pedido->id_funcionario = $request->id_funcionario;
+            $pedido->id_estado = $request->tipoEstado;
+            $pedido->dataExecucao = null;
+            $pedido->tempoExecucaoEmH = null;
+            $pedido->save();
+            return redirect('/admin/dashboard')->with('msg_edit', 'Pedido ' . $request->id . ' alterado com sucesso!');
+        } 
+        //Se o estado é 'Em Desenvolvimento', então passa neste elseif
+        else if($request->tipoEstado == 3) {
+            //Se o funcionario estiver selecionado atualiza o pedido, caso contrario mostra um alerta com o erro descrito
+            if($request->id_funcionario!=0){
+                $pedido->id_funcionario=$request->id_funcionario;
+                $pedido->id_estado = $request->tipoEstado;
+                $pedido->dataExecucao = Carbon::now()->toDateTimeString();
+                $pedido->tempoExecucaoEmH = null;
+                $pedido->save();
+                return redirect('/admin/dashboard')->with('msg_edit', 'Pedido ' . $request->id . ' alterado com sucesso!');
+            } else{
+                return redirect()->back()->with('msg_edit', 'Funcionário não associado!');
+            }
+        }
+        //Se o estado é 'Desenvolvido' e todos os campos já tiverem preenchidos, então redireciona de volta para a página anterior com uma mensagem de aviso 
+        //Se o estado é 'Desenvolvido', e caso não tenha algum campo preenchido, então passa neste elseif, caso algo estiver errado envia uma mensagem de aviso
+        else if($request->tipoEstado == 4){
+            if($request->id_funcionario != 0){
+                if($request->tempoExecucaoEmH != 0 && $request->tempoExecucaoEmH != null && $request->dataExecucao != null){
+                    $pedido->id_funcionario=$request->id_funcionario;
+                    $pedido->id_estado = $request->tipoEstado;
+                    $pedido->dataExecucao = $request->dataExecucao;
+                    $pedido->tempoExecucaoEmH = $request->tempoExecucaoEmH;
+                    $pedido->save();
+                    return redirect('/admin/dashboard')->with('msg_edit', 'Pedido ' . $request->id . ' alterado com sucesso!');
+                } else {
+                    return redirect()->back()->with('msg_edit', 'Tempo e/ou Data estão vazios!');
+                }
+            } else {
+                return redirect()->back()->with('msg_edit', 'Funcionário não associado!');
+            }
         }
         
-        if($request->tipoEstado != 4 && $request->tempoExecucaoEmH == 0 || $request->tempoExecucaoEmH == null || $request->dataExecucao==null )
-            return back()->with('error','Tipo de Estado não atualizado! Insira os dados corretamente.');
-        
-        $pedido->estado = $request->tipoEstado;
-        $pedido->dataExecucao = $request->dataExecucao;
-        $pedido->tempoExecucaoEmH = $request->tempoExecucaoEmH;
-
-        $pedido->save();
-
-        return redirect('/admin/dashboard')->with('msg_edit', 'Pedido ' . $request->id . ' alterado com sucesso!');
     }
 }
