@@ -46,7 +46,7 @@
                         </select>
                     </div>
                     <div class="mb-3 form-group">
-                      <label for="formFile" class="form-label"> *Insirir foto:</label>
+                      <label for="formFile" class="form-label"> *Inserir foto:</label>
                       <span class="badge badge-secondary ms-3">Opcional</span>
                      
                       <input class="form-control" type="file" id="formFile" name="image">

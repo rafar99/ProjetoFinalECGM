@@ -6,7 +6,6 @@
 @section('imglinkedin', '../img/facebook.svg')
 @if(auth()->user()!=null && auth()->user()->tipoUser_id!=2 )
   @php
-  var_dump(auth()->user());
     header("Location: " . URL::to('/dashboard'), true, 302);
     exit();
   @endphp
@@ -18,6 +17,11 @@
         <div class="col-md-12">
             <h3>Área de Cliente</h3>
         </div>
+        @if (session('status'))
+        <div id="alerta" class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+        @endif
     </div>
     <div class="row mt-5">
         @if(session()->has('msg_edit'))
@@ -25,47 +29,66 @@
           {{session()->get('msg_edit')}}  
         </div>  
         @endif 
-        <div class="col">
+        <div class="col-6">
+            <div class="perfil">
+                <h5>Dados de utilizador</h5>
+            </div>
+
+            <div class="infoPerfil mt-3">
+                <p><b>Nome de utilizador:</b> {{$cliente->name}} </p>
+                <p><b>Email:</b> {{$cliente->email}}</p>
+            </div>
+           
+        </div>
+        <div class="col-6">
             <div class="perfil">
                 <h5>Perfil</h5>
             </div>
 
             <div class="infoPerfil mt-3">
-                <p>Nome: {{$cliente->nome}} </p>
-                <p>Nif: {{$cliente->nif}}</p>
-                <p>Contacto: {{$cliente->contacto}}</p>
-                <p>Morada: {{$cliente->morada}}</p>
+                <p><b>Nome:</b> {{$cliente->nome}} </p>
+                <p><b>Nif:</b> {{$cliente->nif}}</p>
+                <p><b>Contacto:</b> {{$cliente->contacto}}</p>
+                <p><b>Cliente:</b> {{$cliente->tipocliente}}</p>
+                <p><b>Morada:</b> {{$cliente->morada}}</p>
             </div>
 
-            <div>
+            
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+                 <a href="/change-password" class="btn btn-success mt-4 botao-form">Atualizar palavra-passe</a>
+            </div>
+            <div class="col-6">
+                    
                 <button type="button" class="btn btn-danger mt-4 ml-4 float-end" data-bs-toggle="modal" data-bs-target="#desativar{{auth()->user()->id}}">Desativar Conta</button>
                 <a href="/areacliente/editarcliente/{{$cliente->id}}" class="btn btn-success mt-4 botao-form">Editar</a>
-            </div>
-
-            <!-- Modal Desativar conta -->
-            <div id="desativar{{auth()->user()->id}}" class="modal" tabindex="-1">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Desativar Conta</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            
+                <!-- Modal Desativar conta -->
+                <div id="desativar{{auth()->user()->id}}" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title">Desativar Conta</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <p>Tem a certeza que pretende desativar a conta?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="/areacliente/desativar/{{auth()->user()->id}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="ativo" value="0">
+                                    <button type="submit" class="btn btn-danger">Desativar</button>
+                                </form>
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      <p>Tem a certeza que pretende desativar a conta?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="/areacliente/desativar/{{auth()->user()->id}}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="ativo" value="0">
-                            <button type="submit" class="btn btn-danger">Desativar</button>
-                        </form>
-                      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                  </div>
                 </div>
-              </div>
-
+            </div>
         </div>
     </div>
     <div class="row mt-5">

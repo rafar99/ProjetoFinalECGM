@@ -1,16 +1,16 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="/img/logoVerticalDark.png">
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __('Antes de aceder a esta página deve verificar o seu endereço de email. Para isso basta clicar no link que está no email que acabamos de enviar. Se não recebeu nenhum email, clique no botão para reenviar o email de verificação.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided in your profile settings.') }}
+                {{ __('Um novo link de verificação acabou de ser enviado para o seu email.') }}
             </div>
         @endif
 
@@ -20,22 +20,22 @@
 
                 <div>
                     <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
+                        {{ __('Reenviar Email de Verificação') }}
                     </x-jet-button>
                 </div>
             </form>
 
             <div>
                 <a
-                    href="{{ route('profile.show') }}"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
+                    href="{{ route('areacliente',['id'=>auth()->user()->id]) }}"
+                    class="btn btn-success text-sm text-gray-600 hover:text-gray-900"
                 >
-                    {{ __('Edit Profile') }}</a>
+                    {{ __('Perfil') }}</a>
 
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
 
-                    <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 ml-2">
+                    <button type="submit" class="btn btn-danger text-sm text-gray-600 hover:text-gray-900 ml-2">
                         {{ __('Log Out') }}
                     </button>
                 </form>

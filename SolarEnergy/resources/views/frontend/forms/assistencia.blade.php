@@ -51,25 +51,25 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" {{$tipoUser !=2 ? "disabled" : "" }}>
+                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Rua" {{$tipoUser !=2 ? "disabled" : "" }} required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="porta" id="nPorta" placeholder="Nº Porta" {{$tipoUser !=2 ? "disabled" : "" }}>
+                            <input type="text" class="form-control" name="porta" id="nPorta" placeholder="Nº Porta" {{$tipoUser !=2 ? "disabled" : "" }} required>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="Código-Postal" {{$tipoUser !=2 ? "disabled" : "" }}>
+                            <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="Código-Postal" {{$tipoUser !=2 ? "disabled" : "" }} required>
                         </div>
                     </div>
                 
                     <div class="col">
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control"  name="concelho" id="concelho" placeholder="Concelho" {{$tipoUser !=2 ? "disabled" : "" }}>
+                            <input type="text" class="form-control"  name="concelho" id="concelho" placeholder="Concelho" {{$tipoUser !=2 ? "disabled" : "" }} required>
                         </div>
                     </div>
                     
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="form-group mt-3">
-                    <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Descrição" {{$tipoUser !=2 ? "disabled" : "" }}></textarea>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="5" placeholder="Descrição" {{$tipoUser !=2 ? "disabled" : "" }} required></textarea>
                 </div>
                 <button type="submit" class="btn btn-success mt-4 botao-form" {{$tipoUser !=2 ? "disabled" : "" }}>Enviar</button>
             </form>

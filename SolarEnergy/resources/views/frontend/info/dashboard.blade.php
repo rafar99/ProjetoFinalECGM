@@ -6,6 +6,15 @@
 @section('imglinkedin', '/img/facebook.svg')
 
 @section('content')
+@if (session('verify'))
+<div id="alerta" class="alert alert-info" role="alert">
+    {{ session('verify') }}
+</div>
+@elseif (session('message'))
+<div id="alerta" class="alert alert-info" role="alert">
+    {{ session('message') }}
+</div>
+@endif
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">

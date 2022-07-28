@@ -43,13 +43,20 @@ class ClienteController extends Controller
 
         $cliente->save();
 
-        return redirect('/');
+        return redirect('/')->with('email_verify','Foi enviado um email para verificar a conta!');
 
     }
 
     public function show($id){
         //lista a informação do cliente logado e os seus pedidos
-        $cliente = Cliente::findOrFail($id);
+        $cliente = Cliente::where('cliente.id','=',$id)
+        ->leftJoin('users','cliente.utilizador_id','=','users.id')
+        ->leftJoin('tipo_cliente','cliente.tipoCliente','=','tipo_cliente.id')
+        ->select('cliente.id','cliente.nome','cliente.morada','cliente.nif','cliente.contacto',
+            'users.name','users.email',
+            'tipo_cliente.descricao as tipocliente')
+        ->first();
+        
         $listaAssistencia = DB::table('pedido')
         ->leftJoin('tipo_painel', 'pedido.tipoPainel', '=', 'tipo_painel.id')
         ->leftJoin('tipo_pedido', 'pedido.tipoPedido', '=', 'tipo_pedido.id')

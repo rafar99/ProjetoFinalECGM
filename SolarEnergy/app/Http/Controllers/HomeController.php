@@ -32,7 +32,7 @@ class HomeController extends Controller
         ->where ('id', '3')
         ->get();
 
-        $nossosprojetos = NossosProjetos::all();
+        $nossosprojetos = NossosProjetos::orderBy('id','DESC')->limit(3)->get();
 
         $tipo_painel = DB::table('tipo_painel')
         ->take(4)->get();

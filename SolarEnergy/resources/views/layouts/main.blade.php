@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+@if(auth()->user()!=null && auth()->user()->tipoUser_id==2 && $cliente==null)
+    @php
+      header("Location: " . URL::to('/infocliente'), true, 302);
+      exit();
+    @endphp
+  @endif
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

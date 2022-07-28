@@ -123,7 +123,6 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Passes</th>
                             <th>Tipo de Utilizador</th>
                             <th>Estado</th>
                             @if(auth()->user()->tipoUser_id==1)
@@ -137,9 +136,6 @@
                             <td>{{$utilizador->id}}</td>
                             <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
-                            <td>
-                              {{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}
-                            </td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
                               {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
@@ -193,7 +189,6 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Passes</th>
                             <th>Tipo de Utilizador</th>
                             <th>Estado</th>
                             @if(auth()->user()->tipoUser_id==1)
@@ -207,7 +202,6 @@
                             <td>{{$utilizador->id}}</td>
                             <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
-                            <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
                             <td>{{$utilizador->descricao}}</td>
                             <td>
                               {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
@@ -260,7 +254,6 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Passes</th>
                             <th>Tipo de Utilizador</th>
                             <th>Estado</th>
                             <th>Informação</th>
@@ -275,7 +268,6 @@
                             <td>{{$utilizador->id}}</td>
                             <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
-                            <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
                             <td>{{$utilizador->tipo}}</td>
                             <td>
                               {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}
@@ -365,7 +357,6 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Passes</th>
                             <th>Tipo de Utilizador</th>
                             <th>Estado</th>
                             <th>Informação</th>
@@ -380,7 +371,6 @@
                             <td>{{$utilizador->id}}</td>
                             <td>{{$utilizador->name}}</td>
                             <td>{{$utilizador->email}}</td>
-                            <td>{{strlen($utilizador->password)>50 ? substr($utilizador->password,0,50).'....' : $utilizador->password}}</td>
                             <td>{{$utilizador->tipo}}</td>
                             <td>
                               {{$utilizador->ativo==1 ? 'Conta Ativada' : "Conta Desativada"}}

@@ -18,6 +18,11 @@
     <div class="container-fluid">
         <div class="row mt-5">
             <div class="col">
+              @if (session('message'))
+                <div id="alerta" class="alert alert-info" role="alert">
+                    {{ session('message') }}
+                </div>
+              @endif
                 <div class="perfil">
                     <h5>Dados Cliente</h5>
                 </div>

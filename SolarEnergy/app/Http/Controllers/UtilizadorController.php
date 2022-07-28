@@ -50,7 +50,7 @@ class UtilizadorController extends Controller
         $clientes = DB::table('users')
         ->leftJoin('tipo_utilizador','users.tipoUser_id','=','tipo_utilizador.id')
         ->leftJoin('cliente as c', 'users.id','=','c.utilizador_id')
-        ->select('users.*',
+        ->select('users.id','users.name','users.email','users.ativo',
             'tipo_utilizador.descricao as tipo',
             'c.id as cid','c.nome','c.morada','c.contacto','c.nif','c.dataRegisto')
         ->where('users.tipoUser_id','=','2')
